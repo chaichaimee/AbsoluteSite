@@ -1,0 +1,145 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: AbsoluteSite\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-02-21 16:08\n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: French\n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: NVDA DevOn Addon\n"
+
+#: gui.py:51 gui.py:236
+msgid "&Add Category"
+msgstr "&Ajouter une catégorie"
+
+#: gui.py:257
+msgid "&Cancel"
+msgstr "&Annuler"
+
+#: gui.py:124
+msgid "&Delete"
+msgstr "&Supprimer"
+
+#: gui.py:50
+msgid "&Delete Site"
+msgstr "&Supprimer le site"
+
+#: gui.py:123
+msgid "&Edit"
+msgstr "&Modifier"
+
+#: gui.py:49
+msgid "&Edit Site"
+msgstr "&Modifier le site"
+
+#: gui.py:48 gui.py:122
+msgid "&Open URL"
+msgstr "&Ouvrir l'URL"
+
+#: gui.py:256
+msgid "&Save"
+msgstr "&Enregistrer"
+
+#: __init__.py:22 __init__.py:66 gui.py:15
+msgid "Absolute Site"
+msgstr "Absolute Site"
+
+#: gui.py:188 gui.py:298
+msgid "Add Category"
+msgstr "Ajouter une catégorie"
+
+#: gui.py:203
+msgid "Add New Site"
+msgstr "Ajouter un nouveau site"
+
+#: gui.py:182
+msgid "Are you sure you want to delete '{}'?"
+msgstr "Êtes-vous sûr de vouloir supprimer '{}' ?"
+
+#: __init__.py:83
+msgid "Cannot capture URL. Make sure you are in a browser."
+msgstr "Impossible de capturer l'URL. Assurez-vous d'être dans un navigateur."
+
+#: gui.py:197
+msgid "Category already exists or invalid."
+msgstr "La catégorie existe déjà ou est invalide."
+
+#: gui.py:306
+msgid "Category already exists."
+msgstr "La catégorie existe déjà."
+
+#: gui.py:30 gui.py:233
+msgid "Category:"
+msgstr "Catégorie :"
+
+#: gui.py:183
+msgid "Confirm Delete"
+msgstr "Confirmer la suppression"
+
+#: gui.py:320
+msgid "Display name cannot be empty."
+msgstr "Le nom d'affichage ne peut pas être vide."
+
+#: gui.py:242
+msgid "Display name:"
+msgstr "Nom d'affichage :"
+
+#: gui.py:52
+msgid "E&xit"
+msgstr "&Quitter"
+
+#: gui.py:203
+msgid "Edit Site"
+msgstr "Modifier le site"
+
+#: gui.py:188 gui.py:298
+msgid "Enter new category name:"
+msgstr "Entrez le nouveau nom de la catégorie :"
+
+#: gui.py:161 gui.py:197 gui.py:306 gui.py:312 gui.py:316 gui.py:320 gui.py:332 gui.py:339
+msgid "Error"
+msgstr "Erreur"
+
+#: gui.py:339
+msgid "Failed to add site. URL might already exist."
+msgstr "Échec de l'ajout du site. L'URL existe peut-être déjà."
+
+#: gui.py:161
+msgid "Failed to open URL: {}"
+msgstr "Échec de l'ouverture de l'URL : {}"
+
+#: gui.py:332
+msgid "Failed to update site. URL might already exist."
+msgstr "Échec de la mise à jour du site. L'URL existe peut-être déjà."
+
+#: gui.py:37
+msgid "Name"
+msgstr "Nom"
+
+#: __init__.py:64
+msgid "Open Absolute Site manager (single tap) or Add new site (double tap)"
+msgstr "Ouvrir le gestionnaire Absolute Site (un appui) ou ajouter un nouveau site (deux appuis)"
+
+#: gui.py:312
+msgid "Please select or add a category."
+msgstr "Veuillez sélectionner ou ajouter une catégorie."
+
+#: gui.py:42
+msgid "Show paths"
+msgstr "Afficher les chemins"
+
+#: gui.py:249
+msgid "Site URL:"
+msgstr "URL du site :"
+
+#: gui.py:38
+msgid "URL"
+msgstr "URL"
+
+#: gui.py:316
+msgid "URL cannot be empty."
+msgstr "L'URL ne peut pas être vide."
