@@ -11,13 +11,18 @@ from .siteManager import SiteManager
 addonHandler.initTranslation()
 
 class MainDialog(wx.Dialog):
-	def __init__(self, parent, manager):
+	# selected_category can be None
+	def __init__(self, parent, manager, selected_category=None):
 		super().__init__(parent, title=_("Absolute Site"), style=wx.DEFAULT_DIALOG_STYLE | wx.RESIZE_BORDER | wx.MAXIMIZE_BOX)
 		self.manager = manager
+		self.selected_category = selected_category
 		self._initUI()
 		self._bindEvents()
 		self._populateCategories()
-		if self.categoryCombo.GetCount() > 0:
+		# Select the passed category if valid
+		if self.selected_category and self.selected_category in self.manager.get_all_categories():
+			self.categoryCombo.SetStringSelection(self.selected_category)
+		elif self.categoryCombo.GetCount() > 0:
 			self.categoryCombo.SetSelection(0)
 		self._updateSiteList()
 		wx.CallAfter(self.siteList.SetFocus)
@@ -40,7 +45,7 @@ class MainDialog(wx.Dialog):
 
 		# Show paths checkbox
 		self.showPathsCheck = wx.CheckBox(self, label=_("Show paths"))
-		self.showPathsCheck.SetValue(False)  # default unchecked
+		self.showPathsCheck.SetValue(False)
 		mainSizer.Add(self.showPathsCheck, 0, wx.ALL, 5)
 
 		# Buttons
@@ -63,7 +68,7 @@ class MainDialog(wx.Dialog):
 
 	def _bindEvents(self):
 		self.categoryCombo.Bind(wx.EVT_COMBOBOX, self.onCategoryChange)
-		self.siteList.Bind(wx.EVT_LIST_ITEM_ACTIVATED, self.onOpenUrl)  # Enter or double-click opens URL
+		self.siteList.Bind(wx.EVT_LIST_ITEM_ACTIVATED, self.onOpenUrl)
 		self.siteList.Bind(wx.EVT_CONTEXT_MENU, self.onContextMenu)
 		self.siteList.Bind(wx.EVT_KEY_DOWN, self.onKeyDown)
 		self.showPathsCheck.Bind(wx.EVT_CHECKBOX, self.onShowPathsChanged)
@@ -92,10 +97,7 @@ class MainDialog(wx.Dialog):
 				self.siteList.InsertItem(i, f"{name}; URL: {url}")
 			else:
 				self.siteList.InsertItem(i, name)
-			# Store full data as item data for later retrieval
-			self.siteList.SetItemData(i, i)  # index mapping, we'll store separately
-			# We'll keep a mapping from index to (name, url) in memory
-		# Store sites list for this category for later access
+			self.siteList.SetItemData(i, i)
 		self.current_sites = sites
 		if self.siteList.GetItemCount() > 0:
 			self.siteList.Select(0)
@@ -159,7 +161,10 @@ class MainDialog(wx.Dialog):
 				os.startfile(url)
 			except Exception as e:
 				wx.MessageBox(_("Failed to open URL: {}").format(str(e)), _("Error"), wx.OK | wx.ICON_ERROR)
-			# Close dialog after opening
+			# Remember the last used category
+			current_category = self.categoryCombo.GetStringSelection()
+			self.manager.set_last_category(current_category)
+			# Close the dialog after opening
 			self.Close()
 
 	def onEdit(self, evt):
@@ -222,7 +227,6 @@ class AddSiteDialog(wx.Dialog):
 			self.nameCtrl.SetValue(self._generate_display_name(url))
 		if url:
 			self.urlCtrl.SetValue(url)
-		# Focus: if new site, focus on display name; if editing, focus on name as well
 		wx.CallAfter(self.nameCtrl.SetFocus)
 
 	def _initUI(self):
@@ -237,7 +241,7 @@ class AddSiteDialog(wx.Dialog):
 		catSizer.Add(self.addCategoryBtn, 0, wx.LEFT, 5)
 		mainSizer.Add(catSizer, 0, wx.EXPAND | wx.ALL, 5)
 
-		# Display name (now above URL)
+		# Display name
 		nameSizer = wx.BoxSizer(wx.HORIZONTAL)
 		nameSizer.Add(wx.StaticText(self, label=_("Display name:")), 0, wx.ALIGN_CENTER_VERTICAL | wx.RIGHT, 5)
 		self.nameCtrl = wx.TextCtrl(self)
@@ -275,21 +279,17 @@ class AddSiteDialog(wx.Dialog):
 
 	def _generate_display_name(self, url):
 		try:
-			# Extract domain
 			if "://" in url:
 				url = url.split("://", 1)[1]
 			domain = url.split("/")[0]
 			if domain.startswith("www."):
 				domain = domain[4:]
-			# Remove port if present
 			domain = domain.split(":")[0]
-			# Return the first part before any dot
 			parts = domain.split('.')
 			if parts:
 				return parts[0].capitalize()
 			return domain.capitalize()
 		except:
-			# Fallback
 			if len(url) > 30:
 				return url[:27] + "..."
 			return url
@@ -326,17 +326,17 @@ class AddSiteDialog(wx.Dialog):
 				category, display_name, url
 			):
 				self.EndModal(wx.ID_OK)
-				# After saving, open main dialog
-				nvdaGui.mainFrame.popupSettingsDialog(MainDialog, self.manager)
+				# Reopen the main dialog with the updated category
+				nvdaGui.mainFrame.popupSettingsDialog(MainDialog, self.manager, category)
 			else:
-				wx.MessageBox(_("Failed to update site. URL might already exist."), _("Error"), wx.OK | wx.ICON_ERROR)
+				wx.MessageBox(_("A site with this URL already exists in the target category."), _("Error"), wx.OK | wx.ICON_ERROR)
 		else:
 			if self.manager.add_site(category, display_name, url):
 				self.EndModal(wx.ID_OK)
-				# After adding, open main dialog
-				nvdaGui.mainFrame.popupSettingsDialog(MainDialog, self.manager)
+				# Reopen the main dialog with the new category
+				nvdaGui.mainFrame.popupSettingsDialog(MainDialog, self.manager, category)
 			else:
-				wx.MessageBox(_("Failed to add site. URL might already exist."), _("Error"), wx.OK | wx.ICON_ERROR)
+				wx.MessageBox(_("A site with this URL already exists in this category."), _("Error"), wx.OK | wx.ICON_ERROR)
 
 	def onCharHook(self, evt):
 		if evt.GetKeyCode() == wx.WXK_ESCAPE:
