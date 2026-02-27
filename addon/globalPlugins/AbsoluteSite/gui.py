@@ -30,7 +30,7 @@ class MainDialog(wx.Dialog):
 	def _initUI(self):
 		mainSizer = wx.BoxSizer(wx.VERTICAL)
 
-		# Category selection
+		# Category selection (only label and combo box)
 		catSizer = wx.BoxSizer(wx.HORIZONTAL)
 		catSizer.Add(wx.StaticText(self, label=_("Category:")), 0, wx.ALIGN_CENTER_VERTICAL | wx.RIGHT, 5)
 		self.categoryCombo = wx.ComboBox(self, choices=[], style=wx.CB_READONLY)
@@ -48,18 +48,22 @@ class MainDialog(wx.Dialog):
 		self.showPathsCheck.SetValue(False)
 		mainSizer.Add(self.showPathsCheck, 0, wx.ALL, 5)
 
-		# Buttons
+		# Buttons (including Add Site, Edit Site, Delete Site, Add Category, Edit Category, Exit)
 		btnSizer = wx.BoxSizer(wx.HORIZONTAL)
-		self.openBtn = wx.Button(self, label=_("&Open URL"))
+		self.addSiteBtn = wx.Button(self, label=_("&Add Site"))
 		self.editBtn = wx.Button(self, label=_("&Edit Site"))
 		self.deleteBtn = wx.Button(self, label=_("&Delete Site"))
 		self.addCategoryBtn = wx.Button(self, label=_("&Add Category"))
+		self.editCategoryBtn = wx.Button(self, label=_("&Edit Category"))
 		self.exitBtn = wx.Button(self, wx.ID_CLOSE, label=_("E&xit"))
-		btnSizer.Add(self.openBtn, 0, wx.RIGHT, 5)
+
+		btnSizer.Add(self.addSiteBtn, 0, wx.RIGHT, 5)
 		btnSizer.Add(self.editBtn, 0, wx.RIGHT, 5)
 		btnSizer.Add(self.deleteBtn, 0, wx.RIGHT, 5)
 		btnSizer.Add(self.addCategoryBtn, 0, wx.RIGHT, 5)
+		btnSizer.Add(self.editCategoryBtn, 0, wx.RIGHT, 5)
 		btnSizer.Add(self.exitBtn, 0)
+
 		mainSizer.Add(btnSizer, 0, wx.ALIGN_CENTER | wx.ALL, 10)
 
 		self.SetSizer(mainSizer)
@@ -68,14 +72,17 @@ class MainDialog(wx.Dialog):
 
 	def _bindEvents(self):
 		self.categoryCombo.Bind(wx.EVT_COMBOBOX, self.onCategoryChange)
+		self.categoryCombo.Bind(wx.EVT_CONTEXT_MENU, self.onCategoryContextMenu)
+		self.categoryCombo.Bind(wx.EVT_KEY_DOWN, self.onCategoryKeyDown)
 		self.siteList.Bind(wx.EVT_LIST_ITEM_ACTIVATED, self.onOpenUrl)
 		self.siteList.Bind(wx.EVT_CONTEXT_MENU, self.onContextMenu)
 		self.siteList.Bind(wx.EVT_KEY_DOWN, self.onKeyDown)
 		self.showPathsCheck.Bind(wx.EVT_CHECKBOX, self.onShowPathsChanged)
-		self.openBtn.Bind(wx.EVT_BUTTON, self.onOpenUrl)
+		self.addSiteBtn.Bind(wx.EVT_BUTTON, self.onAddSite)
 		self.editBtn.Bind(wx.EVT_BUTTON, self.onEdit)
 		self.deleteBtn.Bind(wx.EVT_BUTTON, self.onDelete)
 		self.addCategoryBtn.Bind(wx.EVT_BUTTON, self.onAddCategory)
+		self.editCategoryBtn.Bind(wx.EVT_BUTTON, self.onEditCategory)
 		self.exitBtn.Bind(wx.EVT_BUTTON, lambda e: self.Close())
 		self.Bind(wx.EVT_CHAR_HOOK, self.onCharHook)
 
@@ -106,15 +113,75 @@ class MainDialog(wx.Dialog):
 
 	def _updateButtons(self):
 		has_selection = self.siteList.GetFirstSelected() != -1
-		self.openBtn.Enable(has_selection)
 		self.editBtn.Enable(has_selection)
 		self.deleteBtn.Enable(has_selection)
+		# Add Site button always enabled (if there is a category)
+		category_selected = bool(self.categoryCombo.GetStringSelection())
+		self.addSiteBtn.Enable(category_selected)
 
 	def onShowPathsChanged(self, evt):
 		self._updateSiteList()
 
 	def onCategoryChange(self, evt):
 		self._updateSiteList()
+		self._updateButtons()
+
+	def onCategoryContextMenu(self, evt):
+		menu = wx.Menu()
+		addItem = menu.Append(wx.ID_ANY, _("&Add Category"))
+		editItem = menu.Append(wx.ID_ANY, _("&Edit Category"))
+		deleteItem = menu.Append(wx.ID_ANY, _("&Delete Category"))
+		self.Bind(wx.EVT_MENU, self.onAddCategory, addItem)
+		self.Bind(wx.EVT_MENU, self.onEditCategory, editItem)
+		self.Bind(wx.EVT_MENU, self.onDeleteCategory, deleteItem)
+		self.categoryCombo.PopupMenu(menu)
+		menu.Destroy()
+
+	def onCategoryKeyDown(self, evt):
+		if evt.GetKeyCode() == wx.WXK_DELETE:
+			self.onDeleteCategory(None)
+		else:
+			evt.Skip()
+
+	def onEditCategory(self, evt):
+		current_cat = self.categoryCombo.GetStringSelection()
+		if not current_cat:
+			wx.MessageBox(_("No category selected."), _("Error"), wx.OK | wx.ICON_ERROR)
+			return
+		dlg = wx.TextEntryDialog(self, _("Enter new name for category '{}':").format(current_cat), _("Edit Category"))
+		if dlg.ShowModal() == wx.ID_OK:
+			new_cat = dlg.GetValue().strip()
+			if not new_cat:
+				wx.MessageBox(_("Category name cannot be empty."), _("Error"), wx.OK | wx.ICON_ERROR)
+				dlg.Destroy()
+				return
+			if new_cat == current_cat:
+				dlg.Destroy()
+				return
+			if self.manager.rename_category(current_cat, new_cat):
+				self._populateCategories()
+				self.categoryCombo.SetStringSelection(new_cat)
+				self._updateSiteList()
+			else:
+				wx.MessageBox(_("Category '{}' already exists or invalid.").format(new_cat), _("Error"), wx.OK | wx.ICON_ERROR)
+		dlg.Destroy()
+
+	def onDeleteCategory(self, evt):
+		current_cat = self.categoryCombo.GetStringSelection()
+		if not current_cat:
+			wx.MessageBox(_("No category selected."), _("Error"), wx.OK | wx.ICON_ERROR)
+			return
+		if wx.MessageBox(_("Are you sure you want to delete category '{}' and all its sites?").format(current_cat),
+						 _("Confirm Delete"), wx.YES_NO | wx.ICON_QUESTION) == wx.YES:
+			if self.manager.delete_category(current_cat):
+				self._populateCategories()
+				if self.categoryCombo.GetCount() > 0:
+					self.categoryCombo.SetSelection(0)
+				else:
+					self.categoryCombo.Clear()
+				self._updateSiteList()
+			else:
+				wx.MessageBox(_("Failed to delete category."), _("Error"), wx.OK | wx.ICON_ERROR)
 
 	def onContextMenu(self, evt):
 		idx = self.siteList.GetFirstSelected()
@@ -167,6 +234,18 @@ class MainDialog(wx.Dialog):
 			# Close the dialog after opening
 			self.Close()
 
+	def onAddSite(self, evt):
+		category = self.categoryCombo.GetStringSelection()
+		if not category:
+			wx.MessageBox(_("Please select a category first."), _("Error"), wx.OK | wx.ICON_ERROR)
+			return
+		# Open AddSiteDialog without a URL (user will fill it)
+		dlg = AddSiteDialog(self, self.manager, category=category, url=None, display_name=None, edit_mode=False)
+		if dlg.ShowModal() == wx.ID_OK:
+			# Refresh the site list after adding
+			self._updateSiteList()
+		dlg.Destroy()
+
 	def onEdit(self, evt):
 		site = self._get_selected_site()
 		if not site:
@@ -204,6 +283,7 @@ class MainDialog(wx.Dialog):
 
 
 class AddSiteDialog(wx.Dialog):
+	# (ไม่มีการเปลี่ยนแปลง ส่วนนี้เหมือนเดิมทุกประการ)
 	def __init__(self, parent, manager, url=None, category=None, display_name=None, edit_mode=False):
 		title = _("Edit Site") if edit_mode else _("Add New Site")
 		super().__init__(parent, title=title, style=wx.DEFAULT_DIALOG_STYLE | wx.RESIZE_BORDER)

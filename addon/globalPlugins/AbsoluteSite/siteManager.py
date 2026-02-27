@@ -2,17 +2,51 @@
 
 import os
 import json
+import shutil
 import globalVars
 from logHandler import log
 
 class SiteManager:
 	def __init__(self):
-		self.configPath = os.path.join(globalVars.appArgs.configPath, "AbsoluteSites.json")
-		self.prefsPath = os.path.join(globalVars.appArgs.configPath, "AbsoluteSitePrefs.json")
+		# กำหนดโฟลเดอร์สำหรับเก็บข้อมูลโดยเฉพาะ เปลี่ยนเป็น ConfigAbsoluteSite
+		self.dataDir = os.path.join(globalVars.appArgs.configPath, "ConfigAbsoluteSite")
+		# สร้างโฟลเดอร์ถ้ายังไม่มี (รวมถึง parent paths ถ้าจำเป็น)
+		try:
+			os.makedirs(self.dataDir, exist_ok=True)
+		except Exception as e:
+			log.error(f"Could not create data directory {self.dataDir}: {e}")
+
+		# กำหนดพาธของไฟล์ JSON ภายในโฟลเดอร์ดังกล่าว
+		self.configPath = os.path.join(self.dataDir, "AbsoluteSites.json")
+		self.prefsPath = os.path.join(self.dataDir, "AbsoluteSitePrefs.json")
+
+		# ตรวจสอบและย้ายไฟล์เก่าถ้ามี
+		self._migrate_old_files()
+
 		self.data = {}
 		self.prefs = {}
 		self.load()
 		self.load_prefs()
+
+	def _migrate_old_files(self):
+		"""ย้ายไฟล์ JSON จากตำแหน่งเก่า (userConfig\) ไปยังโฟลเดอร์ใหม่ ถ้ายังไม่มีไฟล์ในโฟลเดอร์ใหม่"""
+		old_config = os.path.join(globalVars.appArgs.configPath, "AbsoluteSites.json")
+		old_prefs = os.path.join(globalVars.appArgs.configPath, "AbsoluteSitePrefs.json")
+
+		# ตรวจสอบว่าไฟล์ใหม่ยังไม่มี หรือไฟล์เก่ามีอยู่
+		if not os.path.exists(self.configPath) and os.path.exists(old_config):
+			try:
+				shutil.move(old_config, self.configPath)
+				log.info(f"Migrated {old_config} to {self.configPath}")
+			except Exception as e:
+				log.error(f"Failed to migrate {old_config}: {e}")
+
+		if not os.path.exists(self.prefsPath) and os.path.exists(old_prefs):
+			try:
+				shutil.move(old_prefs, self.prefsPath)
+				log.info(f"Migrated {old_prefs} to {self.prefsPath}")
+			except Exception as e:
+				log.error(f"Failed to migrate {old_prefs}: {e}")
 
 	def load(self):
 		if os.path.isfile(self.configPath):
@@ -65,7 +99,8 @@ class SiteManager:
 			self.save_prefs()
 
 	def get_all_categories(self):
-		return sorted(self.data.keys())
+		# เรียงลำดับแบบ case-insensitive
+		return sorted(self.data.keys(), key=str.lower)
 
 	def get_sites_by_category(self, category):
 		return self.data.get(category, [])
@@ -93,6 +128,33 @@ class SiteManager:
 			self.save()
 			return True
 		return False
+
+	def delete_category(self, category):
+		"""Delete a category and all its sites."""
+		if category not in self.data:
+			return False
+		del self.data[category]
+		# If this category was the last used, clear it
+		if self.prefs.get("last_category") == category:
+			self.prefs.pop("last_category", None)
+			self.save_prefs()
+		self.save()
+		return True
+
+	def rename_category(self, old_name, new_name):
+		"""Rename a category. Returns True if successful."""
+		if old_name not in self.data:
+			return False
+		if new_name in self.data:
+			return False  # New name already exists
+		# Rename the key
+		self.data[new_name] = self.data.pop(old_name)
+		# Update last_category if needed
+		if self.prefs.get("last_category") == old_name:
+			self.prefs["last_category"] = new_name
+			self.save_prefs()
+		self.save()
+		return True
 
 	def add_site(self, category, display_name, url):
 		# Check if URL already exists in this category
