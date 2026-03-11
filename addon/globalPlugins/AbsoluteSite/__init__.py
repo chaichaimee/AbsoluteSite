@@ -26,7 +26,7 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 		self.manager = SiteManager()
 		self._last_tap_time = 0
 		self._tap_count = 0
-		# ตัวแปรสำหรับเช็คว่าเป็นการเปิดหน้าต่างครั้งแรกหลังจาก NVDA เริ่มทำงานหรือไม่
+		# Variable to check if this is the first time opening the dialog after NVDA starts
 		self._first_open = True
 
 	def get_current_url(self):
@@ -76,17 +76,17 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 
 		def execute_action():
 			if self._tap_count == 1:
-				# Single tap: เปิดหน้าต่างจัดการ
+				# Single tap: open manager dialog
 				if self._first_open:
-					# ครั้งแรกหลังจากรีสตาร์ท NVDA -> ไม่ส่งหมวดที่จำไว้
+					# First time after NVDA restart -> do not pass last category
 					nvdaGui.mainFrame.popupSettingsDialog(MainDialog, self.manager)
 				else:
-					# ครั้งต่อไป -> ส่งหมวดที่จำไว้ล่าสุด (ถ้ามี)
+					# Subsequent opens -> pass last category (if any)
 					last_cat = self.manager.get_last_category()
 					nvdaGui.mainFrame.popupSettingsDialog(MainDialog, self.manager, last_cat)
 				self._first_open = False
 			elif self._tap_count >= 2:
-				# Double tap: เปิดไดอะล็อกเพิ่มไซต์
+				# Double tap: open add site dialog
 				current_url = self.get_current_url()
 				if not current_url:
 					ui.message(_("Cannot capture URL. Make sure you are in a browser."))
