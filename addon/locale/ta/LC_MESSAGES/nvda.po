@@ -1,0 +1,254 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: AbsoluteSite 2026.3.2\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-03-11 18:31+0700\n"
+"PO-Revision-Date: \n"
+"Last-Translator: Anonymous <anonymous@example.com>\n"
+"Language-Team: Tamil\n"
+"Language: ta\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: NVDA DevOn Addon\n"
+
+#: gui.py:189
+#: gui.py:265
+#: gui.py:573
+msgid "&Add Category"
+msgstr "வகையைச் சேர் (&A)"
+
+#: gui.py:186
+msgid "&Add Site"
+msgstr "தளத்தைச் சேர் (&A)"
+
+#: gui.py:591
+msgid "&Cancel"
+msgstr "ரத்து செய் (&C)"
+
+#: gui.py:356
+msgid "&Delete"
+msgstr "நீக்கு (&D)"
+
+#: gui.py:267
+msgid "&Delete Category"
+msgstr "வகையை நீக்கு (&D)"
+
+#: gui.py:188
+msgid "&Delete Site"
+msgstr "தளத்தை நீக்கு (&D)"
+
+#: gui.py:355
+msgid "&Edit"
+msgstr "திருத்து (&E)"
+
+#: gui.py:190
+#: gui.py:266
+msgid "&Edit Category"
+msgstr "வகையைத் திருத்து (&E)"
+
+#: gui.py:187
+msgid "&Edit Site"
+msgstr "தளத்தைத் திருத்து (&E)"
+
+#: gui.py:378
+msgid "&Move to category"
+msgstr "வகையிற்கு நகர்த்து (&M)"
+
+#: gui.py:369
+msgid "&Open with"
+msgstr "இதனுடன் திற (&O)"
+
+#: gui.py:347
+msgid "&Pin to top"
+msgstr "மேலே பின் செய் (&P)"
+
+#: gui.py:590
+msgid "&Save"
+msgstr "சேமி (&S)"
+
+#: gui.py:345
+msgid "&Unpin"
+msgstr "பின்னை நீக்கு (&U)"
+
+#: gui.py:661
+msgid "A site with this URL already exists in the target category."
+msgstr "இந்த URL கொண்ட தளம் ஏற்கனவே இலக்கு வகையில் உள்ளது."
+
+#: gui.py:667
+msgid "A site with this URL already exists in this category."
+msgstr "இந்த URL கொண்ட தளம் ஏற்கனவே இந்த வகையில் உள்ளது."
+
+#: __init__.py:22
+#: __init__.py:68
+#: gui.py:129
+msgid "Absolute Site"
+msgstr "Absolute Site"
+
+#: gui.py:477
+#: gui.py:628
+msgid "Add Category"
+msgstr "வகையைச் சேர்"
+
+#: gui.py:543
+msgid "Add New Site"
+msgstr "புதிய தளத்தைச் சேர்"
+
+#: gui.py:467
+msgid "Are you sure you want to delete '{}'?"
+msgstr "'{}' ஐ நீக்க விரும்புகிறீர்களா?"
+
+#: gui.py:318
+msgid "Are you sure you want to delete category '{}' and all its sites?"
+msgstr "'{}' வகை மற்றும் அதிலுள்ள அனைத்து தளங்களையும் நீக்க விரும்புகிறீர்களா?"
+
+#: __init__.py:92
+msgid "Cannot capture URL. Make sure you are in a browser."
+msgstr "URL ஐப் பிடிக்க முடியவில்லை. உலாவியில் இருப்பதை உறுதிப்படுத்தவும்."
+
+#: gui.py:513
+msgid "Cannot move down."
+msgstr "கீழே நகர்த்த முடியவில்லை."
+
+#: gui.py:505
+msgid "Cannot move up."
+msgstr "மேலே நகர்த்த முடியவில்லை."
+
+#: gui.py:306
+msgid "Category '{}' already exists or invalid."
+msgstr "வகை '{}' ஏற்கனவே உள்ளது அல்லது தவறானது."
+
+#: gui.py:486
+msgid "Category already exists or invalid."
+msgstr "வகை ஏற்கனவே உள்ளது அல்லது தவறானது."
+
+#: gui.py:636
+msgid "Category already exists."
+msgstr "வகை ஏற்கனவே உள்ளது."
+
+#: gui.py:293
+msgid "Category name cannot be empty."
+msgstr "வகையின் பெயர் காலியாக இருக்கக்கூடாது."
+
+#: gui.py:171
+#: gui.py:570
+msgid "Category:"
+msgstr "வகை:"
+
+#: gui.py:319
+#: gui.py:468
+msgid "Confirm Delete"
+msgstr "நீக்குதலை உறுதிப்படுத்து"
+
+#: gui.py:650
+msgid "Display name cannot be empty."
+msgstr "காட்சிப் பெயர் காலியாக இருக்கக்கூடாது."
+
+#: gui.py:578
+msgid "Display name:"
+msgstr "காட்சிப் பெயர்:"
+
+#: gui.py:191
+msgid "E&xit"
+msgstr "வெளியேறு (&x)"
+
+#: gui.py:289
+msgid "Edit Category"
+msgstr "வகையைத் திருத்து"
+
+#: gui.py:543
+msgid "Edit Site"
+msgstr "தளத்தைத் திருத்து"
+
+#: gui.py:477
+#: gui.py:628
+msgid "Enter new category name:"
+msgstr "புதிய வகையின் பெயரை உள்ளிடவும்:"
+
+#: gui.py:289
+msgid "Enter new name for category '{}':"
+msgstr "வகை '{}' க்கான புதிய பெயரை உள்ளிடவும்:"
+
+#: gui.py:125
+#: gui.py:285
+#: gui.py:293
+#: gui.py:306
+#: gui.py:314
+#: gui.py:328
+#: gui.py:424
+#: gui.py:433
+#: gui.py:486
+#: gui.py:530
+#: gui.py:636
+#: gui.py:642
+#: gui.py:646
+#: gui.py:650
+#: gui.py:661
+#: gui.py:667
+msgid "Error"
+msgstr "பிழை"
+
+#: gui.py:328
+msgid "Failed to delete category."
+msgstr "வகையை நீக்க முடியவில்லை."
+
+#: gui.py:530
+msgid "Failed to move site. It may already exist in the target category."
+msgstr "தளத்தை நகர்த்த முடியவில்லை. அது ஏற்கனவே இலக்கு வகையில் இருக்கலாம்."
+
+#: gui.py:125
+msgid "Failed to open URL with browser: {}"
+msgstr "உலாவியுடன் URL ஐத் திறக்க முடியவில்லை: {}"
+
+#: gui.py:424
+msgid "Failed to open URL: {}"
+msgstr "URL ஐத் திறக்க முடியவில்லை: {}"
+
+#: gui.py:352
+msgid "Move &Down"
+msgstr "கீழே நகர்த்து (&D)"
+
+#: gui.py:351
+msgid "Move &Up"
+msgstr "மேலே நகர்த்து (&U)"
+
+#: gui.py:177
+msgid "Name"
+msgstr "பெயர்"
+
+#: gui.py:367
+msgid "No browsers found"
+msgstr "உலாவிகள் எதுவும் கிடைக்கவில்லை"
+
+#: gui.py:285
+#: gui.py:314
+msgid "No category selected."
+msgstr "வகை எதுவும் தேர்ந்தெடுக்கப்படவில்லை."
+
+#: __init__.py:66
+msgid "Open Absolute Site manager (single tap) or Add new site (double tap)"
+msgstr "Absolute Site மேலாளரைத் திற (ஒற்றைத் தட்டல்) அல்லது புதிய தளத்தைச் சேர் (இரட்டைத் தட்டல்)"
+
+#: gui.py:433
+msgid "Please select a category first."
+msgstr "முதலில் ஒரு வகையைத் தேர்ந்தெடுக்கவும்."
+
+#: gui.py:642
+msgid "Please select or add a category."
+msgstr "தயவுசெய்து ஒரு வகையைத் தேர்ந்தெடுக்கவும் அல்லது சேர்க்கவும்."
+
+#: gui.py:181
+msgid "Show paths"
+msgstr "பாதைகளைக் காட்டு"
+
+#: gui.py:584
+msgid "Site URL:"
+msgstr "தளத்தின் URL:"
+
+#: gui.py:178
+msgid "URL"
+msgstr "URL"
+
+#: gui.py:646
+msgid "URL cannot be empty."
+msgstr "URL காலியாக இருக்கக்கூடாது."

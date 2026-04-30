@@ -57,7 +57,7 @@ msgstr "In Kategorie &verschieben"
 
 #: gui.py:369
 msgid "&Open with"
-msgstr "Ö&ffnen mit"
+msgstr "&Öffnen mit"
 
 #: gui.py:347
 msgid "&Pin to top"
@@ -73,11 +73,11 @@ msgstr "Anheften &aufheben"
 
 #: gui.py:661
 msgid "A site with this URL already exists in the target category."
-msgstr "Eine Seite mit dieser URL existiert bereits in der Zielkategorie."
+msgstr "In der Zielkategorie existiert bereits eine Seite mit dieser URL."
 
 #: gui.py:667
 msgid "A site with this URL already exists in this category."
-msgstr "Eine Seite mit dieser URL existiert bereits in dieser Kategorie."
+msgstr "In dieser Kategorie existiert bereits eine Seite mit dieser URL."
 
 #: __init__.py:22
 #: __init__.py:68
@@ -108,11 +108,11 @@ msgstr "URL konnte nicht erfasst werden. Stellen Sie sicher, dass Sie sich in ei
 
 #: gui.py:513
 msgid "Cannot move down."
-msgstr "Nach unten verschieben nicht möglich."
+msgstr "Verschieben nach unten nicht möglich."
 
 #: gui.py:505
 msgid "Cannot move up."
-msgstr "Nach oben verschieben nicht möglich."
+msgstr "Verschieben nach oben nicht möglich."
 
 #: gui.py:306
 msgid "Category '{}' already exists or invalid."
@@ -190,15 +190,15 @@ msgstr "Fehler"
 
 #: gui.py:328
 msgid "Failed to delete category."
-msgstr "Löschen der Kategorie fehlgeschlagen."
+msgstr "Kategorie konnte nicht gelöscht werden."
 
 #: gui.py:530
 msgid "Failed to move site. It may already exist in the target category."
-msgstr "Verschieben der Seite fehlgeschlagen. Sie existiert möglicherweise bereits in der Zielkategorie."
+msgstr "Seite konnte nicht verschoben werden. Möglicherweise existiert sie bereits in der Zielkategorie."
 
 #: gui.py:125
 msgid "Failed to open URL with browser: {}"
-msgstr "URL konnte nicht mit Browser geöffnet werden: {}"
+msgstr "URL konnte nicht im Browser geöffnet werden: {}"
 
 #: gui.py:424
 msgid "Failed to open URL: {}"
@@ -227,7 +227,7 @@ msgstr "Keine Kategorie ausgewählt."
 
 #: __init__.py:66
 msgid "Open Absolute Site manager (single tap) or Add new site (double tap)"
-msgstr "Absolute Site Manager öffnen (einmal tippen) oder neue Seite hinzufügen (zweimal tippen)"
+msgstr "Absolute Site Manager öffnen (einfaches Tippen) oder neue Seite hinzufügen (doppeltes Tippen)"
 
 #: gui.py:433
 msgid "Please select a category first."

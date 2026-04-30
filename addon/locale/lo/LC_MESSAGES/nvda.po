@@ -1,0 +1,254 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: AbsoluteSite 2026.3.2\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-03-11 18:31+0700\n"
+"PO-Revision-Date: \n"
+"Last-Translator: Anonymous <anonymous@example.com>\n"
+"Language-Team: Lao\n"
+"Language: lo\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: NVDA DevOn Addon\n"
+
+#: gui.py:189
+#: gui.py:265
+#: gui.py:573
+msgid "&Add Category"
+msgstr "ເພີ່ມໝວດໝູ່ (&A)"
+
+#: gui.py:186
+msgid "&Add Site"
+msgstr "ເພີ່ມເວັບໄຊ (&A)"
+
+#: gui.py:591
+msgid "&Cancel"
+msgstr "ຍົກເລີກ (&C)"
+
+#: gui.py:356
+msgid "&Delete"
+msgstr "ລຶບ (&D)"
+
+#: gui.py:267
+msgid "&Delete Category"
+msgstr "ລຶບໝວດໝູ່ (&D)"
+
+#: gui.py:188
+msgid "&Delete Site"
+msgstr "ລຶບເວັບໄຊ (&D)"
+
+#: gui.py:355
+msgid "&Edit"
+msgstr "ແກ້ໄຂ (&E)"
+
+#: gui.py:190
+#: gui.py:266
+msgid "&Edit Category"
+msgstr "ແກ້ໄຂໝວດໝູ່ (&E)"
+
+#: gui.py:187
+msgid "&Edit Site"
+msgstr "ແກ້ໄຂເວັບໄຊ (&E)"
+
+#: gui.py:378
+msgid "&Move to category"
+msgstr "ຍ້າຍໄປໝວດໝູ່ (&M)"
+
+#: gui.py:369
+msgid "&Open with"
+msgstr "ເປີດດ້ວຍ (&O)"
+
+#: gui.py:347
+msgid "&Pin to top"
+msgstr "ປັກໝຸດໄວ້ເທິງສຸດ (&P)"
+
+#: gui.py:590
+msgid "&Save"
+msgstr "ບັນທຶກ (&S)"
+
+#: gui.py:345
+msgid "&Unpin"
+msgstr "ຖອນການປັກໝຸດ (&U)"
+
+#: gui.py:661
+msgid "A site with this URL already exists in the target category."
+msgstr "ມີເວັບໄຊທີ່ມີ URL ນີ້ຢູ່ແລ້ວໃນໝວດໝູ່ເປົ້າໝາຍ."
+
+#: gui.py:667
+msgid "A site with this URL already exists in this category."
+msgstr "ມີເວັບໄຊທີ່ມີ URL ນີ້ຢູ່ແລ້ວໃນໝວດໝູ່ນີ້."
+
+#: __init__.py:22
+#: __init__.py:68
+#: gui.py:129
+msgid "Absolute Site"
+msgstr "Absolute Site"
+
+#: gui.py:477
+#: gui.py:628
+msgid "Add Category"
+msgstr "ເພີ່ມໝວດໝູ່"
+
+#: gui.py:543
+msgid "Add New Site"
+msgstr "ເພີ່ມເວັບໄຊໃໝ່"
+
+#: gui.py:467
+msgid "Are you sure you want to delete '{}'?"
+msgstr "ທ່ານແນ່ໃຈບໍ່ວ່າຕ້ອງການລຶບ '{}'?"
+
+#: gui.py:318
+msgid "Are you sure you want to delete category '{}' and all its sites?"
+msgstr "ທ່ານແນ່ໃຈບໍ່ວ່າຕ້ອງການລຶບໝວດໝູ່ '{}' ແລະ ເວັບໄຊທັງໝົດໃນນັ້ນ?"
+
+#: __init__.py:92
+msgid "Cannot capture URL. Make sure you are in a browser."
+msgstr "ບໍ່ສາມາດດຶງ URL ໄດ້. ກະລຸນາກວດສອບວ່າທ່ານຢູ່ໃນບຣາວເຊີ."
+
+#: gui.py:513
+msgid "Cannot move down."
+msgstr "ບໍ່ສາມາດຍ້າຍລົງໄດ້."
+
+#: gui.py:505
+msgid "Cannot move up."
+msgstr "ບໍ່ສາມາດຍ້າຍຂຶ້ນໄດ້."
+
+#: gui.py:306
+msgid "Category '{}' already exists or invalid."
+msgstr "ໝວດໝູ່ '{}' ມີຢູ່ແລ້ວ ຫຼື ບໍ່ຖືກຕ້ອງ."
+
+#: gui.py:486
+msgid "Category already exists or invalid."
+msgstr "ໝວດໝູ່ມີຢູ່ແລ້ວ ຫຼື ບໍ່ຖືກຕ້ອງ."
+
+#: gui.py:636
+msgid "Category already exists."
+msgstr "ໝວດໝູ່ມີຢູ່ແລ້ວ."
+
+#: gui.py:293
+msgid "Category name cannot be empty."
+msgstr "ຊື່ໝວດໝູ່ບໍ່ສາມາດຫວ່າງເປົ່າໄດ້."
+
+#: gui.py:171
+#: gui.py:570
+msgid "Category:"
+msgstr "ໝວດໝູ່:"
+
+#: gui.py:319
+#: gui.py:468
+msgid "Confirm Delete"
+msgstr "ຢືນຢັນການລຶບ"
+
+#: gui.py:650
+msgid "Display name cannot be empty."
+msgstr "ຊື່ທີ່ສະແດງບໍ່ສາມາດຫວ່າງເປົ່າໄດ້."
+
+#: gui.py:578
+msgid "Display name:"
+msgstr "ຊື່ທີ່ສະແດງ:"
+
+#: gui.py:191
+msgid "E&xit"
+msgstr "ອອກ (&x)"
+
+#: gui.py:289
+msgid "Edit Category"
+msgstr "ແກ້ໄຂໝວດໝູ່"
+
+#: gui.py:543
+msgid "Edit Site"
+msgstr "ແກ້ໄຂເວັບໄຊ"
+
+#: gui.py:477
+#: gui.py:628
+msgid "Enter new category name:"
+msgstr "ປ້ອນຊື່ໝວດໝູ່ໃໝ່:"
+
+#: gui.py:289
+msgid "Enter new name for category '{}':"
+msgstr "ປ້ອນຊື່ໃໝ່ສຳລັບໝວດໝູ່ '{}':"
+
+#: gui.py:125
+#: gui.py:285
+#: gui.py:293
+#: gui.py:306
+#: gui.py:314
+#: gui.py:328
+#: gui.py:424
+#: gui.py:433
+#: gui.py:486
+#: gui.py:530
+#: gui.py:636
+#: gui.py:642
+#: gui.py:646
+#: gui.py:650
+#: gui.py:661
+#: gui.py:667
+msgid "Error"
+msgstr "ຂໍ້ຜິດພາດ"
+
+#: gui.py:328
+msgid "Failed to delete category."
+msgstr "ລຶບໝວດໝູ່ບໍ່ສຳເລັດ."
+
+#: gui.py:530
+msgid "Failed to move site. It may already exist in the target category."
+msgstr "ຍ້າຍເວັບໄຊບໍ່ສຳເລັດ. ມັນອາດຈະມີຢູ່ແລ້ວໃນໝວດໝູ່ເປົ້າໝາຍ."
+
+#: gui.py:125
+msgid "Failed to open URL with browser: {}"
+msgstr "ເປີດ URL ດ້ວຍບຣາວເຊີບໍ່ສຳເລັດ: {}"
+
+#: gui.py:424
+msgid "Failed to open URL: {}"
+msgstr "ເປີດ URL ບໍ່ສຳເລັດ: {}"
+
+#: gui.py:352
+msgid "Move &Down"
+msgstr "ຍ້າຍລົງ (&D)"
+
+#: gui.py:351
+msgid "Move &Up"
+msgstr "ຍ້າຍຂຶ້ນ (&U)"
+
+#: gui.py:177
+msgid "Name"
+msgstr "ຊື່"
+
+#: gui.py:367
+msgid "No browsers found"
+msgstr "ບໍ່ພົບບຣາວເຊີ"
+
+#: gui.py:285
+#: gui.py:314
+msgid "No category selected."
+msgstr "ບໍ່ໄດ້ເລືອກໝວດໝູ່."
+
+#: __init__.py:66
+msgid "Open Absolute Site manager (single tap) or Add new site (double tap)"
+msgstr "ເປີດຕົວຈັດການ Absolute Site (ແຕະເທື່ອດຽວ) ຫຼື ເພີ່ມເວັບໄຊໃໝ່ (ແຕະສອງເທື່ອ)"
+
+#: gui.py:433
+msgid "Please select a category first."
+msgstr "ກະລຸນາເລືອກໝວດໝູ່ກ່ອນ."
+
+#: gui.py:642
+msgid "Please select or add a category."
+msgstr "ກະລຸນາເລືອກ ຫຼື ເພີ່ມໝວດໝູ່."
+
+#: gui.py:181
+msgid "Show paths"
+msgstr "ສະແດງເສັ້ນທາງ"
+
+#: gui.py:584
+msgid "Site URL:"
+msgstr "URL ຂອງເວັບໄຊ:"
+
+#: gui.py:178
+msgid "URL"
+msgstr "URL"
+
+#: gui.py:646
+msgid "URL cannot be empty."
+msgstr "URL ບໍ່ສາມາດຫວ່າງເປົ່າໄດ້."

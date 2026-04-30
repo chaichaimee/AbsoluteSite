@@ -1,83 +1,83 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: AbsoluteSite 2026.5.1\n"
-"Report-Msgid-Bugs-To: chaicm75@gmail.com\n"
-"POT-Creation-Date: 2026-04-29 10:55+0700\n"
+"Project-Id-Version: AbsoluteSite 2026.3.2\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-03-11 18:31+0700\n"
 "PO-Revision-Date: \n"
-"Last-Translator: chaiBot and Malee Yamazaki\n"
-"Language-Team: English\n"
-"Language: en\n"
+"Last-Translator: Anonymous <anonymous@example.com>\n"
+"Language-Team: Czech\n"
+"Language: cs\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: DevOn Addon\n"
+"X-Generator: NVDA DevOn Addon\n"
 
 #: gui.py:189
 #: gui.py:265
 #: gui.py:573
 msgid "&Add Category"
-msgstr "&Add Category"
+msgstr "Přid&at kategorii"
 
 #: gui.py:186
 msgid "&Add Site"
-msgstr "&Add Site"
+msgstr "Přid&at stránku"
 
 #: gui.py:591
 msgid "&Cancel"
-msgstr "&Cancel"
+msgstr "&Zrušit"
 
 #: gui.py:356
 msgid "&Delete"
-msgstr "&Delete"
+msgstr "Smaz&at"
 
 #: gui.py:267
 msgid "&Delete Category"
-msgstr "&Delete Category"
+msgstr "Smaz&at kategorii"
 
 #: gui.py:188
 msgid "&Delete Site"
-msgstr "&Delete Site"
+msgstr "Smaz&at stránku"
 
 #: gui.py:355
 msgid "&Edit"
-msgstr "&Edit"
+msgstr "&Upravit"
 
 #: gui.py:190
 #: gui.py:266
 msgid "&Edit Category"
-msgstr "&Edit Category"
+msgstr "&Upravit kategorii"
 
 #: gui.py:187
 msgid "&Edit Site"
-msgstr "&Edit Site"
+msgstr "&Upravit stránku"
 
 #: gui.py:378
 msgid "&Move to category"
-msgstr "&Move to category"
+msgstr "Přesunout do &kategorie"
 
 #: gui.py:369
 msgid "&Open with"
-msgstr "&Open with"
+msgstr "&Otevřít v"
 
 #: gui.py:347
 msgid "&Pin to top"
-msgstr "&Pin to top"
+msgstr "&Připnout nahoru"
 
 #: gui.py:590
 msgid "&Save"
-msgstr "&Save"
+msgstr "&Uložit"
 
 #: gui.py:345
 msgid "&Unpin"
-msgstr "&Unpin"
+msgstr "&Odepnout"
 
 #: gui.py:661
 msgid "A site with this URL already exists in the target category."
-msgstr "A site with this URL already exists in the target category."
+msgstr "Stránka s touto adresou URL již v cílové kategorii existuje."
 
 #: gui.py:667
 msgid "A site with this URL already exists in this category."
-msgstr "A site with this URL already exists in this category."
+msgstr "Stránka s touto adresou URL již v této kategorii existuje."
 
 #: __init__.py:22
 #: __init__.py:68
@@ -88,86 +88,86 @@ msgstr "Absolute Site"
 #: gui.py:477
 #: gui.py:628
 msgid "Add Category"
-msgstr "Add Category"
+msgstr "Přidat kategorii"
 
 #: gui.py:543
 msgid "Add New Site"
-msgstr "Add New Site"
+msgstr "Přidat novou stránku"
 
 #: gui.py:467
 msgid "Are you sure you want to delete '{}'?"
-msgstr "Are you sure you want to delete '{}'?"
+msgstr "Opravdu chcete smazat '{}'?"
 
 #: gui.py:318
 msgid "Are you sure you want to delete category '{}' and all its sites?"
-msgstr "Are you sure you want to delete category '{}' and all its sites?"
+msgstr "Opravdu chcete smazat kategorii '{}' a všechny její stránky?"
 
 #: __init__.py:92
 msgid "Cannot capture URL. Make sure you are in a browser."
-msgstr "Cannot capture URL. Make sure you are in a browser."
+msgstr "Nelze získat adresu URL. Ujistěte se, že jste v prohlížeči."
 
 #: gui.py:513
 msgid "Cannot move down."
-msgstr "Cannot move down."
+msgstr "Nelze posunout dolů."
 
 #: gui.py:505
 msgid "Cannot move up."
-msgstr "Cannot move up."
+msgstr "Nelze posunout nahoru."
 
 #: gui.py:306
 msgid "Category '{}' already exists or invalid."
-msgstr "Category '{}' already exists or invalid."
+msgstr "Kategorie '{}' již existuje nebo je neplatná."
 
 #: gui.py:486
 msgid "Category already exists or invalid."
-msgstr "Category already exists or invalid."
+msgstr "Kategorie již existuje nebo je neplatná."
 
 #: gui.py:636
 msgid "Category already exists."
-msgstr "Category already exists."
+msgstr "Kategorie již existuje."
 
 #: gui.py:293
 msgid "Category name cannot be empty."
-msgstr "Category name cannot be empty."
+msgstr "Název kategorie nesmí být prázdný."
 
 #: gui.py:171
 #: gui.py:570
 msgid "Category:"
-msgstr "Category:"
+msgstr "Kategorie:"
 
 #: gui.py:319
 #: gui.py:468
 msgid "Confirm Delete"
-msgstr "Confirm Delete"
+msgstr "Potvrdit smazání"
 
 #: gui.py:650
 msgid "Display name cannot be empty."
-msgstr "Display name cannot be empty."
+msgstr "Zobrazované jméno nesmí být prázdné."
 
 #: gui.py:578
 msgid "Display name:"
-msgstr "Display name:"
+msgstr "Zobrazované jméno:"
 
 #: gui.py:191
 msgid "E&xit"
-msgstr "E&xit"
+msgstr "Ukonč&it"
 
 #: gui.py:289
 msgid "Edit Category"
-msgstr "Edit Category"
+msgstr "Upravit kategorii"
 
 #: gui.py:543
 msgid "Edit Site"
-msgstr "Edit Site"
+msgstr "Upravit stránku"
 
 #: gui.py:477
 #: gui.py:628
 msgid "Enter new category name:"
-msgstr "Enter new category name:"
+msgstr "Zadejte nový název kategorie:"
 
 #: gui.py:289
 msgid "Enter new name for category '{}':"
-msgstr "Enter new name for category '{}':"
+msgstr "Zadejte nový název pro kategorii '{}':"
 
 #: gui.py:125
 #: gui.py:285
@@ -186,64 +186,64 @@ msgstr "Enter new name for category '{}':"
 #: gui.py:661
 #: gui.py:667
 msgid "Error"
-msgstr "Error"
+msgstr "Chyba"
 
 #: gui.py:328
 msgid "Failed to delete category."
-msgstr "Failed to delete category."
+msgstr "Nepodařilo se smazat kategorii."
 
 #: gui.py:530
 msgid "Failed to move site. It may already exist in the target category."
-msgstr "Failed to move site. It may already exist in the target category."
+msgstr "Nepodařilo se přesunout stránku. Možná již v cílové kategorii existuje."
 
 #: gui.py:125
 msgid "Failed to open URL with browser: {}"
-msgstr "Failed to open URL with browser: {}"
+msgstr "Nepodařilo se otevřít URL v prohlížeči: {}"
 
 #: gui.py:424
 msgid "Failed to open URL: {}"
-msgstr "Failed to open URL: {}"
+msgstr "Nepodařilo se otevřít URL: {}"
 
 #: gui.py:352
 msgid "Move &Down"
-msgstr "Move &Down"
+msgstr "Posunout &dolů"
 
 #: gui.py:351
 msgid "Move &Up"
-msgstr "Move &Up"
+msgstr "Posunout nahor&u"
 
 #: gui.py:177
 msgid "Name"
-msgstr "Name"
+msgstr "Jméno"
 
 #: gui.py:367
 msgid "No browsers found"
-msgstr "No browsers found"
+msgstr "Nebyly nalezeny žádné prohlížeče"
 
 #: gui.py:285
 #: gui.py:314
 msgid "No category selected."
-msgstr "No category selected."
+msgstr "Nebyla vybrána žádná kategorie."
 
 #: __init__.py:66
 msgid "Open Absolute Site manager (single tap) or Add new site (double tap)"
-msgstr "Open Absolute Site manager (single tap) or Add new site (double tap)"
+msgstr "Otevřít správce Absolute Site (jedno klepnutí) nebo Přidat novou stránku (dvojité klepnutí)"
 
 #: gui.py:433
 msgid "Please select a category first."
-msgstr "Please select a category first."
+msgstr "Nejprve vyberte kategorii."
 
 #: gui.py:642
 msgid "Please select or add a category."
-msgstr "Please select or add a category."
+msgstr "Vyberte nebo přidejte kategorii."
 
 #: gui.py:181
 msgid "Show paths"
-msgstr "Show paths"
+msgstr "Zobrazit cesty"
 
 #: gui.py:584
 msgid "Site URL:"
-msgstr "Site URL:"
+msgstr "URL stránky:"
 
 #: gui.py:178
 msgid "URL"
@@ -251,4 +251,4 @@ msgstr "URL"
 
 #: gui.py:646
 msgid "URL cannot be empty."
-msgstr "URL cannot be empty."
+msgstr "URL nesmí být prázdné."

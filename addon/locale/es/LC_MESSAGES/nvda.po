@@ -57,11 +57,11 @@ msgstr "&Mover a categoría"
 
 #: gui.py:369
 msgid "&Open with"
-msgstr "A&brir con"
+msgstr "&Abrir con"
 
 #: gui.py:347
 msgid "&Pin to top"
-msgstr "&Anclar al principio"
+msgstr "&Anclar arriba"
 
 #: gui.py:590
 msgid "&Save"
@@ -104,7 +104,7 @@ msgstr "¿Estás seguro de que quieres eliminar la categoría '{}' y todos sus s
 
 #: __init__.py:92
 msgid "Cannot capture URL. Make sure you are in a browser."
-msgstr "No se pudo capturar la URL. Asegúrate de estar en un navegador."
+msgstr "No se puede capturar la URL. Asegúrate de estar en un navegador."
 
 #: gui.py:513
 msgid "Cannot move down."
@@ -190,27 +190,27 @@ msgstr "Error"
 
 #: gui.py:328
 msgid "Failed to delete category."
-msgstr "Fallo al eliminar la categoría."
+msgstr "Error al eliminar la categoría."
 
 #: gui.py:530
 msgid "Failed to move site. It may already exist in the target category."
-msgstr "Fallo al mover el sitio. Puede que ya exista en la categoría de destino."
+msgstr "Error al mover el sitio. Puede que ya exista en la categoría de destino."
 
 #: gui.py:125
 msgid "Failed to open URL with browser: {}"
-msgstr "Fallo al abrir la URL con el navegador: {}"
+msgstr "Error al abrir la URL con el navegador: {}"
 
 #: gui.py:424
 msgid "Failed to open URL: {}"
-msgstr "Fallo al abrir la URL: {}"
+msgstr "Error al abrir la URL: {}"
 
 #: gui.py:352
 msgid "Move &Down"
-msgstr "Bajar"
+msgstr "Mover hacia &abajo"
 
 #: gui.py:351
 msgid "Move &Up"
-msgstr "Subir"
+msgstr "Mover hacia &arriba"
 
 #: gui.py:177
 msgid "Name"
@@ -223,11 +223,11 @@ msgstr "No se encontraron navegadores"
 #: gui.py:285
 #: gui.py:314
 msgid "No category selected."
-msgstr "Ninguna categoría seleccionada."
+msgstr "No se ha seleccionado ninguna categoría."
 
 #: __init__.py:66
 msgid "Open Absolute Site manager (single tap) or Add new site (double tap)"
-msgstr "Abrir el gestor de Absolute Site (un toque) o añadir un nuevo sitio (dos toques)"
+msgstr "Abrir gestor Absolute Site (un toque) o añadir nuevo sitio (doble toque)"
 
 #: gui.py:433
 msgid "Please select a category first."

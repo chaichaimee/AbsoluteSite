@@ -1,0 +1,254 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: AbsoluteSite 2026.3.2\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-03-11 18:31+0700\n"
+"PO-Revision-Date: \n"
+"Last-Translator: Anonymous <anonymous@example.com>\n"
+"Language-Team: Telugu\n"
+"Language: te\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: NVDA DevOn Addon\n"
+
+#: gui.py:189
+#: gui.py:265
+#: gui.py:573
+msgid "&Add Category"
+msgstr "వర్గాన్ని జోడించు (&A)"
+
+#: gui.py:186
+msgid "&Add Site"
+msgstr "సైట్‌ను జోడించు (&A)"
+
+#: gui.py:591
+msgid "&Cancel"
+msgstr "రద్దు చేయి (&C)"
+
+#: gui.py:356
+msgid "&Delete"
+msgstr "తొలగించు (&D)"
+
+#: gui.py:267
+msgid "&Delete Category"
+msgstr "వర్గాన్ని తొలగించు (&D)"
+
+#: gui.py:188
+msgid "&Delete Site"
+msgstr "సైట్‌ను తొలగించు (&D)"
+
+#: gui.py:355
+msgid "&Edit"
+msgstr "సవరించు (&E)"
+
+#: gui.py:190
+#: gui.py:266
+msgid "&Edit Category"
+msgstr "వర్గాన్ని సవరించు (&E)"
+
+#: gui.py:187
+msgid "&Edit Site"
+msgstr "సైట్‌ను సవరించు (&E)"
+
+#: gui.py:378
+msgid "&Move to category"
+msgstr "వర్గానికి తరలించు (&M)"
+
+#: gui.py:369
+msgid "&Open with"
+msgstr "దీనితో తెరువు (&O)"
+
+#: gui.py:347
+msgid "&Pin to top"
+msgstr "పైన పిన్ చేయి (&P)"
+
+#: gui.py:590
+msgid "&Save"
+msgstr "భద్రపరచు (&S)"
+
+#: gui.py:345
+msgid "&Unpin"
+msgstr "అన్‌పిన్ చేయి (&U)"
+
+#: gui.py:661
+msgid "A site with this URL already exists in the target category."
+msgstr "ఈ URL కలిగిన సైట్ ఇప్పటికే లక్ష్య వర్గంలో ఉంది."
+
+#: gui.py:667
+msgid "A site with this URL already exists in this category."
+msgstr "ఈ URL కలిగిన సైట్ ఇప్పటికే ఈ వర్గంలో ఉంది."
+
+#: __init__.py:22
+#: __init__.py:68
+#: gui.py:129
+msgid "Absolute Site"
+msgstr "Absolute Site"
+
+#: gui.py:477
+#: gui.py:628
+msgid "Add Category"
+msgstr "వర్గాన్ని జోడించు"
+
+#: gui.py:543
+msgid "Add New Site"
+msgstr "కొత్త సైట్‌ను జోడించు"
+
+#: gui.py:467
+msgid "Are you sure you want to delete '{}'?"
+msgstr "మీరు '{}' ను తొలగించాలనుకుంటున్నారా?"
+
+#: gui.py:318
+msgid "Are you sure you want to delete category '{}' and all its sites?"
+msgstr "మీరు వర్గం '{}' మరియు దానిలోని అన్ని సైట్‌లను తొలగించాలనుకుంటున్నారా?"
+
+#: __init__.py:92
+msgid "Cannot capture URL. Make sure you are in a browser."
+msgstr "URL ను పొందలేకపోతున్నాము. మీరు బ్రౌజర్‌లో ఉన్నారని నిర్ధారించుకోండి."
+
+#: gui.py:513
+msgid "Cannot move down."
+msgstr "క్రిందికి తరలించలేము."
+
+#: gui.py:505
+msgid "Cannot move up."
+msgstr "పైకి తరలించలేము."
+
+#: gui.py:306
+msgid "Category '{}' already exists or invalid."
+msgstr "వర్గం '{}' ఇప్పటికే ఉంది లేదా చెల్లదు."
+
+#: gui.py:486
+msgid "Category already exists or invalid."
+msgstr "వర్గం ఇప్పటికే ఉంది లేదా చెల్లదు."
+
+#: gui.py:636
+msgid "Category already exists."
+msgstr "వర్గం ఇప్పటికే ఉంది."
+
+#: gui.py:293
+msgid "Category name cannot be empty."
+msgstr "వర్గం పేరు ఖాళీగా ఉండకూడదు."
+
+#: gui.py:171
+#: gui.py:570
+msgid "Category:"
+msgstr "వర్గం:"
+
+#: gui.py:319
+#: gui.py:468
+msgid "Confirm Delete"
+msgstr "తొలగింపును ధృవీకరించు"
+
+#: gui.py:650
+msgid "Display name cannot be empty."
+msgstr "చూపించే పేరు ఖాళీగా ఉండకూడదు."
+
+#: gui.py:578
+msgid "Display name:"
+msgstr "చూపించే పేరు:"
+
+#: gui.py:191
+msgid "E&xit"
+msgstr "నిష్క్రమించు (&x)"
+
+#: gui.py:289
+msgid "Edit Category"
+msgstr "వర్గాన్ని సవరించు"
+
+#: gui.py:543
+msgid "Edit Site"
+msgstr "సైట్‌ను సవరించు"
+
+#: gui.py:477
+#: gui.py:628
+msgid "Enter new category name:"
+msgstr "కొత్త వర్గం పేరును నమోదు చేయండి:"
+
+#: gui.py:289
+msgid "Enter new name for category '{}':"
+msgstr "వర్గం '{}' కోసం కొత్త పేరును నమోదు చేయండి:"
+
+#: gui.py:125
+#: gui.py:285
+#: gui.py:293
+#: gui.py:306
+#: gui.py:314
+#: gui.py:328
+#: gui.py:424
+#: gui.py:433
+#: gui.py:486
+#: gui.py:530
+#: gui.py:636
+#: gui.py:642
+#: gui.py:646
+#: gui.py:650
+#: gui.py:661
+#: gui.py:667
+msgid "Error"
+msgstr "లోపం"
+
+#: gui.py:328
+msgid "Failed to delete category."
+msgstr "వర్గాన్ని తొలగించడంలో విఫలమైంది."
+
+#: gui.py:530
+msgid "Failed to move site. It may already exist in the target category."
+msgstr "సైట్‌ను తరలించడంలో విఫలమైంది. ఇది ఇప్పటికే లక్ష్య వర్గంలో ఉండవచ్చు."
+
+#: gui.py:125
+msgid "Failed to open URL with browser: {}"
+msgstr "బ్రౌజర్‌తో URL ను తెరవడంలో విఫలమైంది: {}"
+
+#: gui.py:424
+msgid "Failed to open URL: {}"
+msgstr "URL ను తెరవడంలో విఫలమైంది: {}"
+
+#: gui.py:352
+msgid "Move &Down"
+msgstr "క్రిందికి తరలించు (&D)"
+
+#: gui.py:351
+msgid "Move &Up"
+msgstr "పైకి తరలించు (&U)"
+
+#: gui.py:177
+msgid "Name"
+msgstr "పేరు"
+
+#: gui.py:367
+msgid "No browsers found"
+msgstr "ఎటువంటి బ్రౌజర్‌లు కనుగొనబడలేదు"
+
+#: gui.py:285
+#: gui.py:314
+msgid "No category selected."
+msgstr "ఎటువంటి వర్గం ఎంచుకోబడలేదు."
+
+#: __init__.py:66
+msgid "Open Absolute Site manager (single tap) or Add new site (double tap)"
+msgstr "Absolute Site మేనేజర్‌ని తెరువు (సింగిల్ ట్యాప్) లేదా కొత్త సైట్‌ని జోడించు (డబుల్ ట్యాప్)"
+
+#: gui.py:433
+msgid "Please select a category first."
+msgstr "దయచేసి ముందుగా ఒక వర్గాన్ని ఎంచుకోండి."
+
+#: gui.py:642
+msgid "Please select or add a category."
+msgstr "దయచేసి ఒక వర్గాన్ని ఎంచుకోండి లేదా జోడించండి."
+
+#: gui.py:181
+msgid "Show paths"
+msgstr "మార్గాలను చూపు"
+
+#: gui.py:584
+msgid "Site URL:"
+msgstr "సైట్ URL:"
+
+#: gui.py:178
+msgid "URL"
+msgstr "URL"
+
+#: gui.py:646
+msgid "URL cannot be empty."
+msgstr "URL ఖాళీగా ఉండకూడదు."

@@ -57,11 +57,11 @@ msgstr "&Déplacer vers la catégorie"
 
 #: gui.py:369
 msgid "&Open with"
-msgstr "Ouvrir &avec"
+msgstr "&Ouvrir avec"
 
 #: gui.py:347
 msgid "&Pin to top"
-msgstr "É&pingler en haut"
+msgstr "&Épingler en haut"
 
 #: gui.py:590
 msgid "&Save"
@@ -96,11 +96,11 @@ msgstr "Ajouter un nouveau site"
 
 #: gui.py:467
 msgid "Are you sure you want to delete '{}'?"
-msgstr "Voulez-vous vraiment supprimer '{}' ?"
+msgstr "Êtes-vous sûr de vouloir supprimer '{}' ?"
 
 #: gui.py:318
 msgid "Are you sure you want to delete category '{}' and all its sites?"
-msgstr "Voulez-vous vraiment supprimer la catégorie '{}' et tous ses sites ?"
+msgstr "Êtes-vous sûr de vouloir supprimer la catégorie '{}' et tous ses sites ?"
 
 #: __init__.py:92
 msgid "Cannot capture URL. Make sure you are in a browser."
@@ -163,11 +163,11 @@ msgstr "Modifier le site"
 #: gui.py:477
 #: gui.py:628
 msgid "Enter new category name:"
-msgstr "Saisir le nouveau nom de la catégorie :"
+msgstr "Entrez le nouveau nom de la catégorie :"
 
 #: gui.py:289
 msgid "Enter new name for category '{}':"
-msgstr "Saisir le nouveau nom pour la catégorie '{}' :"
+msgstr "Entrez le nouveau nom pour la catégorie '{}' :"
 
 #: gui.py:125
 #: gui.py:285
@@ -227,7 +227,7 @@ msgstr "Aucune catégorie sélectionnée."
 
 #: __init__.py:66
 msgid "Open Absolute Site manager (single tap) or Add new site (double tap)"
-msgstr "Ouvrir le gestionnaire Absolute Site (un appui) ou ajouter un nouveau site (double appui)"
+msgstr "Ouvrir le gestionnaire Absolute Site (simple appui) ou Ajouter un site (double appui)"
 
 #: gui.py:433
 msgid "Please select a category first."

@@ -1,0 +1,254 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: AbsoluteSite 2026.3.2\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-03-11 18:31+0700\n"
+"PO-Revision-Date: \n"
+"Last-Translator: Anonymous <anonymous@example.com>\n"
+"Language-Team: Burmese\n"
+"Language: my\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: NVDA DevOn Addon\n"
+
+#: gui.py:189
+#: gui.py:265
+#: gui.py:573
+msgid "&Add Category"
+msgstr "အမျိုးအစား ထည့်ရန် (&A)"
+
+#: gui.py:186
+msgid "&Add Site"
+msgstr "ဆိုဒ် ထည့်ရန် (&A)"
+
+#: gui.py:591
+msgid "&Cancel"
+msgstr "ပယ်ဖျက်ရန် (&C)"
+
+#: gui.py:356
+msgid "&Delete"
+msgstr "ဖျက်ရန် (&D)"
+
+#: gui.py:267
+msgid "&Delete Category"
+msgstr "အမျိုးအစား ဖျက်ရန် (&D)"
+
+#: gui.py:188
+msgid "&Delete Site"
+msgstr "ဆိုဒ် ဖျက်ရန် (&D)"
+
+#: gui.py:355
+msgid "&Edit"
+msgstr "ပြင်ရန် (&E)"
+
+#: gui.py:190
+#: gui.py:266
+msgid "&Edit Category"
+msgstr "အမျိုးအစား ပြင်ရန် (&E)"
+
+#: gui.py:187
+msgid "&Edit Site"
+msgstr "ဆိုဒ် ပြင်ရန် (&E)"
+
+#: gui.py:378
+msgid "&Move to category"
+msgstr "အမျိုးအစားသို့ ရွှေ့ရန် (&M)"
+
+#: gui.py:369
+msgid "&Open with"
+msgstr "ဖြင့် ဖွင့်ရန် (&O)"
+
+#: gui.py:347
+msgid "&Pin to top"
+msgstr "အပေါ်ဆုံးတွင် ပင်ချိတ်ရန် (&P)"
+
+#: gui.py:590
+msgid "&Save"
+msgstr "သိမ်းရန် (&S)"
+
+#: gui.py:345
+msgid "&Unpin"
+msgstr "ပင်ဖြုတ်ရန် (&U)"
+
+#: gui.py:661
+msgid "A site with this URL already exists in the target category."
+msgstr "ဤ URL ရှိသော ဆိုဒ်သည် ရည်မှန်းထားသော အမျိုးအစားထဲတွင် ရှိနေပြီးသား ဖြစ်သည်။"
+
+#: gui.py:667
+msgid "A site with this URL already exists in this category."
+msgstr "ဤ URL ရှိသော ဆိုဒ်သည် ဤအမျိုးအစားထဲတွင် ရှိနေပြီးသား ဖြစ်သည်။"
+
+#: __init__.py:22
+#: __init__.py:68
+#: gui.py:129
+msgid "Absolute Site"
+msgstr "Absolute Site"
+
+#: gui.py:477
+#: gui.py:628
+msgid "Add Category"
+msgstr "အမျိုးအစား ထည့်ရန်"
+
+#: gui.py:543
+msgid "Add New Site"
+msgstr "ဆိုဒ်အသစ် ထည့်ရန်"
+
+#: gui.py:467
+msgid "Are you sure you want to delete '{}'?"
+msgstr "'{}' ကို ဖျက်ရန် သေချာပါသလား။"
+
+#: gui.py:318
+msgid "Are you sure you want to delete category '{}' and all its sites?"
+msgstr "အမျိုးအစား '{}' နှင့် ၎င်းထဲရှိ ဆိုဒ်အားလုံးကို ဖျက်ရန် သေချာပါသလား။"
+
+#: __init__.py:92
+msgid "Cannot capture URL. Make sure you are in a browser."
+msgstr "URL ကို ရယူ၍မရပါ။ ဘရောက်ဇာထဲတွင် ရှိနေကြောင်း သေချာပါစေ။"
+
+#: gui.py:513
+msgid "Cannot move down."
+msgstr "အောက်သို့ ရွှေ့၍မရပါ။"
+
+#: gui.py:505
+msgid "Cannot move up."
+msgstr "အပေါ်သို့ ရွှေ့၍မရပါ။"
+
+#: gui.py:306
+msgid "Category '{}' already exists or invalid."
+msgstr "အမျိုးအစား '{}' ရှိနေပြီးသား သို့မဟုတ် မမှန်ကန်ပါ။"
+
+#: gui.py:486
+msgid "Category already exists or invalid."
+msgstr "အမျိုးအစား ရှိနေပြီးသား သို့မဟုတ် မမှန်ကန်ပါ။"
+
+#: gui.py:636
+msgid "Category already exists."
+msgstr "အမျိုးအစား ရှိနေပြီးသား ဖြစ်သည်။"
+
+#: gui.py:293
+msgid "Category name cannot be empty."
+msgstr "အမျိုးအစား အမည်သည် အလွတ်မဖြစ်ရပါ။"
+
+#: gui.py:171
+#: gui.py:570
+msgid "Category:"
+msgstr "အမျိုးအစား -"
+
+#: gui.py:319
+#: gui.py:468
+msgid "Confirm Delete"
+msgstr "ဖျက်ရန် အတည်ပြုပါ"
+
+#: gui.py:650
+msgid "Display name cannot be empty."
+msgstr "ပြသမည့် အမည်သည် အလွတ်မဖြစ်ရပါ။"
+
+#: gui.py:578
+msgid "Display name:"
+msgstr "ပြသမည့် အမည် -"
+
+#: gui.py:191
+msgid "E&xit"
+msgstr "ထွက်ရန် (&x)"
+
+#: gui.py:289
+msgid "Edit Category"
+msgstr "အမျိုးအစား ပြင်ရန်"
+
+#: gui.py:543
+msgid "Edit Site"
+msgstr "ဆိုဒ် ပြင်ရန်"
+
+#: gui.py:477
+#: gui.py:628
+msgid "Enter new category name:"
+msgstr "အမျိုးအစား အမည်အသစ် ရိုက်ထည့်ပါ -"
+
+#: gui.py:289
+msgid "Enter new name for category '{}':"
+msgstr "အမျိုးအစား '{}' အတွက် အမည်အသစ် ရိုက်ထည့်ပါ -"
+
+#: gui.py:125
+#: gui.py:285
+#: gui.py:293
+#: gui.py:306
+#: gui.py:314
+#: gui.py:328
+#: gui.py:424
+#: gui.py:433
+#: gui.py:486
+#: gui.py:530
+#: gui.py:636
+#: gui.py:642
+#: gui.py:646
+#: gui.py:650
+#: gui.py:661
+#: gui.py:667
+msgid "Error"
+msgstr "အမှား"
+
+#: gui.py:328
+msgid "Failed to delete category."
+msgstr "အမျိုးအစား ဖျက်ရန် မအောင်မြင်ပါ။"
+
+#: gui.py:530
+msgid "Failed to move site. It may already exist in the target category."
+msgstr "ဆိုဒ်ရွှေ့ရန် မအောင်မြင်ပါ။ ရည်မှန်းထားသော အမျိုးအစားထဲတွင် ရှိနေပြီးသား ဖြစ်နိုင်သည်။"
+
+#: gui.py:125
+msgid "Failed to open URL with browser: {}"
+msgstr "ဘရောက်ဇာဖြင့် URL ကို ဖွင့်ရန် မအောင်မြင်ပါ - {}"
+
+#: gui.py:424
+msgid "Failed to open URL: {}"
+msgstr "URL ကို ဖွင့်ရန် မအောင်မြင်ပါ - {}"
+
+#: gui.py:352
+msgid "Move &Down"
+msgstr "အောက်သို့ ရွှေ့ရန် (&D)"
+
+#: gui.py:351
+msgid "Move &Up"
+msgstr "အပေါ်သို့ ရွှေ့ရန် (&U)"
+
+#: gui.py:177
+msgid "Name"
+msgstr "အမည်"
+
+#: gui.py:367
+msgid "No browsers found"
+msgstr "ဘရောက်ဇာ မတွေ့ရှိပါ"
+
+#: gui.py:285
+#: gui.py:314
+msgid "No category selected."
+msgstr "အမျိုးအစား မရွေးချယ်ရသေးပါ။"
+
+#: __init__.py:66
+msgid "Open Absolute Site manager (single tap) or Add new site (double tap)"
+msgstr "Absolute Site စီမံသူကို ဖွင့်ရန် (တစ်ချက်နှိပ်) သို့မဟုတ် ဆိုဒ်အသစ်ထည့်ရန် (နှစ်ချက်နှိပ်)"
+
+#: gui.py:433
+msgid "Please select a category first."
+msgstr "ကျေးဇူးပြု၍ အမျိုးအစားကို အရင်ရွေးချယ်ပါ။"
+
+#: gui.py:642
+msgid "Please select or add a category."
+msgstr "ကျေးဇူးပြု၍ အမျိုးအစားတစ်ခုကို ရွေးချယ်ပါ သို့မဟုတ် ထည့်ပါ။"
+
+#: gui.py:181
+msgid "Show paths"
+msgstr "လမ်းကြောင်းများ ပြရန်"
+
+#: gui.py:584
+msgid "Site URL:"
+msgstr "ဆိုဒ် URL -"
+
+#: gui.py:178
+msgid "URL"
+msgstr "URL"
+
+#: gui.py:646
+msgid "URL cannot be empty."
+msgstr "URL သည် အလွတ်မဖြစ်ရပါ။"

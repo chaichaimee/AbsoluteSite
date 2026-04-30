@@ -5,8 +5,8 @@ msgstr ""
 "POT-Creation-Date: 2026-03-11 18:31+0700\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Anonymous <anonymous@example.com>\n"
-"Language-Team: Russian\n"
-"Language: ru\n"
+"Language-Team: Ukrainian\n"
+"Language: uk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -16,68 +16,68 @@ msgstr ""
 #: gui.py:265
 #: gui.py:573
 msgid "&Add Category"
-msgstr "&Добавить категорию"
+msgstr "&Додати категорію"
 
 #: gui.py:186
 msgid "&Add Site"
-msgstr "&Добавить сайт"
+msgstr "&Додати сайт"
 
 #: gui.py:591
 msgid "&Cancel"
-msgstr "О&тмена"
+msgstr "&Скасувати"
 
 #: gui.py:356
 msgid "&Delete"
-msgstr "&Удалить"
+msgstr "&Видалити"
 
 #: gui.py:267
 msgid "&Delete Category"
-msgstr "&Удалить категорию"
+msgstr "&Видалити категорію"
 
 #: gui.py:188
 msgid "&Delete Site"
-msgstr "&Удалить сайт"
+msgstr "&Видалити сайт"
 
 #: gui.py:355
 msgid "&Edit"
-msgstr "&Правка"
+msgstr "&Редагувати"
 
 #: gui.py:190
 #: gui.py:266
 msgid "&Edit Category"
-msgstr "&Изменить категорию"
+msgstr "&Редагувати категорію"
 
 #: gui.py:187
 msgid "&Edit Site"
-msgstr "&Изменить сайт"
+msgstr "&Редагувати сайт"
 
 #: gui.py:378
 msgid "&Move to category"
-msgstr "&Переместить в категорию"
+msgstr "&Перемістити в категорію"
 
 #: gui.py:369
 msgid "&Open with"
-msgstr "&Открыть с помощью"
+msgstr "&Відкрити за допомогою"
 
 #: gui.py:347
 msgid "&Pin to top"
-msgstr "&Закрепить сверху"
+msgstr "&Закріпити зверху"
 
 #: gui.py:590
 msgid "&Save"
-msgstr "&Сохранить"
+msgstr "&Зберегти"
 
 #: gui.py:345
 msgid "&Unpin"
-msgstr "&Открепить"
+msgstr "&Відкріпити"
 
 #: gui.py:661
 msgid "A site with this URL already exists in the target category."
-msgstr "Сайт с таким URL уже существует в целевой категории."
+msgstr "Сайт із такою URL-адресою вже існує в цільовій категорії."
 
 #: gui.py:667
 msgid "A site with this URL already exists in this category."
-msgstr "Сайт с таким URL уже существует в этой категории."
+msgstr "Сайт із такою URL-адресою вже існує в цій категорії."
 
 #: __init__.py:22
 #: __init__.py:68
@@ -88,86 +88,86 @@ msgstr "Absolute Site"
 #: gui.py:477
 #: gui.py:628
 msgid "Add Category"
-msgstr "Добавить категорию"
+msgstr "Додати категорію"
 
 #: gui.py:543
 msgid "Add New Site"
-msgstr "Добавить новый сайт"
+msgstr "Додати новий сайт"
 
 #: gui.py:467
 msgid "Are you sure you want to delete '{}'?"
-msgstr "Вы уверены, что хотите удалить '{}'?"
+msgstr "Ви впевнені, що хочете видалити '{}'?"
 
 #: gui.py:318
 msgid "Are you sure you want to delete category '{}' and all its sites?"
-msgstr "Вы уверены, что хотите удалить категорию '{}' и все сайты в ней?"
+msgstr "Ви впевнені, що хочете видалити категорію '{}' та всі сайти в ній?"
 
 #: __init__.py:92
 msgid "Cannot capture URL. Make sure you are in a browser."
-msgstr "Не удалось получить URL. Убедитесь, что вы находитесь в браузере."
+msgstr "Не вдалося отримати URL-адресу. Переконайтеся, що ви перебуваєте в браузері."
 
 #: gui.py:513
 msgid "Cannot move down."
-msgstr "Невозможно переместить вниз."
+msgstr "Неможливо перемістити вниз."
 
 #: gui.py:505
 msgid "Cannot move up."
-msgstr "Невозможно переместить вверх."
+msgstr "Неможливо перемістити вгору."
 
 #: gui.py:306
 msgid "Category '{}' already exists or invalid."
-msgstr "Категория '{}' уже существует или имя недопустимо."
+msgstr "Категорія '{}' вже існує або її назва неприпустима."
 
 #: gui.py:486
 msgid "Category already exists or invalid."
-msgstr "Категория уже существует или имя недопустимо."
+msgstr "Категорія вже існує або її назва неприпустима."
 
 #: gui.py:636
 msgid "Category already exists."
-msgstr "Категория уже существует."
+msgstr "Категорія вже існує."
 
 #: gui.py:293
 msgid "Category name cannot be empty."
-msgstr "Имя категории не может быть пустым."
+msgstr "Назва категорії не може бути порожньою."
 
 #: gui.py:171
 #: gui.py:570
 msgid "Category:"
-msgstr "Категория:"
+msgstr "Категорія:"
 
 #: gui.py:319
 #: gui.py:468
 msgid "Confirm Delete"
-msgstr "Подтверждение удаления"
+msgstr "Підтвердити видалення"
 
 #: gui.py:650
 msgid "Display name cannot be empty."
-msgstr "Отображаемое имя не может быть пустым."
+msgstr "Відображуване ім'я не може бути порожнім."
 
 #: gui.py:578
 msgid "Display name:"
-msgstr "Отображаемое имя:"
+msgstr "Відображуване ім'я:"
 
 #: gui.py:191
 msgid "E&xit"
-msgstr "В&ыход"
+msgstr "В&ихід"
 
 #: gui.py:289
 msgid "Edit Category"
-msgstr "Изменить категорию"
+msgstr "Редагувати категорію"
 
 #: gui.py:543
 msgid "Edit Site"
-msgstr "Изменить сайт"
+msgstr "Редагувати сайт"
 
 #: gui.py:477
 #: gui.py:628
 msgid "Enter new category name:"
-msgstr "Введите новое имя категории:"
+msgstr "Введіть нову назву категорії:"
 
 #: gui.py:289
 msgid "Enter new name for category '{}':"
-msgstr "Введите новое имя для категории '{}':"
+msgstr "Введіть нову назву для категорії '{}':"
 
 #: gui.py:125
 #: gui.py:285
@@ -186,64 +186,64 @@ msgstr "Введите новое имя для категории '{}':"
 #: gui.py:661
 #: gui.py:667
 msgid "Error"
-msgstr "Ошибка"
+msgstr "Помилка"
 
 #: gui.py:328
 msgid "Failed to delete category."
-msgstr "Не удалось удалить категорию."
+msgstr "Не вдалося видалити категорію."
 
 #: gui.py:530
 msgid "Failed to move site. It may already exist in the target category."
-msgstr "Не удалось переместить сайт. Возможно, он уже существует в целевой категории."
+msgstr "Не вдалося перемістити сайт. Можливо, він уже існує в цільовій категорії."
 
 #: gui.py:125
 msgid "Failed to open URL with browser: {}"
-msgstr "Не удалось открыть URL в браузере: {}"
+msgstr "Не вдалося відкрити URL у браузері: {}"
 
 #: gui.py:424
 msgid "Failed to open URL: {}"
-msgstr "Не удалось открыть URL: {}"
+msgstr "Не вдалося відкрити URL: {}"
 
 #: gui.py:352
 msgid "Move &Down"
-msgstr "Переместить в&низ"
+msgstr "Перемістити в&низ"
 
 #: gui.py:351
 msgid "Move &Up"
-msgstr "Переместить в&верх"
+msgstr "Переместіти в&гору"
 
 #: gui.py:177
 msgid "Name"
-msgstr "Имя"
+msgstr "Ім'я"
 
 #: gui.py:367
 msgid "No browsers found"
-msgstr "Браузеры не найдены"
+msgstr "Браузерів не знайдено"
 
 #: gui.py:285
 #: gui.py:314
 msgid "No category selected."
-msgstr "Категория не выбрана."
+msgstr "Категорію не обрано."
 
 #: __init__.py:66
 msgid "Open Absolute Site manager (single tap) or Add new site (double tap)"
-msgstr "Открыть менеджер Absolute Site (одно нажатие) или Добавить сайт (двойное нажатие)"
+msgstr "Відкрити менеджер Absolute Site (один дотик) або Додати сайт (подвійний дотик)"
 
 #: gui.py:433
 msgid "Please select a category first."
-msgstr "Пожалуйста, сначала выберите категорию."
+msgstr "Будь ласка, спочатку оберіть категорію."
 
 #: gui.py:642
 msgid "Please select or add a category."
-msgstr "Пожалуйста, выберите или добавьте категорию."
+msgstr "Будь ласка, оберіть або додайте категорію."
 
 #: gui.py:181
 msgid "Show paths"
-msgstr "Показать пути"
+msgstr "Показати шляхи"
 
 #: gui.py:584
 msgid "Site URL:"
-msgstr "URL сайта:"
+msgstr "URL сайту:"
 
 #: gui.py:178
 msgid "URL"
@@ -251,4 +251,4 @@ msgstr "URL"
 
 #: gui.py:646
 msgid "URL cannot be empty."
-msgstr "URL не может быть пустым."
+msgstr "URL не може бути порожнім."

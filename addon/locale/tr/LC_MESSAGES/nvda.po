@@ -1,83 +1,83 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: AbsoluteSite 2026.5.1\n"
-"Report-Msgid-Bugs-To: chaicm75@gmail.com\n"
-"POT-Creation-Date: 2026-04-29 10:55+0700\n"
+"Project-Id-Version: AbsoluteSite 2026.3.2\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-03-11 18:31+0700\n"
 "PO-Revision-Date: \n"
-"Last-Translator: chaiBot and Malee Yamazaki\n"
-"Language-Team: English\n"
-"Language: en\n"
+"Last-Translator: Anonymous <anonymous@example.com>\n"
+"Language-Team: Turkish\n"
+"Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: DevOn Addon\n"
+"X-Generator: NVDA DevOn Addon\n"
 
 #: gui.py:189
 #: gui.py:265
 #: gui.py:573
 msgid "&Add Category"
-msgstr "&Add Category"
+msgstr "Kategori &Ekle"
 
 #: gui.py:186
 msgid "&Add Site"
-msgstr "&Add Site"
+msgstr "Site &Ekle"
 
 #: gui.py:591
 msgid "&Cancel"
-msgstr "&Cancel"
+msgstr "İ&ptal"
 
 #: gui.py:356
 msgid "&Delete"
-msgstr "&Delete"
+msgstr "&Sil"
 
 #: gui.py:267
 msgid "&Delete Category"
-msgstr "&Delete Category"
+msgstr "Kategoriyi &Sil"
 
 #: gui.py:188
 msgid "&Delete Site"
-msgstr "&Delete Site"
+msgstr "Siteyi &Sil"
 
 #: gui.py:355
 msgid "&Edit"
-msgstr "&Edit"
+msgstr "&Düzenle"
 
 #: gui.py:190
 #: gui.py:266
 msgid "&Edit Category"
-msgstr "&Edit Category"
+msgstr "Kategoriyi &Düzenle"
 
 #: gui.py:187
 msgid "&Edit Site"
-msgstr "&Edit Site"
+msgstr "Siteyi &Düzenle"
 
 #: gui.py:378
 msgid "&Move to category"
-msgstr "&Move to category"
+msgstr "Kategoriye &taşı"
 
 #: gui.py:369
 msgid "&Open with"
-msgstr "&Open with"
+msgstr "Birlikte &aç"
 
 #: gui.py:347
 msgid "&Pin to top"
-msgstr "&Pin to top"
+msgstr "Üste &sabitle"
 
 #: gui.py:590
 msgid "&Save"
-msgstr "&Save"
+msgstr "&Kaydet"
 
 #: gui.py:345
 msgid "&Unpin"
-msgstr "&Unpin"
+msgstr "Sabitlemeyi &kaldır"
 
 #: gui.py:661
 msgid "A site with this URL already exists in the target category."
-msgstr "A site with this URL already exists in the target category."
+msgstr "Hedef kategoride bu URL'ye sahip bir site zaten mevcut."
 
 #: gui.py:667
 msgid "A site with this URL already exists in this category."
-msgstr "A site with this URL already exists in this category."
+msgstr "Bu kategoride bu URL'ye sahip bir site zaten mevcut."
 
 #: __init__.py:22
 #: __init__.py:68
@@ -88,86 +88,86 @@ msgstr "Absolute Site"
 #: gui.py:477
 #: gui.py:628
 msgid "Add Category"
-msgstr "Add Category"
+msgstr "Kategori Ekle"
 
 #: gui.py:543
 msgid "Add New Site"
-msgstr "Add New Site"
+msgstr "Yeni Site Ekle"
 
 #: gui.py:467
 msgid "Are you sure you want to delete '{}'?"
-msgstr "Are you sure you want to delete '{}'?"
+msgstr "'{}' öğesini silmek istediğinizden emin misiniz?"
 
 #: gui.py:318
 msgid "Are you sure you want to delete category '{}' and all its sites?"
-msgstr "Are you sure you want to delete category '{}' and all its sites?"
+msgstr "'{}' kategorisini ve içindeki tüm siteleri silmek istediğinizden emin misiniz?"
 
 #: __init__.py:92
 msgid "Cannot capture URL. Make sure you are in a browser."
-msgstr "Cannot capture URL. Make sure you are in a browser."
+msgstr "URL alınamadı. Bir tarayıcıda olduğunuzdan emin olun."
 
 #: gui.py:513
 msgid "Cannot move down."
-msgstr "Cannot move down."
+msgstr "Aşağı taşınamıyor."
 
 #: gui.py:505
 msgid "Cannot move up."
-msgstr "Cannot move up."
+msgstr "Yukarı taşınamıyor."
 
 #: gui.py:306
 msgid "Category '{}' already exists or invalid."
-msgstr "Category '{}' already exists or invalid."
+msgstr "'{}' kategorisi zaten mevcut veya geçersiz."
 
 #: gui.py:486
 msgid "Category already exists or invalid."
-msgstr "Category already exists or invalid."
+msgstr "Kategori zaten mevcut veya geçersiz."
 
 #: gui.py:636
 msgid "Category already exists."
-msgstr "Category already exists."
+msgstr "Kategori zaten mevcut."
 
 #: gui.py:293
 msgid "Category name cannot be empty."
-msgstr "Category name cannot be empty."
+msgstr "Kategori adı boş olamaz."
 
 #: gui.py:171
 #: gui.py:570
 msgid "Category:"
-msgstr "Category:"
+msgstr "Kategori:"
 
 #: gui.py:319
 #: gui.py:468
 msgid "Confirm Delete"
-msgstr "Confirm Delete"
+msgstr "Silmeyi Onayla"
 
 #: gui.py:650
 msgid "Display name cannot be empty."
-msgstr "Display name cannot be empty."
+msgstr "Görünen ad boş olamaz."
 
 #: gui.py:578
 msgid "Display name:"
-msgstr "Display name:"
+msgstr "Görünen ad:"
 
 #: gui.py:191
 msgid "E&xit"
-msgstr "E&xit"
+msgstr "Çı&kış"
 
 #: gui.py:289
 msgid "Edit Category"
-msgstr "Edit Category"
+msgstr "Kategoriyi Düzenle"
 
 #: gui.py:543
 msgid "Edit Site"
-msgstr "Edit Site"
+msgstr "Siteyi Düzenle"
 
 #: gui.py:477
 #: gui.py:628
 msgid "Enter new category name:"
-msgstr "Enter new category name:"
+msgstr "Yeni kategori adını girin:"
 
 #: gui.py:289
 msgid "Enter new name for category '{}':"
-msgstr "Enter new name for category '{}':"
+msgstr "'{}' kategorisi için yeni adı girin:"
 
 #: gui.py:125
 #: gui.py:285
@@ -186,64 +186,64 @@ msgstr "Enter new name for category '{}':"
 #: gui.py:661
 #: gui.py:667
 msgid "Error"
-msgstr "Error"
+msgstr "Hata"
 
 #: gui.py:328
 msgid "Failed to delete category."
-msgstr "Failed to delete category."
+msgstr "Kategori silinemedi."
 
 #: gui.py:530
 msgid "Failed to move site. It may already exist in the target category."
-msgstr "Failed to move site. It may already exist in the target category."
+msgstr "Site taşınamadı. Hedef kategoride zaten mevcut olabilir."
 
 #: gui.py:125
 msgid "Failed to open URL with browser: {}"
-msgstr "Failed to open URL with browser: {}"
+msgstr "URL tarayıcıyla açılamadı: {}"
 
 #: gui.py:424
 msgid "Failed to open URL: {}"
-msgstr "Failed to open URL: {}"
+msgstr "URL açılamadı: {}"
 
 #: gui.py:352
 msgid "Move &Down"
-msgstr "Move &Down"
+msgstr "&Aşağı Taşı"
 
 #: gui.py:351
 msgid "Move &Up"
-msgstr "Move &Up"
+msgstr "&Yukarı Taşı"
 
 #: gui.py:177
 msgid "Name"
-msgstr "Name"
+msgstr "Ad"
 
 #: gui.py:367
 msgid "No browsers found"
-msgstr "No browsers found"
+msgstr "Tarayıcı bulunamadı"
 
 #: gui.py:285
 #: gui.py:314
 msgid "No category selected."
-msgstr "No category selected."
+msgstr "Kategori seçilmedi."
 
 #: __init__.py:66
 msgid "Open Absolute Site manager (single tap) or Add new site (double tap)"
-msgstr "Open Absolute Site manager (single tap) or Add new site (double tap)"
+msgstr "Absolute Site yöneticisini aç (tek dokunuş) veya Yeni site ekle (çift dokunuş)"
 
 #: gui.py:433
 msgid "Please select a category first."
-msgstr "Please select a category first."
+msgstr "Lütfen önce bir kategori seçin."
 
 #: gui.py:642
 msgid "Please select or add a category."
-msgstr "Please select or add a category."
+msgstr "Lütfen bir kategori seçin veya ekleyin."
 
 #: gui.py:181
 msgid "Show paths"
-msgstr "Show paths"
+msgstr "Yolları göster"
 
 #: gui.py:584
 msgid "Site URL:"
-msgstr "Site URL:"
+msgstr "Site URL'si:"
 
 #: gui.py:178
 msgid "URL"
@@ -251,4 +251,4 @@ msgstr "URL"
 
 #: gui.py:646
 msgid "URL cannot be empty."
-msgstr "URL cannot be empty."
+msgstr "URL boş olamaz."

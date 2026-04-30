@@ -1,14 +1,13 @@
 # siteManager.py
-
 import os
 import json
 import shutil
+import uuid
 import globalVars
 from logHandler import log
 
 class SiteManager:
 	def __init__(self):
-		# Directory for storing add-on data
 		self.dataDir = os.path.join(globalVars.appArgs.configPath, "ChaiChaimee", "AbsoluteSite")
 		try:
 			os.makedirs(self.dataDir, exist_ok=True)
@@ -21,14 +20,15 @@ class SiteManager:
 
 		self._migrate_old_files()
 
-		self.data = {}          # category -> list of [name, url]
-		self.prefs = {}          # last_category etc.
-		self.order = {}          # category -> list of URLs in custom order
-		self.pinned = {}         # category -> set of pinned URLs
+		self.data = {}          # category -> list of site dicts: {id, name, url}
+		self.prefs = {}
+		self.order = {}          # category -> list of site IDs in custom order
+		self.pinned = {}         # category -> set of pinned site IDs
 
 		self.load()
 		self.load_prefs()
 		self.load_order()
+		self._migrate_legacy_data()
 
 	def _migrate_old_files(self):
 		old_root_config = os.path.join(globalVars.appArgs.configPath, "AbsoluteSites.json")
@@ -110,14 +110,13 @@ class SiteManager:
 			log.error(f"Error saving AbsoluteSitePrefs.json: {e}")
 
 	def load_order(self):
-		"""Load custom order and pinned data from JSON file."""
 		if os.path.isfile(self.orderPath):
 			try:
 				with open(self.orderPath, 'r', encoding='utf-8') as f:
 					data = json.load(f)
 				self.order = data.get("order", {})
 				pinned_dict = data.get("pinned", {})
-				self.pinned = {cat: set(urls) for cat, urls in pinned_dict.items()}
+				self.pinned = {cat: set(ids) for cat, ids in pinned_dict.items()}
 			except Exception as e:
 				log.error(f"Error loading AbsoluteSiteOrder.json: {e}")
 				self.order = {}
@@ -127,8 +126,7 @@ class SiteManager:
 			self.pinned = {}
 
 	def save_order(self):
-		"""Save custom order and pinned data to JSON file."""
-		pinned_serializable = {cat: list(urls) for cat, urls in self.pinned.items()}
+		pinned_serializable = {cat: list(ids) for cat, ids in self.pinned.items()}
 		data = {
 			"order": self.order,
 			"pinned": pinned_serializable
@@ -138,6 +136,25 @@ class SiteManager:
 				json.dump(data, f, ensure_ascii=False, indent=2)
 		except Exception as e:
 			log.error(f"Error saving AbsoluteSiteOrder.json: {e}")
+
+	def _migrate_legacy_data(self):
+		need_save = False
+		for category, sites in self.data.items():
+			if sites and isinstance(sites[0], list):
+				new_sites = []
+				for name, url in sites:
+					site_id = str(uuid.uuid4())
+					new_sites.append({"id": site_id, "name": name, "url": url})
+				self.data[category] = new_sites
+				need_save = True
+				if category not in self.order:
+					self.order[category] = [site["id"] for site in new_sites]
+				if category not in self.pinned:
+					self.pinned[category] = set()
+				need_save = True
+		if need_save:
+			self.save()
+			self.save_order()
 
 	def get_last_category(self):
 		return self.prefs.get("last_category")
@@ -151,100 +168,71 @@ class SiteManager:
 		return sorted(self.data.keys(), key=str.lower)
 
 	def get_sites_by_category(self, category):
-		return self.data.get(category, [])
+		if category not in self.data:
+			return []
+		return [(site["name"], site["url"]) for site in self.data[category]]
 
 	def get_ordered_sites(self, category):
-		"""
-		Return list of [name, url] for a category in display order:
-		- Pinned sites appear first, in the order stored in self.order (preserving manual arrangement).
-		- Unpinned sites follow, sorted alphabetically by display name (case‑insensitive).
-		This method always ensures that unpinned sites are correctly sorted,
-		even if the internal order list becomes inconsistent.
-		"""
 		if category not in self.data:
 			return []
 
-		pinned_urls = self.pinned.get(category, set())
-		all_sites = self.data[category]
-		sites_dict = {url: [name, url] for name, url in all_sites}
-
-		# Get current order list for this category
+		site_map = {site["id"]: (site["name"], site["url"]) for site in self.data[category]}
 		current_order = self.order.get(category, [])
+		pinned_ids = self.pinned.get(category, set())
 
-		# Build pinned section in the order they appear in current_order
-		pinned_sites = []
-		pinned_seen = set()
-		for url in current_order:
-			if url in pinned_urls and url in sites_dict:
-				pinned_sites.append(sites_dict[url])
-				pinned_seen.add(url)
+		ordered_ids = []
+		seen_ids = set()
 
-		# Add any pinned sites not present in current_order (should not happen, but handle gracefully)
-		for url in pinned_urls:
-			if url not in pinned_seen and url in sites_dict:
-				pinned_sites.append(sites_dict[url])
-				pinned_seen.add(url)
+		for site_id in current_order:
+			if site_id in site_map:
+				ordered_ids.append(site_id)
+				seen_ids.add(site_id)
 
-		# Collect unpinned sites and sort them alphabetically by name (case‑insensitive)
-		unpinned_sites = []
-		for url, site in sites_dict.items():
-			if url not in pinned_urls:
-				unpinned_sites.append(site)
-		unpinned_sites.sort(key=lambda s: s[0].lower())
+		for site_id in pinned_ids:
+			if site_id not in seen_ids and site_id in site_map:
+				ordered_ids.append(site_id)
+				seen_ids.add(site_id)
 
-		# Combine
-		ordered_sites = pinned_sites + unpinned_sites
+		for site_id, (name, url) in site_map.items():
+			if site_id not in seen_ids:
+				ordered_ids.append(site_id)
+				seen_ids.add(site_id)
 
-		# Update self.order to match the computed order (for consistency and future moves)
-		new_order = [s[1] for s in ordered_sites]
+		unpinned_ids = [sid for sid in ordered_ids if sid not in pinned_ids]
+		unpinned_ids.sort(key=lambda sid: site_map[sid][0].lower())
+
+		final_ids = [sid for sid in ordered_ids if sid in pinned_ids] + unpinned_ids
+		self.order[category] = final_ids
+		self.save_order()
+
+		return [site_map[sid] for sid in final_ids]
+
+	def _reorder_category(self, category):
+		if category not in self.data:
+			return
+
+		site_ids = [site["id"] for site in self.data[category]]
+		pinned_ids = self.pinned.get(category, set())
+		current_order = self.order.get(category, [])
+		preserved = [sid for sid in current_order if sid in site_ids and sid in pinned_ids]
+		remaining = [sid for sid in site_ids if sid not in pinned_ids]
+		remaining.sort(key=lambda sid: self._get_site_name_by_id(category, sid).lower())
+		new_order = preserved + remaining
 		if new_order != current_order:
 			self.order[category] = new_order
 			self.save_order()
 
-		return ordered_sites
-
-	def _reorder_category(self, category):
-		"""
-		Reconstruct the order list for a category based on current data and pinned set.
-		Pinned sites keep their relative order from the existing order (if any);
-		unpinned sites are sorted alphabetically by name (case‑insensitive).
-		This method is called after modifications to ensure the order list is correct.
-		"""
-		if category not in self.data:
-			return
-
-		current_order = self.order.get(category, [])
-		pinned_set = self.pinned.get(category, set())
-		sites_dict = {url: name for name, url in self.data[category]}
-
-		# Preserve order of pinned sites from current_order
-		pinned_urls = [url for url in current_order if url in pinned_set and url in sites_dict]
-
-		# All URLs in this category
-		all_urls = [url for name, url in self.data[category]]
-
-		# Unpinned URLs (exclude pinned)
-		unpinned_urls = [url for url in all_urls if url not in pinned_set]
-		# Sort by display name (case‑insensitive)
-		unpinned_urls.sort(key=lambda url: sites_dict.get(url, "").lower())
-
-		new_order = pinned_urls + unpinned_urls
-		self.order[category] = new_order
-		self.save_order()
+	def _get_site_name_by_id(self, category, site_id):
+		for site in self.data.get(category, []):
+			if site["id"] == site_id:
+				return site["name"]
+		return ""
 
 	def get_site_by_url(self, url):
 		for cat, sites in self.data.items():
-			for name, u in sites:
-				if u == url:
-					return (cat, name, u)
-		return None
-
-	def _find_site_in_category(self, category, url):
-		if category not in self.data:
-			return None
-		for idx, (name, u) in enumerate(self.data[category]):
-			if u == url:
-				return idx
+			for site in sites:
+				if site["url"] == url:
+					return (cat, site["name"], site["url"])
 		return None
 
 	def add_category(self, category_name):
@@ -288,56 +276,48 @@ class SiteManager:
 		return True
 
 	def add_site(self, category, display_name, url):
-		if self._find_site_in_category(category, url) is not None:
-			return False
 		if category not in self.data:
 			self.data[category] = []
-		self.data[category].append([display_name, url])
+		site_id = str(uuid.uuid4())
+		self.data[category].append({"id": site_id, "name": display_name, "url": url})
 		self.save()
-		# Ensure pinned set exists for this category
 		if category not in self.pinned:
 			self.pinned[category] = set()
-		# Reorder the category to maintain alphabetical order for unpinned sites
 		self._reorder_category(category)
 		return True
 
 	def update_site(self, old_category, old_display_name, old_url, new_category, new_display_name, new_url):
 		if old_category not in self.data:
 			return False
-		old_idx = None
-		for idx, (name, url) in enumerate(self.data[old_category]):
-			if name == old_display_name and url == old_url:
-				old_idx = idx
+
+		target_site = None
+		target_index = None
+		for idx, site in enumerate(self.data[old_category]):
+			if site["name"] == old_display_name and site["url"] == old_url:
+				target_site = site
+				target_index = idx
 				break
-		if old_idx is None:
+		if target_site is None:
 			return False
 
-		if new_category != old_category or new_url != old_url:
-			if new_category in self.data:
-				for idx, (name, url) in enumerate(self.data[new_category]):
-					if url == new_url:
-						if new_category == old_category and idx == old_idx:
-							continue
-						return False
+		was_pinned = (old_category in self.pinned and target_site["id"] in self.pinned[old_category])
+		site_id = target_site["id"]
 
-		was_pinned = self.is_pinned(old_category, old_url)
-
-		del self.data[old_category][old_idx]
-
-		if old_category in self.order and old_url in self.order[old_category]:
-			self.order[old_category].remove(old_url)
-		if old_category in self.pinned and old_url in self.pinned[old_category]:
-			self.pinned[old_category].remove(old_url)
+		del self.data[old_category][target_index]
+		if old_category in self.order and site_id in self.order.get(old_category, []):
+			self.order[old_category].remove(site_id)
+		if old_category in self.pinned and site_id in self.pinned.get(old_category, set()):
+			self.pinned[old_category].remove(site_id)
 
 		if new_category not in self.data:
 			self.data[new_category] = []
-		self.data[new_category].append([new_display_name, new_url])
+		self.data[new_category].append({"id": site_id, "name": new_display_name, "url": new_url})
 		self.save()
 
 		if was_pinned:
 			if new_category not in self.pinned:
 				self.pinned[new_category] = set()
-			self.pinned[new_category].add(new_url)
+			self.pinned[new_category].add(site_id)
 
 		self._reorder_category(old_category)
 		if new_category != old_category:
@@ -348,44 +328,67 @@ class SiteManager:
 	def remove_site(self, category, display_name, url):
 		if category not in self.data:
 			return False
-		for idx, (name, u) in enumerate(self.data[category]):
-			if name == display_name and u == url:
+		for idx, site in enumerate(self.data[category]):
+			if site["name"] == display_name and site["url"] == url:
+				site_id = site["id"]
 				del self.data[category][idx]
 				self.save()
-				if category in self.order and url in self.order[category]:
-					self.order[category].remove(url)
-				if category in self.pinned and url in self.pinned[category]:
-					self.pinned[category].remove(url)
+				if category in self.order and site_id in self.order[category]:
+					self.order[category].remove(site_id)
+				if category in self.pinned and site_id in self.pinned.get(category, set()):
+					self.pinned[category].remove(site_id)
 				self._reorder_category(category)
 				return True
 		return False
 
 	def is_pinned(self, category, url):
-		return category in self.pinned and url in self.pinned[category]
+		for site in self.data.get(category, []):
+			if site["url"] == url:
+				return category in self.pinned and site["id"] in self.pinned.get(category, set())
+		return False
 
 	def pin_site(self, category, url):
-		if category not in self.pinned:
-			self.pinned[category] = set()
-		self.pinned[category].add(url)
-		self._reorder_category(category)
+		for site in self.data.get(category, []):
+			if site["url"] == url:
+				site_id = site["id"]
+				if category not in self.pinned:
+					self.pinned[category] = set()
+				self.pinned[category].add(site_id)
+				self._reorder_category(category)
+				return True
+		return False
 
 	def unpin_site(self, category, url):
-		if category in self.pinned and url in self.pinned[category]:
-			self.pinned[category].remove(url)
-			self._reorder_category(category)
+		for site in self.data.get(category, []):
+			if site["url"] == url:
+				site_id = site["id"]
+				if category in self.pinned and site_id in self.pinned.get(category, set()):
+					self.pinned[category].remove(site_id)
+					self._reorder_category(category)
+				return True
+		return False
+
+	def _get_site_id_by_url(self, category, url):
+		for site in self.data.get(category, []):
+			if site["url"] == url:
+				return site["id"]
+		return None
 
 	def move_up(self, category, url):
+		site_id = self._get_site_id_by_url(category, url)
+		if site_id is None:
+			return False
+
 		if category not in self.order:
 			self._reorder_category(category)
 		order = self.order[category]
-		if url not in order:
+		if site_id not in order:
 			return False
-		idx = order.index(url)
+		idx = order.index(site_id)
 		if idx == 0:
 			return False
 		pinned_set = self.pinned.get(category, set())
-		is_pinned = url in pinned_set
-		if is_pinned:
+		if site_id in pinned_set:
 			if idx > 0 and order[idx-1] in pinned_set:
 				order[idx], order[idx-1] = order[idx-1], order[idx]
 				self.save_order()
@@ -399,20 +402,23 @@ class SiteManager:
 			return True
 
 	def move_down(self, category, url):
+		site_id = self._get_site_id_by_url(category, url)
+		if site_id is None:
+			return False
+
 		if category not in self.order:
 			self._reorder_category(category)
 		order = self.order[category]
-		if url not in order:
+		if site_id not in order:
 			return False
-		idx = order.index(url)
+		idx = order.index(site_id)
 		if idx == len(order) - 1:
 			return False
 		pinned_set = self.pinned.get(category, set())
-		is_pinned = url in pinned_set
-		if is_pinned:
+		if site_id in pinned_set:
 			last_pinned_idx = -1
-			for i, u in enumerate(order):
-				if u in pinned_set:
+			for i, sid in enumerate(order):
+				if sid in pinned_set:
 					last_pinned_idx = i
 			if idx < last_pinned_idx and order[idx+1] in pinned_set:
 				order[idx], order[idx+1] = order[idx+1], order[idx]
@@ -427,29 +433,27 @@ class SiteManager:
 	def move_site_to_category(self, old_category, url, new_category):
 		if old_category not in self.data or new_category not in self.data:
 			return False
-		site_entry = None
-		for name, u in self.data[old_category]:
-			if u == url:
-				site_entry = (name, u)
+
+		source_site = None
+		for site in self.data[old_category]:
+			if site["url"] == url:
+				source_site = site
 				break
-		if site_entry is None:
+		if source_site is None:
 			return False
-		if self._find_site_in_category(new_category, url) is not None:
-			return False
-		name, _ = site_entry
-		was_pinned = self.is_pinned(old_category, url)
+
+		site_id = source_site["id"]
+		name = source_site["name"]
+		was_pinned = (old_category in self.pinned and site_id in self.pinned.get(old_category, set()))
 
 		self.remove_site(old_category, name, url)
-
-		if new_category not in self.data:
-			self.data[new_category] = []
-		self.data[new_category].append([name, url])
+		self.data[new_category].append({"id": site_id, "name": name, "url": url})
 		self.save()
 
 		if was_pinned:
 			if new_category not in self.pinned:
 				self.pinned[new_category] = set()
-			self.pinned[new_category].add(url)
+			self.pinned[new_category].add(site_id)
 
 		self._reorder_category(new_category)
 		return True
