@@ -11,12 +11,13 @@ import time
 import core
 import re
 from .siteManager import SiteManager
-from .gui import MainDialog, AddSiteDialog
+from .mostVisitedManager import MostVisitedManager
+from .gui import MainDialog, AddSiteDialog, MostVisitedDialog, SearchDialog
 import gui as nvdaGui
 
 addonHandler.initTranslation()
 
-DOUBLE_TAP_THRESHOLD = 0.4
+MULTI_TAP_THRESHOLD = 0.4
 
 class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 	scriptCategory = _("Absolute Site")
@@ -24,9 +25,11 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 	def __init__(self):
 		super().__init__()
 		self.manager = SiteManager()
+		self.mostVisitedManager = MostVisitedManager()
 		self._last_tap_time = 0
 		self._tap_count = 0
 		self._first_open = True
+		self._multiTapTimer = None
 
 	def get_current_url(self):
 		try:
@@ -62,34 +65,50 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 			return None
 
 	@scriptHandler.script(
-		description=_("Open Absolute Site manager (single tap) or Add new site (double tap)"),
+		description=_("Open Absolute Site manager (single tap), Add new site (double tap), or Most Visited (triple tap)"),
 		gesture="kb:alt+backspace",
 		category=_("Absolute Site")
 	)
-	def script_openSiteManager(self, gesture):
+	def script_absoluteSite(self, gesture):
 		current_time = time.time()
-		if current_time - self._last_tap_time > DOUBLE_TAP_THRESHOLD:
+		if self._multiTapTimer:
+			self._multiTapTimer.Stop()
+			self._multiTapTimer = None
+		if current_time - self._last_tap_time > MULTI_TAP_THRESHOLD:
 			self._tap_count = 0
 		self._tap_count += 1
 		self._last_tap_time = current_time
 
 		def execute_action():
-			if self._tap_count == 1:
-				if self._first_open:
-					nvdaGui.mainFrame.popupSettingsDialog(MainDialog, self.manager)
-				else:
-					last_cat = self.manager.get_last_category()
-					nvdaGui.mainFrame.popupSettingsDialog(MainDialog, self.manager, last_cat)
-				self._first_open = False
-			elif self._tap_count >= 2:
-				current_url = self.get_current_url()
-				if not current_url:
-					ui.message(_("Cannot capture URL. Make sure you are in a browser."))
-				else:
-					nvdaGui.mainFrame.popupSettingsDialog(AddSiteDialog, self.manager, current_url)
-			self._tap_count = 0
+			try:
+				if self._tap_count == 1:
+					if self._first_open:
+						nvdaGui.mainFrame.popupSettingsDialog(MainDialog, self.manager, self.mostVisitedManager)
+					else:
+						last_cat = self.manager.get_last_category()
+						nvdaGui.mainFrame.popupSettingsDialog(MainDialog, self.manager, self.mostVisitedManager, last_cat)
+					self._first_open = False
+				elif self._tap_count == 2:
+					current_url = self.get_current_url()
+					if not current_url:
+						ui.message(_("Cannot capture URL. Make sure you are in a browser."))
+					else:
+						nvdaGui.mainFrame.popupSettingsDialog(AddSiteDialog, self.manager, current_url)
+				elif self._tap_count >= 3:
+					nvdaGui.mainFrame.popupSettingsDialog(MostVisitedDialog, self.mostVisitedManager, self.manager)
+			finally:
+				self._tap_count = 0
 
-		core.callLater(int(DOUBLE_TAP_THRESHOLD * 1000), execute_action)
+		self._multiTapTimer = core.callLater(int(MULTI_TAP_THRESHOLD * 1000), execute_action)
+
+	@scriptHandler.script(
+		description=_("Search the web via Google"),
+		gesture="kb:windows+alt+backspace",
+		category=_("Absolute Site")
+	)
+	def script_searchSites(self, gesture):
+		nvdaGui.mainFrame.popupSettingsDialog(SearchDialog, self.mostVisitedManager)
 
 	def terminate(self):
 		self.manager.terminate()
+		self.mostVisitedManager.terminate()

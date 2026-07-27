@@ -1,254 +1,313 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: AbsoluteSite 2026.3.2\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-03-11 18:31+0700\n"
+"Project-Id-Version: AbsoluteSite 2026.8.0\n"
+"Report-Msgid-Bugs-To: chaicm75@gmail.com\n"
+"POT-Creation-Date: 2026-07-27 13:33+0700\n"
 "PO-Revision-Date: \n"
-"Last-Translator: Anonymous <anonymous@example.com>\n"
-"Language-Team: Chinese Traditional\n"
+"Last-Translator: chaiBot and Malee Yamazaki\n"
+"Language-Team: Chinese (Traditional)\n"
 "Language: zh_TW\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: NVDA DevOn Addon\n"
+"X-Generator: DevOn Addon\n"
 
-#: gui.py:189
-#: gui.py:265
-#: gui.py:573
+#: gui.py:209
+#: gui.py:287
+#: gui.py:589
 msgid "&Add Category"
-msgstr "新增分類(&A)"
+msgstr "&新增分類"
 
-#: gui.py:186
+#: gui.py:206
 msgid "&Add Site"
-msgstr "新增站點(&A)"
+msgstr "&新增網站"
 
-#: gui.py:591
+#: gui.py:607
+#: gui.py:852
 msgid "&Cancel"
-msgstr "取消(&C)"
+msgstr "&取消"
 
-#: gui.py:356
+#: gui.py:373
 msgid "&Delete"
-msgstr "刪除(&D)"
+msgstr "&刪除"
 
-#: gui.py:267
+#: gui.py:289
 msgid "&Delete Category"
-msgstr "刪除分類(&D)"
+msgstr "&刪除分類"
 
-#: gui.py:188
+#: gui.py:208
 msgid "&Delete Site"
-msgstr "刪除站點(&D)"
+msgstr "&刪除網站"
 
-#: gui.py:355
+#: gui.py:372
 msgid "&Edit"
-msgstr "編輯(&E)"
+msgstr "&編輯"
 
-#: gui.py:190
-#: gui.py:266
+#: gui.py:210
+#: gui.py:288
 msgid "&Edit Category"
-msgstr "編輯分類(&E)"
+msgstr "&編輯分類"
 
-#: gui.py:187
+#: gui.py:207
 msgid "&Edit Site"
-msgstr "編輯站點(&E)"
+msgstr "&編輯網站"
 
-#: gui.py:378
+#: gui.py:393
 msgid "&Move to category"
-msgstr "移動到分類(&M)"
+msgstr "&移動至分類"
 
-#: gui.py:369
+#: gui.py:385
 msgid "&Open with"
-msgstr "開啟方式(&O)"
+msgstr "&開啟方式"
 
-#: gui.py:347
+#: gui.py:366
+#: gui.py:767
 msgid "&Pin to top"
-msgstr "置頂(&P)"
+msgstr "&釘選至頂部"
 
-#: gui.py:590
+#: gui.py:772
+msgid "&Remove from history"
+msgstr "&從歷史記錄中移除"
+
+#: gui.py:606
 msgid "&Save"
-msgstr "儲存(&S)"
+msgstr "&儲存"
 
-#: gui.py:345
+#: gui.py:851
+msgid "&Search"
+msgstr "&搜尋"
+
+#: gui.py:364
+#: gui.py:765
 msgid "&Unpin"
-msgstr "取消置頂(&U)"
+msgstr "&取消釘選"
 
-#: gui.py:661
+#: gui.py:676
 msgid "A site with this URL already exists in the target category."
-msgstr "目標分類中已存在具備此 URL 的站點。"
+msgstr "目標分類中已經存在具有此 URL 的網站。"
 
-#: gui.py:667
+#: gui.py:680
 msgid "A site with this URL already exists in this category."
-msgstr "目前的分類中已存在具備此 URL 的站點。"
+msgstr "此分類中已經存在具有此 URL 的網站。"
 
-#: __init__.py:22
-#: __init__.py:68
-#: gui.py:129
+#: __init__.py:23
+#: __init__.py:70
+#: __init__.py:107
+#: gui.py:154
 msgid "Absolute Site"
 msgstr "Absolute Site"
 
-#: gui.py:477
-#: gui.py:628
+#: gui.py:493
+#: gui.py:644
 msgid "Add Category"
 msgstr "新增分類"
 
-#: gui.py:543
+#: gui.py:559
 msgid "Add New Site"
-msgstr "新增站點"
+msgstr "新增新網站"
 
-#: gui.py:467
+#: gui.py:484
 msgid "Are you sure you want to delete '{}'?"
 msgstr "您確定要刪除「{}」嗎？"
 
-#: gui.py:318
+#: gui.py:338
 msgid "Are you sure you want to delete category '{}' and all its sites?"
-msgstr "您確定要刪除分類「{}」及其包含的所有站點嗎？"
+msgstr "您確定要刪除分類「{}」及其所有網站嗎？"
 
-#: __init__.py:92
+#: gui.py:844
+msgid "Browser:"
+msgstr "瀏覽器："
+
+#: __init__.py:94
 msgid "Cannot capture URL. Make sure you are in a browser."
-msgstr "無法獲取 URL。請確保您目前位於瀏覽器中。"
+msgstr "無法擷取 URL。請確保您正在瀏覽器中。"
 
-#: gui.py:513
+#: gui.py:529
 msgid "Cannot move down."
-msgstr "無法下移。"
+msgstr "無法向下移動。"
 
-#: gui.py:505
+#: gui.py:521
 msgid "Cannot move up."
-msgstr "無法上移。"
+msgstr "無法向上移動。"
 
-#: gui.py:306
+#: gui.py:327
 msgid "Category '{}' already exists or invalid."
 msgstr "分類「{}」已存在或無效。"
 
-#: gui.py:486
+#: gui.py:502
 msgid "Category already exists or invalid."
 msgstr "分類已存在或無效。"
 
-#: gui.py:636
+#: gui.py:652
 msgid "Category already exists."
 msgstr "分類已存在。"
 
-#: gui.py:293
+#: gui.py:314
 msgid "Category name cannot be empty."
-msgstr "分類名稱不能為空。"
+msgstr "分類名稱不得為空。"
 
-#: gui.py:171
-#: gui.py:570
+#: gui.py:191
+#: gui.py:586
 msgid "Category:"
 msgstr "分類："
 
-#: gui.py:319
-#: gui.py:468
+#: gui.py:339
+#: gui.py:485
 msgid "Confirm Delete"
 msgstr "確認刪除"
 
-#: gui.py:650
+#: gui.py:666
 msgid "Display name cannot be empty."
-msgstr "顯示名稱不能為空。"
+msgstr "顯示名稱不得為空。"
 
-#: gui.py:578
+#: gui.py:594
 msgid "Display name:"
 msgstr "顯示名稱："
 
-#: gui.py:191
+#: gui.py:211
+#: gui.py:709
 msgid "E&xit"
-msgstr "退出(&x)"
+msgstr "結&束"
 
-#: gui.py:289
+#: gui.py:310
 msgid "Edit Category"
 msgstr "編輯分類"
 
-#: gui.py:543
+#: gui.py:559
 msgid "Edit Site"
-msgstr "編輯站點"
+msgstr "編輯網站"
 
-#: gui.py:477
-#: gui.py:628
+#: gui.py:493
+#: gui.py:644
 msgid "Enter new category name:"
 msgstr "輸入新分類名稱："
 
-#: gui.py:289
+#: gui.py:310
 msgid "Enter new name for category '{}':"
-msgstr "為分類「{}」輸入新名稱："
+msgstr "輸入分類「{}」的新名稱："
 
-#: gui.py:125
-#: gui.py:285
-#: gui.py:293
-#: gui.py:306
+#: gui.py:149
+#: gui.py:307
 #: gui.py:314
-#: gui.py:328
-#: gui.py:424
-#: gui.py:433
-#: gui.py:486
-#: gui.py:530
-#: gui.py:636
-#: gui.py:642
-#: gui.py:646
-#: gui.py:650
-#: gui.py:661
-#: gui.py:667
+#: gui.py:327
+#: gui.py:335
+#: gui.py:348
+#: gui.py:438
+#: gui.py:444
+#: gui.py:453
+#: gui.py:502
+#: gui.py:546
+#: gui.py:652
+#: gui.py:658
+#: gui.py:662
+#: gui.py:666
+#: gui.py:676
+#: gui.py:680
+#: gui.py:749
+#: gui.py:755
+#: gui.py:890
 msgid "Error"
 msgstr "錯誤"
 
-#: gui.py:328
+#: gui.py:348
 msgid "Failed to delete category."
 msgstr "刪除分類失敗。"
 
-#: gui.py:530
+#: gui.py:546
 msgid "Failed to move site. It may already exist in the target category."
-msgstr "移動站點失敗。目標分類中可能已存在該站點。"
+msgstr "移動網站失敗。它可能已存在於目標分類中。"
 
-#: gui.py:125
+#: gui.py:149
 msgid "Failed to open URL with browser: {}"
 msgstr "無法使用瀏覽器開啟 URL：{}"
 
-#: gui.py:424
+#: gui.py:444
+#: gui.py:755
 msgid "Failed to open URL: {}"
 msgstr "無法開啟 URL：{}"
 
-#: gui.py:352
+#: gui.py:694
+msgid "Most Visited"
+msgstr "最常訪問"
+
+#: gui.py:370
+#: gui.py:770
 msgid "Move &Down"
-msgstr "下移(&D)"
+msgstr "向下移&動"
 
-#: gui.py:351
+#: gui.py:369
+#: gui.py:769
 msgid "Move &Up"
-msgstr "上移(&U)"
+msgstr "向上移&動"
 
-#: gui.py:177
+#: gui.py:197
+#: gui.py:705
 msgid "Name"
 msgstr "名稱"
 
-#: gui.py:367
+#: gui.py:383
 msgid "No browsers found"
-msgstr "未找到瀏覽器"
+msgstr "找不到瀏覽器"
 
-#: gui.py:285
-#: gui.py:314
+#: gui.py:307
+#: gui.py:335
 msgid "No category selected."
 msgstr "未選擇分類。"
 
-#: __init__.py:66
-msgid "Open Absolute Site manager (single tap) or Add new site (double tap)"
-msgstr "開啟 Absolute Site 管理器（按一下）或新增站點（連按兩下）"
+#: __init__.py:68
+msgid "Open Absolute Site manager (single tap), Add new site (double tap), or Most Visited (triple tap)"
+msgstr "開啟 Absolute Site 管理員（單擊），新增網站（雙擊），或最常訪問（三擊）"
 
-#: gui.py:433
+#: gui.py:890
+msgid "Please enter a search query."
+msgstr "請輸入搜尋字串。"
+
+#: gui.py:453
 msgid "Please select a category first."
 msgstr "請先選擇一個分類。"
 
-#: gui.py:642
+#: gui.py:658
 msgid "Please select or add a category."
 msgstr "請選擇或新增一個分類。"
 
-#: gui.py:181
+#: gui.py:837
+msgid "Search query:"
+msgstr "搜尋字串："
+
+#: __init__.py:105
+msgid "Search the web via Google"
+msgstr "透過 Google 搜尋網頁"
+
+#: gui.py:201
 msgid "Show paths"
 msgstr "顯示路徑"
 
-#: gui.py:584
+#: gui.py:600
 msgid "Site URL:"
-msgstr "站點 URL："
+msgstr "網站 URL："
 
-#: gui.py:178
+#: gui.py:198
 msgid "URL"
 msgstr "URL"
 
-#: gui.py:646
+#: gui.py:662
 msgid "URL cannot be empty."
-msgstr "URL 不能為空。"
+msgstr "URL 不得為空。"
+
+#: gui.py:144
+#: gui.py:438
+#: gui.py:749
+msgid "Unsafe URL scheme blocked."
+msgstr "已封鎖不安全的 URL 配置。"
+
+#: gui.py:826
+msgid "Web Search"
+msgstr "網路搜尋"
+
+#: gui.py:869
+msgid "default"
+msgstr "預設"
+
+#: gui.py:257
+msgid "{name}; URL: {url}"
+msgstr "{name}; URL: {url}"

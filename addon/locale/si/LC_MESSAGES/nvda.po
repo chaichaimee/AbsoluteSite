@@ -1,254 +1,313 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: AbsoluteSite 2026.3.2\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-03-11 18:31+0700\n"
+"Project-Id-Version: AbsoluteSite 2026.8.0\n"
+"Report-Msgid-Bugs-To: chaicm75@gmail.com\n"
+"POT-Creation-Date: 2026-07-27 13:33+0700\n"
 "PO-Revision-Date: \n"
-"Last-Translator: Anonymous <anonymous@example.com>\n"
+"Last-Translator: chaiBot and Malee Yamazaki\n"
 "Language-Team: Sinhala\n"
 "Language: si\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: NVDA DevOn Addon\n"
+"X-Generator: DevOn Addon\n"
 
-#: gui.py:189
-#: gui.py:265
-#: gui.py:573
+#: gui.py:209
+#: gui.py:287
+#: gui.py:589
 msgid "&Add Category"
-msgstr "ප්‍රවර්ගයක් එක් කරන්න (&A)"
+msgstr "&ප්‍රවර්ගය එක් කරන්න"
 
-#: gui.py:186
+#: gui.py:206
 msgid "&Add Site"
-msgstr "අඩවියක් එක් කරන්න (&A)"
+msgstr "&අඩවිය එක් කරන්න"
 
-#: gui.py:591
+#: gui.py:607
+#: gui.py:852
 msgid "&Cancel"
-msgstr "අවලංගු කරන්න (&C)"
+msgstr "&අවලංගු කරන්න"
 
-#: gui.py:356
+#: gui.py:373
 msgid "&Delete"
-msgstr "මකා දමන්න (&D)"
+msgstr "&මකන්න"
 
-#: gui.py:267
+#: gui.py:289
 msgid "&Delete Category"
-msgstr "ප්‍රවර්ගය මකා දමන්න (&D)"
+msgstr "&ප්‍රවර්ගය මකන්න"
 
-#: gui.py:188
+#: gui.py:208
 msgid "&Delete Site"
-msgstr "අඩවිය මකා දමන්න (&D)"
+msgstr "&අඩවිය මකන්න"
 
-#: gui.py:355
+#: gui.py:372
 msgid "&Edit"
-msgstr "සංස්කරණය කරන්න (&E)"
+msgstr "&සංස්කරණය කරන්න"
 
-#: gui.py:190
-#: gui.py:266
+#: gui.py:210
+#: gui.py:288
 msgid "&Edit Category"
-msgstr "ප්‍රවර්ගය සංස්කරණය කරන්න (&E)"
+msgstr "&ප්‍රවර්ගය සංස්කරණය කරන්න"
 
-#: gui.py:187
+#: gui.py:207
 msgid "&Edit Site"
-msgstr "අඩවිය සංස්කරණය කරන්න (&E)"
+msgstr "&අඩවිය සංස්කරණය කරන්න"
 
-#: gui.py:378
+#: gui.py:393
 msgid "&Move to category"
-msgstr "ප්‍රවර්ගයට ගෙන යන්න (&M)"
+msgstr "&ප්‍රවර්ගයට ගෙන යන්න"
 
-#: gui.py:369
+#: gui.py:385
 msgid "&Open with"
-msgstr "සමග විවෘත කරන්න (&O)"
+msgstr "&සඳහා විවෘත කරන්න"
 
-#: gui.py:347
+#: gui.py:366
+#: gui.py:767
 msgid "&Pin to top"
-msgstr "ඉහළට අමුණන්න (&P)"
+msgstr "&ඉහළට අමුණන්න"
 
-#: gui.py:590
+#: gui.py:772
+msgid "&Remove from history"
+msgstr "&ඉතිහාසයෙන් ඉවත් කරන්න"
+
+#: gui.py:606
 msgid "&Save"
-msgstr "සුරකින්න (&S)"
+msgstr "&සුරකින්න"
 
-#: gui.py:345
+#: gui.py:851
+msgid "&Search"
+msgstr "&සොයන්න"
+
+#: gui.py:364
+#: gui.py:765
 msgid "&Unpin"
-msgstr "ගලවන්න (&U)"
+msgstr "&ඇන්කර් ඉවත් කරන්න"
 
-#: gui.py:661
+#: gui.py:676
 msgid "A site with this URL already exists in the target category."
-msgstr "මෙම URL එක සහිත අඩවියක් ඉලක්කගත ප්‍රවර්ගය තුළ දැනටමත් පවතී."
+msgstr "මෙම URL එක සහිත අඩවියක් දැනටමත් ඉලක්ක ප්‍රවර්ගයේ ඇත."
 
-#: gui.py:667
+#: gui.py:680
 msgid "A site with this URL already exists in this category."
-msgstr "මෙම URL එක සහිත අඩවියක් මෙම ප්‍රවර්ගය තුළ දැනටමත් පවතී."
+msgstr "මෙම URL එක සහිත අඩවියක් දැනටමත් මෙම ප්‍රවර්ගයේ ඇත."
 
-#: __init__.py:22
-#: __init__.py:68
-#: gui.py:129
+#: __init__.py:23
+#: __init__.py:70
+#: __init__.py:107
+#: gui.py:154
 msgid "Absolute Site"
 msgstr "Absolute Site"
 
-#: gui.py:477
-#: gui.py:628
+#: gui.py:493
+#: gui.py:644
 msgid "Add Category"
 msgstr "ප්‍රවර්ගය එක් කරන්න"
 
-#: gui.py:543
+#: gui.py:559
 msgid "Add New Site"
 msgstr "නව අඩවියක් එක් කරන්න"
 
-#: gui.py:467
+#: gui.py:484
 msgid "Are you sure you want to delete '{}'?"
-msgstr "ඔබට '{}' මකා දැමීමට අවශ්‍ය බව සහතිකද?"
+msgstr "'{}' මකා දැමීමට ඔබට විශ්වාසද?"
 
-#: gui.py:318
+#: gui.py:338
 msgid "Are you sure you want to delete category '{}' and all its sites?"
-msgstr "ඔබට '{}' ප්‍රවර්ගය සහ එහි ඇති සියලුම අඩවි මකා දැමීමට අවශ්‍ය බව සහතිකද?"
+msgstr "'{}' ප්‍රවර්ගය සහ එහි සියලුම අඩවි මකා දැමීමට ඔබට විශ්වාසද?"
 
-#: __init__.py:92
+#: gui.py:844
+msgid "Browser:"
+msgstr "ගවේෂකය:"
+
+#: __init__.py:94
 msgid "Cannot capture URL. Make sure you are in a browser."
-msgstr "URL එක ලබා ගත නොහැක. ඔබ බ්‍රවුසරයක සිටින බව තහවුරු කරගන්න."
+msgstr "URL එක ග්‍රහණය කරගත නොහැක. ඔබ ගවේෂකයක සිටින බවට වග බලා ගන්න."
 
-#: gui.py:513
+#: gui.py:529
 msgid "Cannot move down."
 msgstr "පහළට ගෙන යා නොහැක."
 
-#: gui.py:505
+#: gui.py:521
 msgid "Cannot move up."
 msgstr "ඉහළට ගෙන යා නොහැක."
 
-#: gui.py:306
+#: gui.py:327
 msgid "Category '{}' already exists or invalid."
-msgstr "'{}' ප්‍රවර්ගය දැනටමත් පවතී හෝ අවලංගුයි."
+msgstr "'{}' ප්‍රවර්ගය දැනටමත් පවතී හෝ නීත්‍යානුකූල නොවේ."
 
-#: gui.py:486
+#: gui.py:502
 msgid "Category already exists or invalid."
-msgstr "ප්‍රවර්ගය දැනටමත් පවතී හෝ අවලංගුයි."
+msgstr "ප්‍රවර්ගය දැනටමත් පවතී හෝ නීත්‍යානුකූල නොවේ."
 
-#: gui.py:636
+#: gui.py:652
 msgid "Category already exists."
 msgstr "ප්‍රවර්ගය දැනටමත් පවතී."
 
-#: gui.py:293
+#: gui.py:314
 msgid "Category name cannot be empty."
-msgstr "ප්‍රවර්ගයේ නම හිස් විය නොහැක."
+msgstr "ප්‍රවර්ග නාමය හිස් විය නොහැක."
 
-#: gui.py:171
-#: gui.py:570
+#: gui.py:191
+#: gui.py:586
 msgid "Category:"
 msgstr "ප්‍රවර්ගය:"
 
-#: gui.py:319
-#: gui.py:468
+#: gui.py:339
+#: gui.py:485
 msgid "Confirm Delete"
 msgstr "මකා දැමීම තහවුරු කරන්න"
 
-#: gui.py:650
+#: gui.py:666
 msgid "Display name cannot be empty."
-msgstr "පෙන්වන නම හිස් විය නොහැක."
+msgstr "ප්‍රදර්ශන නාමය හිස් විය නොහැක."
 
-#: gui.py:578
+#: gui.py:594
 msgid "Display name:"
-msgstr "පෙන්වන නම:"
+msgstr "ප්‍රදර්ශන නාමය:"
 
-#: gui.py:191
+#: gui.py:211
+#: gui.py:709
 msgid "E&xit"
-msgstr "පිටවන්න (&x)"
+msgstr "&පිටවීම"
 
-#: gui.py:289
+#: gui.py:310
 msgid "Edit Category"
 msgstr "ප්‍රවර්ගය සංස්කරණය කරන්න"
 
-#: gui.py:543
+#: gui.py:559
 msgid "Edit Site"
 msgstr "අඩවිය සංස්කරණය කරන්න"
 
-#: gui.py:477
-#: gui.py:628
+#: gui.py:493
+#: gui.py:644
 msgid "Enter new category name:"
 msgstr "නව ප්‍රවර්ග නාමය ඇතුළත් කරන්න:"
 
-#: gui.py:289
+#: gui.py:310
 msgid "Enter new name for category '{}':"
-msgstr "'{}' ප්‍රවර්ගය සඳහා නව නමක් ඇතුළත් කරන්න:"
+msgstr "'{}' ප්‍රවර්ගය සඳහා නව නාමය ඇතුළත් කරන්න:"
 
-#: gui.py:125
-#: gui.py:285
-#: gui.py:293
-#: gui.py:306
+#: gui.py:149
+#: gui.py:307
 #: gui.py:314
-#: gui.py:328
-#: gui.py:424
-#: gui.py:433
-#: gui.py:486
-#: gui.py:530
-#: gui.py:636
-#: gui.py:642
-#: gui.py:646
-#: gui.py:650
-#: gui.py:661
-#: gui.py:667
+#: gui.py:327
+#: gui.py:335
+#: gui.py:348
+#: gui.py:438
+#: gui.py:444
+#: gui.py:453
+#: gui.py:502
+#: gui.py:546
+#: gui.py:652
+#: gui.py:658
+#: gui.py:662
+#: gui.py:666
+#: gui.py:676
+#: gui.py:680
+#: gui.py:749
+#: gui.py:755
+#: gui.py:890
 msgid "Error"
 msgstr "දෝෂයකි"
 
-#: gui.py:328
+#: gui.py:348
 msgid "Failed to delete category."
 msgstr "ප්‍රවර්ගය මකා දැමීම අසාර්ථක විය."
 
-#: gui.py:530
+#: gui.py:546
 msgid "Failed to move site. It may already exist in the target category."
-msgstr "අඩවිය ගෙන යාම අසාර්ථක විය. එය දැනටමත් ඉලක්කගත ප්‍රවර්ගය තුළ තිබිය හැක."
+msgstr "අඩවිය ගෙන යාම අසාර්ථක විය. එය දැනටමත් ඉලක්ක ප්‍රවර්ගයේ තිබිය හැක."
 
-#: gui.py:125
+#: gui.py:149
 msgid "Failed to open URL with browser: {}"
-msgstr "බ්‍රවුසරය මගින් URL එක විවෘත කිරීම අසාර්ථක විය: {}"
+msgstr "ගවේෂකය සමඟ URL විවෘත කිරීම අසාර්ථක විය: {}"
 
-#: gui.py:424
+#: gui.py:444
+#: gui.py:755
 msgid "Failed to open URL: {}"
-msgstr "URL එක විවෘත කිරීම අසාර්ථක විය: {}"
+msgstr "URL විවෘත කිරීම අසාර්ථක විය: {}"
 
-#: gui.py:352
+#: gui.py:694
+msgid "Most Visited"
+msgstr "වැඩියෙන්ම නරඹන ලද"
+
+#: gui.py:370
+#: gui.py:770
 msgid "Move &Down"
-msgstr "පහළට ගෙන යන්න (&D)"
+msgstr "පහළට &ගෙන යන්න"
 
-#: gui.py:351
+#: gui.py:369
+#: gui.py:769
 msgid "Move &Up"
-msgstr "ඉහළට ගෙන යන්න (&U)"
+msgstr "ඉහළට &ගෙන යන්න"
 
-#: gui.py:177
+#: gui.py:197
+#: gui.py:705
 msgid "Name"
 msgstr "නම"
 
-#: gui.py:367
+#: gui.py:383
 msgid "No browsers found"
-msgstr "බ්‍රවුසර කිසිවක් හමු නොවීය"
+msgstr "ගවේෂක හමු නොවීය"
 
-#: gui.py:285
-#: gui.py:314
+#: gui.py:307
+#: gui.py:335
 msgid "No category selected."
-msgstr "ප්‍රවර්ගයක් තෝරා නැත."
+msgstr "ප්‍රවර්ගයක් තෝරාගෙන නැත."
 
-#: __init__.py:66
-msgid "Open Absolute Site manager (single tap) or Add new site (double tap)"
-msgstr "Absolute Site කළමනාකරු විවෘත කරන්න (තනි තට්ටුවක්) හෝ නව අඩවියක් එක් කරන්න (තට්ටු දෙකක්)"
+#: __init__.py:68
+msgid "Open Absolute Site manager (single tap), Add new site (double tap), or Most Visited (triple tap)"
+msgstr "Absolute Site කළමනාකරු විවෘත කරන්න (තනි තට්ටු කිරීම), නව අඩවියක් එක් කරන්න (ද්විත්ව තට්ටු කිරීම), හෝ වැඩියෙන්ම නරඹන ලද (ත්‍රිත්ව තට්ටු කිරීම)"
 
-#: gui.py:433
+#: gui.py:890
+msgid "Please enter a search query."
+msgstr "කරුණාකර සෙවුම් විමසුමක් ඇතුළත් කරන්න."
+
+#: gui.py:453
 msgid "Please select a category first."
 msgstr "කරුණාකර පළමුව ප්‍රවර්ගයක් තෝරන්න."
 
-#: gui.py:642
+#: gui.py:658
 msgid "Please select or add a category."
 msgstr "කරුණාකර ප්‍රවර්ගයක් තෝරන්න හෝ එක් කරන්න."
 
-#: gui.py:181
+#: gui.py:837
+msgid "Search query:"
+msgstr "සෙවුම් විමසුම:"
+
+#: __init__.py:105
+msgid "Search the web via Google"
+msgstr "Google හරහා වෙබ් අඩවිය සොයන්න"
+
+#: gui.py:201
 msgid "Show paths"
 msgstr "මාර්ග පෙන්වන්න"
 
-#: gui.py:584
+#: gui.py:600
 msgid "Site URL:"
-msgstr "අඩවියේ URL එක:"
+msgstr "අඩවි URL:"
 
-#: gui.py:178
+#: gui.py:198
 msgid "URL"
 msgstr "URL"
 
-#: gui.py:646
+#: gui.py:662
 msgid "URL cannot be empty."
 msgstr "URL එක හිස් විය නොහැක."
+
+#: gui.py:144
+#: gui.py:438
+#: gui.py:749
+msgid "Unsafe URL scheme blocked."
+msgstr "ආරක්ෂිත නොවන URL ක්‍රමය අවහිර කර ඇත."
+
+#: gui.py:826
+msgid "Web Search"
+msgstr "වෙබ් සෙවුම"
+
+#: gui.py:869
+msgid "default"
+msgstr "පෙරනිමි"
+
+#: gui.py:257
+msgid "{name}; URL: {url}"
+msgstr "{name}; URL: {url}"

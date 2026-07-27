@@ -1,254 +1,313 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: AbsoluteSite 2026.3.2\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-03-11 18:31+0700\n"
+"Project-Id-Version: AbsoluteSite 2026.8.0\n"
+"Report-Msgid-Bugs-To: chaicm75@gmail.com\n"
+"POT-Creation-Date: 2026-07-27 13:33+0700\n"
 "PO-Revision-Date: \n"
-"Last-Translator: Anonymous <anonymous@example.com>\n"
+"Last-Translator: chaiBot and Malee Yamazaki\n"
 "Language-Team: Urdu\n"
 "Language: ur\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: NVDA DevOn Addon\n"
+"X-Generator: DevOn Addon\n"
 
-#: gui.py:189
-#: gui.py:265
-#: gui.py:573
+#: gui.py:209
+#: gui.py:287
+#: gui.py:589
 msgid "&Add Category"
-msgstr "زمرہ شامل کریں (&A)"
+msgstr "&زمرہ شامل کریں"
 
-#: gui.py:186
+#: gui.py:206
 msgid "&Add Site"
-msgstr "سائٹ شامل کریں (&A)"
+msgstr "&سائیٹ شامل کریں"
 
-#: gui.py:591
+#: gui.py:607
+#: gui.py:852
 msgid "&Cancel"
-msgstr "منسوخ کریں (&C)"
+msgstr "&منسوخ"
 
-#: gui.py:356
+#: gui.py:373
 msgid "&Delete"
-msgstr "حذف کریں (&D)"
+msgstr "&حذف"
 
-#: gui.py:267
+#: gui.py:289
 msgid "&Delete Category"
-msgstr "زمرہ حذف کریں (&D)"
+msgstr "&زمرہ حذف کریں"
 
-#: gui.py:188
+#: gui.py:208
 msgid "&Delete Site"
-msgstr "سائٹ حذف کریں (&D)"
+msgstr "&سائیٹ حذف کریں"
 
-#: gui.py:355
+#: gui.py:372
 msgid "&Edit"
-msgstr "ترمیم کریں (&E)"
+msgstr "&تدوین"
 
-#: gui.py:190
-#: gui.py:266
+#: gui.py:210
+#: gui.py:288
 msgid "&Edit Category"
-msgstr "زمرہ کی ترمیم کریں (&E)"
+msgstr "&زمرہ کی تدوین کریں"
 
-#: gui.py:187
+#: gui.py:207
 msgid "&Edit Site"
-msgstr "سائٹ کی ترمیم کریں (&E)"
+msgstr "&سائیٹ کی تدوین کریں"
 
-#: gui.py:378
+#: gui.py:393
 msgid "&Move to category"
-msgstr "زمرہ میں منتقل کریں (&M)"
+msgstr "&زمرہ میں منتقل کریں"
 
-#: gui.py:369
+#: gui.py:385
 msgid "&Open with"
-msgstr "اس کے ساتھ کھولیں (&O)"
+msgstr "&کے ساتھ کھولیں"
 
-#: gui.py:347
+#: gui.py:366
+#: gui.py:767
 msgid "&Pin to top"
-msgstr "اوپر پن کریں (&P)"
+msgstr "&سب سے اوپر پن کریں"
 
-#: gui.py:590
+#: gui.py:772
+msgid "&Remove from history"
+msgstr "&ہسٹری سے ہٹائیں"
+
+#: gui.py:606
 msgid "&Save"
-msgstr "محفوظ کریں (&S)"
+msgstr "&محفوظ کریں"
 
-#: gui.py:345
+#: gui.py:851
+msgid "&Search"
+msgstr "&تلاش کریں"
+
+#: gui.py:364
+#: gui.py:765
 msgid "&Unpin"
-msgstr "ان پن کریں (&U)"
+msgstr "&ان پن کریں"
 
-#: gui.py:661
+#: gui.py:676
 msgid "A site with this URL already exists in the target category."
-msgstr "اس URL کے ساتھ ایک سائٹ پہلے ہی ہدف کے زمرے میں موجود ہے۔"
+msgstr "اس یو آر ایل کے ساتھ ایک سائیٹ ہدف زمرہ میں پہلے سے موجود ہے۔"
 
-#: gui.py:667
+#: gui.py:680
 msgid "A site with this URL already exists in this category."
-msgstr "اس URL کے ساتھ ایک سائٹ پہلے ہی اس زمرے میں موجود ہے۔"
+msgstr "اس یو آر ایل کے ساتھ ایک سائیٹ اس زمرہ میں پہلے سے موجود ہے۔"
 
-#: __init__.py:22
-#: __init__.py:68
-#: gui.py:129
+#: __init__.py:23
+#: __init__.py:70
+#: __init__.py:107
+#: gui.py:154
 msgid "Absolute Site"
 msgstr "Absolute Site"
 
-#: gui.py:477
-#: gui.py:628
+#: gui.py:493
+#: gui.py:644
 msgid "Add Category"
 msgstr "زمرہ شامل کریں"
 
-#: gui.py:543
+#: gui.py:559
 msgid "Add New Site"
-msgstr "نئی سائٹ شامل کریں"
+msgstr "نئی سائیٹ شامل کریں"
 
-#: gui.py:467
+#: gui.py:484
 msgid "Are you sure you want to delete '{}'?"
 msgstr "کیا آپ واقعی '{}' کو حذف کرنا چاہتے ہیں؟"
 
-#: gui.py:318
+#: gui.py:338
 msgid "Are you sure you want to delete category '{}' and all its sites?"
-msgstr "کیا آپ واقعی زمرہ '{}' اور اس کی تمام سائٹس کو حذف کرنا چاہتے ہیں؟"
+msgstr "کیا آپ واقعی زمرہ '{}' اور اس کی تمام سائیٹس کو حذف کرنا چاہتے ہیں؟"
 
-#: __init__.py:92
+#: gui.py:844
+msgid "Browser:"
+msgstr "براؤزر:"
+
+#: __init__.py:94
 msgid "Cannot capture URL. Make sure you are in a browser."
-msgstr "URL حاصل نہیں کیا جا سکا۔ یقینی بنائیں کہ آپ براؤزر میں ہیں۔"
+msgstr "یو آر ایل کیپچر نہیں ہو سکتا۔ یقینی بنائیں کہ آپ براؤزر میں ہیں۔"
 
-#: gui.py:513
+#: gui.py:529
 msgid "Cannot move down."
 msgstr "نیچے منتقل نہیں کیا جا سکتا۔"
 
-#: gui.py:505
+#: gui.py:521
 msgid "Cannot move up."
 msgstr "اوپر منتقل نہیں کیا جا سکتا۔"
 
-#: gui.py:306
+#: gui.py:327
 msgid "Category '{}' already exists or invalid."
-msgstr "زمرہ '{}' پہلے سے موجود ہے یا غلط ہے۔"
+msgstr "زمرہ '{}' پہلے سے موجود ہے یا غیر معتبر ہے۔"
 
-#: gui.py:486
+#: gui.py:502
 msgid "Category already exists or invalid."
-msgstr "زمرہ پہلے سے موجود ہے یا غلط ہے۔"
+msgstr "زمرہ پہلے سے موجود ہے یا غیر معتبر ہے۔"
 
-#: gui.py:636
+#: gui.py:652
 msgid "Category already exists."
 msgstr "زمرہ پہلے سے موجود ہے۔"
 
-#: gui.py:293
+#: gui.py:314
 msgid "Category name cannot be empty."
 msgstr "زمرہ کا نام خالی نہیں ہو سکتا۔"
 
-#: gui.py:171
-#: gui.py:570
+#: gui.py:191
+#: gui.py:586
 msgid "Category:"
 msgstr "زمرہ:"
 
-#: gui.py:319
-#: gui.py:468
+#: gui.py:339
+#: gui.py:485
 msgid "Confirm Delete"
 msgstr "حذف کرنے کی تصدیق کریں"
 
-#: gui.py:650
+#: gui.py:666
 msgid "Display name cannot be empty."
-msgstr "ظاہری نام خالی نہیں ہو سکتا۔"
+msgstr "ڈسپلے کا نام خالی نہیں ہو سکتا۔"
 
-#: gui.py:578
+#: gui.py:594
 msgid "Display name:"
-msgstr "ظاہری نام:"
+msgstr "ڈسپلے کا نام:"
 
-#: gui.py:191
+#: gui.py:211
+#: gui.py:709
 msgid "E&xit"
-msgstr "باہر نکلیں (&x)"
+msgstr "خا&رج"
 
-#: gui.py:289
+#: gui.py:310
 msgid "Edit Category"
-msgstr "زمرہ کی ترمیم کریں"
+msgstr "زمرہ کی تدوین کریں"
 
-#: gui.py:543
+#: gui.py:559
 msgid "Edit Site"
-msgstr "سائٹ کی ترمیم کریں"
+msgstr "سائیٹ کی تدوین کریں"
 
-#: gui.py:477
-#: gui.py:628
+#: gui.py:493
+#: gui.py:644
 msgid "Enter new category name:"
-msgstr "نیا زمرہ نام درج کریں:"
+msgstr "نئے زمرہ کا نام درج کریں:"
 
-#: gui.py:289
+#: gui.py:310
 msgid "Enter new name for category '{}':"
 msgstr "زمرہ '{}' کے لیے نیا نام درج کریں:"
 
-#: gui.py:125
-#: gui.py:285
-#: gui.py:293
-#: gui.py:306
+#: gui.py:149
+#: gui.py:307
 #: gui.py:314
-#: gui.py:328
-#: gui.py:424
-#: gui.py:433
-#: gui.py:486
-#: gui.py:530
-#: gui.py:636
-#: gui.py:642
-#: gui.py:646
-#: gui.py:650
-#: gui.py:661
-#: gui.py:667
+#: gui.py:327
+#: gui.py:335
+#: gui.py:348
+#: gui.py:438
+#: gui.py:444
+#: gui.py:453
+#: gui.py:502
+#: gui.py:546
+#: gui.py:652
+#: gui.py:658
+#: gui.py:662
+#: gui.py:666
+#: gui.py:676
+#: gui.py:680
+#: gui.py:749
+#: gui.py:755
+#: gui.py:890
 msgid "Error"
-msgstr "غلطی"
+msgstr "خرابی"
 
-#: gui.py:328
+#: gui.py:348
 msgid "Failed to delete category."
 msgstr "زمرہ حذف کرنے میں ناکامی۔"
 
-#: gui.py:530
+#: gui.py:546
 msgid "Failed to move site. It may already exist in the target category."
-msgstr "سائٹ منتقل کرنے میں ناکامی۔ یہ پہلے ہی ہدف کے زمرے میں موجود ہو سکتی ہے۔"
+msgstr "سائیٹ منتقل کرنے میں ناکامی۔ یہ ہدف زمرہ میں پہلے سے موجود ہو سکتی ہے۔"
 
-#: gui.py:125
+#: gui.py:149
 msgid "Failed to open URL with browser: {}"
-msgstr "براؤزر کے ساتھ URL کھولنے میں ناکامی: {}"
+msgstr "براؤزر کے ساتھ یو آر ایل کھولنے میں ناکامی: {}"
 
-#: gui.py:424
+#: gui.py:444
+#: gui.py:755
 msgid "Failed to open URL: {}"
-msgstr "URL کھولنے میں ناکامی: {}"
+msgstr "یو آر ایل کھولنے میں ناکامی: {}"
 
-#: gui.py:352
+#: gui.py:694
+msgid "Most Visited"
+msgstr "سب سے زیادہ دیکھے گئے"
+
+#: gui.py:370
+#: gui.py:770
 msgid "Move &Down"
-msgstr "نیچے منتقل کریں (&D)"
+msgstr "نیچے من&تقل کریں"
 
-#: gui.py:351
+#: gui.py:369
+#: gui.py:769
 msgid "Move &Up"
-msgstr "اوپر منتقل کریں (&U)"
+msgstr "اوپر من&تقل کریں"
 
-#: gui.py:177
+#: gui.py:197
+#: gui.py:705
 msgid "Name"
 msgstr "نام"
 
-#: gui.py:367
+#: gui.py:383
 msgid "No browsers found"
-msgstr "کوئی براؤزر نہیں ملا"
+msgstr "कोई ব্রাউజర్ नहीं मिला"
 
-#: gui.py:285
-#: gui.py:314
+#: gui.py:307
+#: gui.py:335
 msgid "No category selected."
-msgstr "کوئی زمرہ منتخب نہیں کیا گیا۔"
+msgstr "कोई zمرہ منتخب नहीं کیا گیا۔"
 
-#: __init__.py:66
-msgid "Open Absolute Site manager (single tap) or Add new site (double tap)"
-msgstr "ایبسولیوٹ سائٹ مینیجر کھولیں (سنگل ٹیپ) یا نئی سائٹ شامل کریں (ڈبل ٹیپ)"
+#: __init__.py:68
+msgid "Open Absolute Site manager (single tap), Add new site (double tap), or Most Visited (triple tap)"
+msgstr "ایبسلوٹ سائیٹ مینیجر کھولیں (ایک بار تھپتھپائیں)، نئی سائیٹ شامل کریں (دو بار تھپتھپائیں)، یا سب سے زیادہ دیکھے گئے (تین بار تھپتھپائیں)"
 
-#: gui.py:433
+#: gui.py:890
+msgid "Please enter a search query."
+msgstr "براہ کرم تلاش کی کوئی استفسار درج کریں۔"
+
+#: gui.py:453
 msgid "Please select a category first."
-msgstr "براہ کرم پہلے ایک زمرہ منتخب کریں۔"
+msgstr "براہ کرم پہلے کوئی زمرہ منتخب کریں۔"
 
-#: gui.py:642
+#: gui.py:658
 msgid "Please select or add a category."
-msgstr "براہ کرم ایک زمرہ منتخب کریں یا شامل کریں۔"
+msgstr "براہ کرم کوئی زمرہ منتخب کریں یا شامل کریں۔"
 
-#: gui.py:181
+#: gui.py:837
+msgid "Search query:"
+msgstr "تلاش کا استفسار:"
+
+#: __init__.py:105
+msgid "Search the web via Google"
+msgstr "گوگل کے ذریعے ویب تلاش کریں"
+
+#: gui.py:201
 msgid "Show paths"
 msgstr "راستے دکھائیں"
 
-#: gui.py:584
+#: gui.py:600
 msgid "Site URL:"
-msgstr "سائٹ کا URL:"
+msgstr "سائیٹ کا یو آر ایل:"
 
-#: gui.py:178
+#: gui.py:198
 msgid "URL"
-msgstr "URL"
+msgstr "یو آر ایل"
 
-#: gui.py:646
+#: gui.py:662
 msgid "URL cannot be empty."
-msgstr "URL خالی نہیں ہو سکتا۔"
+msgstr "یو آر ایل خالی نہیں ہو سکتا۔"
+
+#: gui.py:144
+#: gui.py:438
+#: gui.py:749
+msgid "Unsafe URL scheme blocked."
+msgstr "غیر محفوظ یو آر ایل اسکیم مسدود کر دی گئی۔"
+
+#: gui.py:826
+msgid "Web Search"
+msgstr "ویب تلاش"
+
+#: gui.py:869
+msgid "default"
+msgstr "طے شدہ"
+
+#: gui.py:257
+msgid "{name}; URL: {url}"
+msgstr "{name}; یو آر ایل: {url}"

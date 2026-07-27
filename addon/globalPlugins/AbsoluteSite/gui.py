@@ -1,4 +1,6 @@
 # gui.py
+# Copyright (C) 2026 Chai Chaimee
+# Licensed under GNU General Public License. See COPYING.txt for details.
 
 import wx
 import addonHandler
@@ -105,6 +107,37 @@ def get_installed_browsers():
 			ordered.append((name, browser_dict[name]))
 	return ordered
 
+def get_default_browser():
+	"""Return (browser_name, executable_path) of the system default browser."""
+	try:
+		with winreg.OpenKey(winreg.HKEY_CURRENT_USER,
+							r"Software\Microsoft\Windows\Shell\Associations\UrlAssociations\http\UserChoice") as key:
+			progid, _ = winreg.QueryValueEx(key, "Progid")
+		if progid:
+			with winreg.OpenKey(winreg.HKEY_CLASSES_ROOT, f"{progid}\\shell\\open\\command") as cmd_key:
+				command, _ = winreg.QueryValueEx(cmd_key, "")
+			path = command.strip().split('"')[1] if '"' in command else command.split()[0]
+			name = os.path.splitext(os.path.basename(path))[0]
+			name_mapping = {
+				"chrome": "Chrome",
+				"firefox": "Firefox",
+				"msedge": "Edge",
+				"brave": "Brave",
+				"opera": "Opera",
+				"vivaldi": "Vivaldi",
+			}
+			for key_name, display in name_mapping.items():
+				if key_name in name.lower():
+					name = display
+					break
+			return name, path
+	except Exception:
+		pass
+	browsers = get_installed_browsers()
+	if browsers:
+		return browsers[0]
+	return "Browser", "start"
+
 def open_with_browser(url, browser_exe):
 	parsed = urllib.parse.urlparse(url)
 	if parsed.scheme not in ('http', 'https', 'file'):
@@ -115,10 +148,12 @@ def open_with_browser(url, browser_exe):
 	except Exception as e:
 		wx.MessageBox(_("Failed to open URL with browser: {}").format(str(e)), _("Error"), wx.OK | wx.ICON_ERROR)
 
+
 class MainDialog(wx.Dialog):
-	def __init__(self, parent, manager, selected_category=None):
+	def __init__(self, parent, manager, mostVisitedManager, selected_category=None):
 		super().__init__(parent, title=_("Absolute Site"), style=wx.DEFAULT_DIALOG_STYLE | wx.RESIZE_BORDER | wx.MAXIMIZE_BOX)
 		self.manager = manager
+		self.mostVisitedManager = mostVisitedManager
 		self.selected_category = selected_category
 
 		self.autoCloseTimer = wx.Timer(self)
@@ -218,7 +253,9 @@ class MainDialog(wx.Dialog):
 		show_paths = self.showPathsCheck.GetValue()
 		for i, (name, url) in enumerate(sites):
 			if show_paths:
-				self.siteList.InsertItem(i, f"{name}; URL: {url}")
+				# Wrap the pattern with _() for translation
+				display_text = _("{name}; URL: {url}").format(name=name, url=url)
+				self.siteList.InsertItem(i, display_text)
 			else:
 				self.siteList.InsertItem(i, name)
 			self.siteList.SetItemData(i, i)
@@ -366,6 +403,7 @@ class MainDialog(wx.Dialog):
 
 	def onOpenWith(self, url, browser_exe):
 		self.resetAutoCloseTimer()
+		self.mostVisitedManager.add_visit(url)
 		open_with_browser(url, browser_exe)
 
 	def onKeyDown(self, evt):
@@ -400,6 +438,7 @@ class MainDialog(wx.Dialog):
 				wx.MessageBox(_("Unsafe URL scheme blocked."), _("Error"), wx.OK | wx.ICON_ERROR)
 				return
 			try:
+				self.mostVisitedManager.add_visit(url)
 				subprocess.Popen(['start', url], shell=True)
 			except Exception as e:
 				wx.MessageBox(_("Failed to open URL: {}").format(str(e)), _("Error"), wx.OK | wx.ICON_ERROR)
@@ -642,6 +681,222 @@ class AddSiteDialog(wx.Dialog):
 
 		if success:
 			self.EndModal(wx.ID_OK)
+
+	def onCharHook(self, evt):
+		if evt.GetKeyCode() == wx.WXK_ESCAPE:
+			self.EndModal(wx.ID_CANCEL)
+		else:
+			evt.Skip()
+
+
+class MostVisitedDialog(wx.Dialog):
+	def __init__(self, parent, mostVisitedManager, siteManager):
+		super().__init__(parent, title=_("Most Visited"), style=wx.DEFAULT_DIALOG_STYLE | wx.RESIZE_BORDER)
+		self.mostVisitedManager = mostVisitedManager
+		self.siteManager = siteManager
+		self._initUI()
+		self._bindEvents()
+		self._populateList()
+		wx.CallAfter(self.siteList.SetFocus)
+
+	def _initUI(self):
+		mainSizer = wx.BoxSizer(wx.VERTICAL)
+		self.siteList = wx.ListCtrl(self, style=wx.LC_REPORT | wx.LC_SINGLE_SEL | wx.BORDER_SUNKEN)
+		self.siteList.InsertColumn(0, _("Name"), width=550)
+		mainSizer.Add(self.siteList, 1, wx.EXPAND | wx.ALL, 5)
+
+		btnSizer = wx.BoxSizer(wx.HORIZONTAL)
+		self.exitBtn = wx.Button(self, wx.ID_CLOSE, label=_("E&xit"))
+		btnSizer.AddStretchSpacer()
+		btnSizer.Add(self.exitBtn, 0)
+		mainSizer.Add(btnSizer, 0, wx.ALIGN_CENTER | wx.ALL, 5)
+
+		self.SetSizer(mainSizer)
+		self.SetMinSize((600, 400))
+		self.Fit()
+
+	def _bindEvents(self):
+		self.siteList.Bind(wx.EVT_LIST_ITEM_ACTIVATED, self.onOpen)
+		self.siteList.Bind(wx.EVT_CONTEXT_MENU, self.onContextMenu)
+		self.siteList.Bind(wx.EVT_KEY_DOWN, self.onKeyDown)
+		self.exitBtn.Bind(wx.EVT_BUTTON, lambda e: self.Close())
+		self.Bind(wx.EVT_CHAR_HOOK, self.onCharHook)
+
+	def _populateList(self):
+		self.siteList.DeleteAllItems()
+		sites = self.mostVisitedManager.get_ordered_most_visited(self.siteManager)
+		self.current_sites = sites
+		for i, site in enumerate(sites):
+			self.siteList.InsertItem(i, site['display_name'])
+			self.siteList.SetItemData(i, i)
+		if self.siteList.GetItemCount() > 0:
+			self.siteList.Select(0)
+			self.siteList.Focus(0)
+
+	def _get_selected(self):
+		idx = self.siteList.GetFirstSelected()
+		if idx == -1 or not hasattr(self, 'current_sites') or idx >= len(self.current_sites):
+			return None
+		return self.current_sites[idx]
+
+	def onOpen(self, evt):
+		site = self._get_selected()
+		if not site:
+			return
+		url = site['url']
+		parsed = urllib.parse.urlparse(url)
+		if parsed.scheme not in ('http', 'https', 'file'):
+			wx.MessageBox(_("Unsafe URL scheme blocked."), _("Error"), wx.OK | wx.ICON_ERROR)
+			return
+		self.mostVisitedManager.add_visit(url)
+		try:
+			subprocess.Popen(['start', url], shell=True)
+		except Exception as e:
+			wx.MessageBox(_("Failed to open URL: {}").format(str(e)), _("Error"), wx.OK | wx.ICON_ERROR)
+		self.Close()
+
+	def onContextMenu(self, evt):
+		site = self._get_selected()
+		if not site:
+			return
+		url = site['url']
+		menu = wx.Menu()
+		if url in self.mostVisitedManager.pinned:
+			pinLabel = _("&Unpin")
+		else:
+			pinLabel = _("&Pin to top")
+		pinItem = menu.Append(wx.ID_ANY, pinLabel)
+		upItem = menu.Append(wx.ID_ANY, _("Move &Up"))
+		downItem = menu.Append(wx.ID_ANY, _("Move &Down"))
+		menu.AppendSeparator()
+		removeItem = menu.Append(wx.ID_ANY, _("&Remove from history"))
+		self.Bind(wx.EVT_MENU, lambda e: self.onTogglePin(url), pinItem)
+		self.Bind(wx.EVT_MENU, lambda e: self.onMoveUp(url), upItem)
+		self.Bind(wx.EVT_MENU, lambda e: self.onMoveDown(url), downItem)
+		self.Bind(wx.EVT_MENU, lambda e: self.onRemove(url), removeItem)
+		self.siteList.PopupMenu(menu)
+		menu.Destroy()
+
+	def onTogglePin(self, url):
+		if url in self.mostVisitedManager.pinned:
+			self.mostVisitedManager.unpin(url)
+		else:
+			self.mostVisitedManager.pin(url)
+		self._populateList()
+		self._select_by_url(url)
+
+	def onMoveUp(self, url):
+		if self.mostVisitedManager.move_up(url):
+			self._populateList()
+			self._select_by_url(url)
+
+	def onMoveDown(self, url):
+		if self.mostVisitedManager.move_down(url):
+			self._populateList()
+			self._select_by_url(url)
+
+	def onRemove(self, url):
+		self.mostVisitedManager.remove_url(url)
+		self._populateList()
+
+	def _select_by_url(self, url):
+		for i, site in enumerate(self.current_sites):
+			if site['url'] == url:
+				self.siteList.Select(i)
+				self.siteList.Focus(i)
+				return
+
+	def onKeyDown(self, evt):
+		if evt.GetKeyCode() == wx.WXK_DELETE:
+			site = self._get_selected()
+			if site:
+				self.onRemove(site['url'])
+		else:
+			evt.Skip()
+
+	def onCharHook(self, evt):
+		if evt.GetKeyCode() == wx.WXK_ESCAPE:
+			self.Close()
+		else:
+			evt.Skip()
+
+
+class SearchDialog(wx.Dialog):
+	def __init__(self, parent, mostVisitedManager):
+		super().__init__(parent, title=_("Web Search"), style=wx.DEFAULT_DIALOG_STYLE | wx.RESIZE_BORDER)
+		self.mostVisitedManager = mostVisitedManager
+		self._initUI()
+		self._bindEvents()
+		wx.CallAfter(self.searchCtrl.SetFocus)
+
+	def _initUI(self):
+		mainSizer = wx.BoxSizer(wx.VERTICAL)
+
+		# Search box
+		searchSizer = wx.BoxSizer(wx.HORIZONTAL)
+		searchSizer.Add(wx.StaticText(self, label=_("Search query:")), 0, wx.ALIGN_CENTER_VERTICAL | wx.RIGHT, 5)
+		self.searchCtrl = wx.TextCtrl(self, style=wx.TE_PROCESS_ENTER)
+		searchSizer.Add(self.searchCtrl, 1, wx.EXPAND)
+		mainSizer.Add(searchSizer, 0, wx.EXPAND | wx.ALL, 10)
+
+		# Choose a browser
+		browserSizer = wx.BoxSizer(wx.HORIZONTAL)
+		browserSizer.Add(wx.StaticText(self, label=_("Browser:")), 0, wx.ALIGN_CENTER_VERTICAL | wx.RIGHT, 5)
+		self.browserCombo = wx.ComboBox(self, choices=[], style=wx.CB_READONLY)
+		browserSizer.Add(self.browserCombo, 1, wx.EXPAND)
+		mainSizer.Add(browserSizer, 0, wx.EXPAND | wx.LEFT | wx.RIGHT, 10)
+
+		# button
+		btnSizer = wx.BoxSizer(wx.HORIZONTAL)
+		self.searchBtn = wx.Button(self, wx.ID_OK, label=_("&Search"))
+		self.cancelBtn = wx.Button(self, wx.ID_CANCEL, label=_("&Cancel"))
+		btnSizer.AddStretchSpacer()
+		btnSizer.Add(self.searchBtn, 0, wx.RIGHT, 5)
+		btnSizer.Add(self.cancelBtn, 0)
+		mainSizer.Add(btnSizer, 0, wx.ALIGN_CENTER | wx.ALL, 10)
+
+		self.SetSizer(mainSizer)
+		self.SetMinSize((500, -1))
+		self.Fit()
+
+		self._populateBrowsers()
+
+	def _populateBrowsers(self):
+		browsers = get_installed_browsers()
+		default_name, default_path = get_default_browser()
+		choices = []
+		self.browser_paths = {}
+		default_label = f"{default_name} ({_('default')})"
+		choices.append(default_label)
+		self.browser_paths[default_label] = default_path
+		for name, path in browsers:
+			if name == default_name:
+				continue
+			choices.append(name)
+			self.browser_paths[name] = path
+		self.browserCombo.SetItems(choices)
+		if choices:
+			self.browserCombo.SetSelection(0)
+
+	def _bindEvents(self):
+		self.searchCtrl.Bind(wx.EVT_TEXT_ENTER, self.onSearch)
+		self.searchBtn.Bind(wx.EVT_BUTTON, self.onSearch)
+		self.cancelBtn.Bind(wx.EVT_BUTTON, lambda e: self.EndModal(wx.ID_CANCEL))
+		self.Bind(wx.EVT_CHAR_HOOK, self.onCharHook)
+
+	def onSearch(self, evt):
+		query = self.searchCtrl.GetValue().strip()
+		if not query:
+			wx.MessageBox(_("Please enter a search query."), _("Error"), wx.OK | wx.ICON_ERROR)
+			return
+
+		browser_choice = self.browserCombo.GetStringSelection()
+		browser_path = self.browser_paths.get(browser_choice, "start")
+
+		search_url = f"https://www.google.com/search?q={urllib.parse.quote(query)}"
+		self.mostVisitedManager.add_visit(search_url)
+		open_with_browser(search_url, browser_path)
+		self.EndModal(wx.ID_OK)
 
 	def onCharHook(self, evt):
 		if evt.GetKeyCode() == wx.WXK_ESCAPE:

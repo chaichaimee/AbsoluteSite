@@ -1,254 +1,313 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: AbsoluteSite 2026.3.2\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-03-11 18:31+0700\n"
+"Project-Id-Version: AbsoluteSite 2026.8.0\n"
+"Report-Msgid-Bugs-To: chaicm75@gmail.com\n"
+"POT-Creation-Date: 2026-07-27 13:33+0700\n"
 "PO-Revision-Date: \n"
-"Last-Translator: Anonymous <anonymous@example.com>\n"
+"Last-Translator: chaiBot and Malee Yamazaki\n"
 "Language-Team: Tagalog\n"
 "Language: tl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: NVDA DevOn Addon\n"
+"X-Generator: DevOn Addon\n"
 
-#: gui.py:189
-#: gui.py:265
-#: gui.py:573
+#: gui.py:209
+#: gui.py:287
+#: gui.py:589
 msgid "&Add Category"
 msgstr "&Magdagdag ng Kategorya"
 
-#: gui.py:186
+#: gui.py:206
 msgid "&Add Site"
-msgstr "Mag&dagdag ng Site"
+msgstr "&Magdagdag ng Site"
 
-#: gui.py:591
+#: gui.py:607
+#: gui.py:852
 msgid "&Cancel"
-msgstr "I-&kansela"
+msgstr "&Kanselahin"
 
-#: gui.py:356
+#: gui.py:373
 msgid "&Delete"
-msgstr "I-&delete"
+msgstr "&Tanggalin"
 
-#: gui.py:267
+#: gui.py:289
 msgid "&Delete Category"
-msgstr "I-delete ang &Kategorya"
+msgstr "&Tanggalin ang Kategorya"
 
-#: gui.py:188
+#: gui.py:208
 msgid "&Delete Site"
-msgstr "I-delete ang &Site"
+msgstr "&Tanggalin ang Site"
 
-#: gui.py:355
+#: gui.py:372
 msgid "&Edit"
-msgstr "I-&edit"
+msgstr "&I-edit"
 
-#: gui.py:190
-#: gui.py:266
+#: gui.py:210
+#: gui.py:288
 msgid "&Edit Category"
-msgstr "I-edit ang &Kategorya"
+msgstr "&I-edit ang Kategorya"
 
-#: gui.py:187
+#: gui.py:207
 msgid "&Edit Site"
-msgstr "I-edit ang &Site"
+msgstr "&I-edit ang Site"
 
-#: gui.py:378
+#: gui.py:393
 msgid "&Move to category"
-msgstr "I-&lipat sa kategorya"
+msgstr "&Ilipat sa kategorya"
 
-#: gui.py:369
+#: gui.py:385
 msgid "&Open with"
-msgstr "I-&bukas gamit ang"
+msgstr "&Buksan gamit ang"
 
-#: gui.py:347
+#: gui.py:366
+#: gui.py:767
 msgid "&Pin to top"
-msgstr "I-&pin sa itaas"
+msgstr "&I-pin sa itaas"
 
-#: gui.py:590
+#: gui.py:772
+msgid "&Remove from history"
+msgstr "&Alisin sa kasaysayan"
+
+#: gui.py:606
 msgid "&Save"
-msgstr "I-&save"
+msgstr "&I-save"
 
-#: gui.py:345
+#: gui.py:851
+msgid "&Search"
+msgstr "&Maghanap"
+
+#: gui.py:364
+#: gui.py:765
 msgid "&Unpin"
-msgstr "I-&unpin"
+msgstr "&Alisin ang pagka-pin"
 
-#: gui.py:661
+#: gui.py:676
 msgid "A site with this URL already exists in the target category."
-msgstr "Mayroon nang site na may ganitong URL sa target na kategorya."
+msgstr "May umiiral na na site na may ganitong URL sa target na kategorya."
 
-#: gui.py:667
+#: gui.py:680
 msgid "A site with this URL already exists in this category."
-msgstr "Mayroon nang site na may ganitong URL sa kategoryang ito."
+msgstr "May umiiral na na site na may ganitong URL sa kategoryang ito."
 
-#: __init__.py:22
-#: __init__.py:68
-#: gui.py:129
+#: __init__.py:23
+#: __init__.py:70
+#: __init__.py:107
+#: gui.py:154
 msgid "Absolute Site"
 msgstr "Absolute Site"
 
-#: gui.py:477
-#: gui.py:628
+#: gui.py:493
+#: gui.py:644
 msgid "Add Category"
 msgstr "Magdagdag ng Kategorya"
 
-#: gui.py:543
+#: gui.py:559
 msgid "Add New Site"
 msgstr "Magdagdag ng Bagong Site"
 
-#: gui.py:467
+#: gui.py:484
 msgid "Are you sure you want to delete '{}'?"
-msgstr "Sigurado ka bang gusto mong i-delete ang '{}'?"
+msgstr "Sigurado ka bang gusto mong tanggalin ang '{}'?"
 
-#: gui.py:318
+#: gui.py:338
 msgid "Are you sure you want to delete category '{}' and all its sites?"
-msgstr "Sigurado ka bang gusto mong i-delete ang kategoryang '{}' at lahat ng sites nito?"
+msgstr "Sigurado ka bang gusto mong tanggalin ang kategoryang '{}' at lahat ng mga site nito?"
 
-#: __init__.py:92
+#: gui.py:844
+msgid "Browser:"
+msgstr "Browser:"
+
+#: __init__.py:94
 msgid "Cannot capture URL. Make sure you are in a browser."
-msgstr "Hindi makuha ang URL. Siguraduhing nasa browser ka."
+msgstr "Hindi makuha ang URL. Tiyaking nasa loob ka ng isang browser."
 
-#: gui.py:513
+#: gui.py:529
 msgid "Cannot move down."
-msgstr "Hindi mailipat pababa."
+msgstr "Hindi maigalaw pababa."
 
-#: gui.py:505
+#: gui.py:521
 msgid "Cannot move up."
-msgstr "Hindi mailipat pataas."
+msgstr "Hindi maigalaw pataas."
 
-#: gui.py:306
+#: gui.py:327
 msgid "Category '{}' already exists or invalid."
-msgstr "Ang kategoryang '{}' ay umiiral na o hindi wasto."
+msgstr "Ang kategoryang '{}' ay umiiral na o hindi balido."
 
-#: gui.py:486
+#: gui.py:502
 msgid "Category already exists or invalid."
-msgstr "Ang kategorya ay umiiral na o hindi wasto."
+msgstr "Ang kategorya ay umiiral na o hindi balido."
 
-#: gui.py:636
+#: gui.py:652
 msgid "Category already exists."
 msgstr "Ang kategorya ay umiiral na."
 
-#: gui.py:293
+#: gui.py:314
 msgid "Category name cannot be empty."
-msgstr "Hindi pwedeng walang pangalan ang kategorya."
+msgstr "Ang pangalan ng kategorya ay hindi maaaring blangko."
 
-#: gui.py:171
-#: gui.py:570
+#: gui.py:191
+#: gui.py:586
 msgid "Category:"
 msgstr "Kategorya:"
 
-#: gui.py:319
-#: gui.py:468
+#: gui.py:339
+#: gui.py:485
 msgid "Confirm Delete"
-msgstr "Kumpirmahin ang Pag-delete"
+msgstr "Kumpirmahin ang Pagtanggal"
 
-#: gui.py:650
+#: gui.py:666
 msgid "Display name cannot be empty."
-msgstr "Hindi pwedeng walang display name."
+msgstr "Ang pangalan sa pagpapakita ay hindi maaaring blangko."
 
-#: gui.py:578
+#: gui.py:594
 msgid "Display name:"
-msgstr "Display name:"
+msgstr "Pangalan sa pagpapakita:"
 
-#: gui.py:191
+#: gui.py:211
+#: gui.py:709
 msgid "E&xit"
-msgstr "&Lumabas"
+msgstr "Lu&was"
 
-#: gui.py:289
+#: gui.py:310
 msgid "Edit Category"
 msgstr "I-edit ang Kategorya"
 
-#: gui.py:543
+#: gui.py:559
 msgid "Edit Site"
 msgstr "I-edit ang Site"
 
-#: gui.py:477
-#: gui.py:628
+#: gui.py:493
+#: gui.py:644
 msgid "Enter new category name:"
 msgstr "Ilagay ang bagong pangalan ng kategorya:"
 
-#: gui.py:289
+#: gui.py:310
 msgid "Enter new name for category '{}':"
 msgstr "Ilagay ang bagong pangalan para sa kategoryang '{}':"
 
-#: gui.py:125
-#: gui.py:285
-#: gui.py:293
-#: gui.py:306
+#: gui.py:149
+#: gui.py:307
 #: gui.py:314
-#: gui.py:328
-#: gui.py:424
-#: gui.py:433
-#: gui.py:486
-#: gui.py:530
-#: gui.py:636
-#: gui.py:642
-#: gui.py:646
-#: gui.py:650
-#: gui.py:661
-#: gui.py:667
+#: gui.py:327
+#: gui.py:335
+#: gui.py:348
+#: gui.py:438
+#: gui.py:444
+#: gui.py:453
+#: gui.py:502
+#: gui.py:546
+#: gui.py:652
+#: gui.py:658
+#: gui.py:662
+#: gui.py:666
+#: gui.py:676
+#: gui.py:680
+#: gui.py:749
+#: gui.py:755
+#: gui.py:890
 msgid "Error"
-msgstr "Mali"
+msgstr "Error"
 
-#: gui.py:328
+#: gui.py:348
 msgid "Failed to delete category."
-msgstr "Bigo sa pag-delete ng kategorya."
+msgstr "Nabigong tanggalin ang kategorya."
 
-#: gui.py:530
+#: gui.py:546
 msgid "Failed to move site. It may already exist in the target category."
-msgstr "Bigo sa paglipat ng site. Maaaring umiiral na ito sa target na kategorya."
+msgstr "Nabigong ilipat ang site. Maaaring umiiral na ito sa target na kategorya."
 
-#: gui.py:125
+#: gui.py:149
 msgid "Failed to open URL with browser: {}"
-msgstr "Bigo sa pagbukas ng URL gamit ang browser: {}"
+msgstr "Nabigong buksan ang URL gamit ang browser: {}"
 
-#: gui.py:424
+#: gui.py:444
+#: gui.py:755
 msgid "Failed to open URL: {}"
-msgstr "Bigo sa pagbukas ng URL: {}"
+msgstr "Nabigong buksan ang URL: {}"
 
-#: gui.py:352
+#: gui.py:694
+msgid "Most Visited"
+msgstr "Pinakabinisita"
+
+#: gui.py:370
+#: gui.py:770
 msgid "Move &Down"
-msgstr "I-lipat Pa&baba"
+msgstr "Ilipat paba&ba"
 
-#: gui.py:351
+#: gui.py:369
+#: gui.py:769
 msgid "Move &Up"
-msgstr "I-lipat Pa&taas"
+msgstr "Ilipat pata&as"
 
-#: gui.py:177
+#: gui.py:197
+#: gui.py:705
 msgid "Name"
 msgstr "Pangalan"
 
-#: gui.py:367
+#: gui.py:383
 msgid "No browsers found"
-msgstr "Walang nahanap na mga browser"
+msgstr "Walang natagpuang browser"
 
-#: gui.py:285
-#: gui.py:314
+#: gui.py:307
+#: gui.py:335
 msgid "No category selected."
 msgstr "Walang napiling kategorya."
 
-#: __init__.py:66
-msgid "Open Absolute Site manager (single tap) or Add new site (double tap)"
-msgstr "Buksan ang manager ng Absolute Site (isang tap) o Magdagdag ng bagong site (dalawang tap)"
+#: __init__.py:68
+msgid "Open Absolute Site manager (single tap), Add new site (double tap), or Most Visited (triple tap)"
+msgstr "Buksan ang Absolute Site manager (isang tap), Magdagdag ng bagong site (dalawang tap), o Pinakabinisita (tatlong tap)"
 
-#: gui.py:433
+#: gui.py:890
+msgid "Please enter a search query."
+msgstr "Mangyaring maglagay ng query sa paghahanap."
+
+#: gui.py:453
 msgid "Please select a category first."
-msgstr "Pumili muna ng kategorya."
+msgstr "Mangyaring pumili muna ng kategorya."
 
-#: gui.py:642
+#: gui.py:658
 msgid "Please select or add a category."
 msgstr "Mangyaring pumili o magdagdag ng kategorya."
 
-#: gui.py:181
-msgid "Show paths"
-msgstr "Ipakita ang mga path"
+#: gui.py:837
+msgid "Search query:"
+msgstr "Query sa paghahanap:"
 
-#: gui.py:584
+#: __init__.py:105
+msgid "Search the web via Google"
+msgstr "Maghanap sa web sa pamamagitan ng Google"
+
+#: gui.py:201
+msgid "Show paths"
+msgstr "Ipakita ang mga landas"
+
+#: gui.py:600
 msgid "Site URL:"
 msgstr "URL ng Site:"
 
-#: gui.py:178
+#: gui.py:198
 msgid "URL"
 msgstr "URL"
 
-#: gui.py:646
+#: gui.py:662
 msgid "URL cannot be empty."
-msgstr "Hindi pwedeng walang URL."
+msgstr "Ang URL ay hindi maaaring blangko."
+
+#: gui.py:144
+#: gui.py:438
+#: gui.py:749
+msgid "Unsafe URL scheme blocked."
+msgstr "Na-block ang hindi ligtas na scheme ng URL."
+
+#: gui.py:826
+msgid "Web Search"
+msgstr "Paghahanap sa Web"
+
+#: gui.py:869
+msgid "default"
+msgstr "default"
+
+#: gui.py:257
+msgid "{name}; URL: {url}"
+msgstr "{name}; URL: {url}"

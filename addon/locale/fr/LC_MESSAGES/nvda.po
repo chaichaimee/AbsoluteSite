@@ -1,254 +1,313 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: AbsoluteSite 2026.3.2\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-03-11 18:31+0700\n"
+"Project-Id-Version: AbsoluteSite 2026.8.0\n"
+"Report-Msgid-Bugs-To: chaicm75@gmail.com\n"
+"POT-Creation-Date: 2026-07-27 13:33+0700\n"
 "PO-Revision-Date: \n"
-"Last-Translator: Anonymous <anonymous@example.com>\n"
+"Last-Translator: chaiBot and Malee Yamazaki\n"
 "Language-Team: French\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: NVDA DevOn Addon\n"
+"X-Generator: DevOn Addon\n"
 
-#: gui.py:189
-#: gui.py:265
-#: gui.py:573
+#: gui.py:209
+#: gui.py:287
+#: gui.py:589
 msgid "&Add Category"
 msgstr "&Ajouter une catégorie"
 
-#: gui.py:186
+#: gui.py:206
 msgid "&Add Site"
-msgstr "&Ajouter un site"
+msgstr "Ajouter un &site"
 
-#: gui.py:591
+#: gui.py:607
+#: gui.py:852
 msgid "&Cancel"
 msgstr "&Annuler"
 
-#: gui.py:356
+#: gui.py:373
 msgid "&Delete"
 msgstr "&Supprimer"
 
-#: gui.py:267
+#: gui.py:289
 msgid "&Delete Category"
-msgstr "&Supprimer la catégorie"
+msgstr "Supprimer la &catégorie"
 
-#: gui.py:188
+#: gui.py:208
 msgid "&Delete Site"
-msgstr "&Supprimer le site"
+msgstr "Supprimer le &site"
 
-#: gui.py:355
+#: gui.py:372
 msgid "&Edit"
 msgstr "&Modifier"
 
-#: gui.py:190
-#: gui.py:266
+#: gui.py:210
+#: gui.py:288
 msgid "&Edit Category"
-msgstr "&Modifier la catégorie"
+msgstr "Modifier la &catégorie"
 
-#: gui.py:187
+#: gui.py:207
 msgid "&Edit Site"
-msgstr "&Modifier le site"
+msgstr "Modifier le &site"
 
-#: gui.py:378
+#: gui.py:393
 msgid "&Move to category"
 msgstr "&Déplacer vers la catégorie"
 
-#: gui.py:369
+#: gui.py:385
 msgid "&Open with"
 msgstr "&Ouvrir avec"
 
-#: gui.py:347
+#: gui.py:366
+#: gui.py:767
 msgid "&Pin to top"
-msgstr "&Épingler en haut"
+msgstr "Épingler en &haut"
 
-#: gui.py:590
+#: gui.py:772
+msgid "&Remove from history"
+msgstr "&Retirer de l'historique"
+
+#: gui.py:606
 msgid "&Save"
 msgstr "&Enregistrer"
 
-#: gui.py:345
-msgid "&Unpin"
-msgstr "&Désépingler"
+#: gui.py:851
+msgid "&Search"
+msgstr "&Rechercher"
 
-#: gui.py:661
+#: gui.py:364
+#: gui.py:765
+msgid "&Unpin"
+msgstr "Désépingl&er"
+
+#: gui.py:676
 msgid "A site with this URL already exists in the target category."
 msgstr "Un site avec cette URL existe déjà dans la catégorie cible."
 
-#: gui.py:667
+#: gui.py:680
 msgid "A site with this URL already exists in this category."
 msgstr "Un site avec cette URL existe déjà dans cette catégorie."
 
-#: __init__.py:22
-#: __init__.py:68
-#: gui.py:129
+#: __init__.py:23
+#: __init__.py:70
+#: __init__.py:107
+#: gui.py:154
 msgid "Absolute Site"
 msgstr "Absolute Site"
 
-#: gui.py:477
-#: gui.py:628
+#: gui.py:493
+#: gui.py:644
 msgid "Add Category"
 msgstr "Ajouter une catégorie"
 
-#: gui.py:543
+#: gui.py:559
 msgid "Add New Site"
 msgstr "Ajouter un nouveau site"
 
-#: gui.py:467
+#: gui.py:484
 msgid "Are you sure you want to delete '{}'?"
 msgstr "Êtes-vous sûr de vouloir supprimer '{}' ?"
 
-#: gui.py:318
+#: gui.py:338
 msgid "Are you sure you want to delete category '{}' and all its sites?"
 msgstr "Êtes-vous sûr de vouloir supprimer la catégorie '{}' et tous ses sites ?"
 
-#: __init__.py:92
+#: gui.py:844
+msgid "Browser:"
+msgstr "Navigateur :"
+
+#: __init__.py:94
 msgid "Cannot capture URL. Make sure you are in a browser."
 msgstr "Impossible de capturer l'URL. Assurez-vous d'être dans un navigateur."
 
-#: gui.py:513
+#: gui.py:529
 msgid "Cannot move down."
 msgstr "Impossible de descendre."
 
-#: gui.py:505
+#: gui.py:521
 msgid "Cannot move up."
 msgstr "Impossible de monter."
 
-#: gui.py:306
+#: gui.py:327
 msgid "Category '{}' already exists or invalid."
-msgstr "La catégorie '{}' existe déjà ou est invalide."
+msgstr "La catégorie '{}' existe déjà ou n'est pas valide."
 
-#: gui.py:486
+#: gui.py:502
 msgid "Category already exists or invalid."
-msgstr "La catégorie existe déjà ou est invalide."
+msgstr "La catégorie existe déjà ou n'est pas valide."
 
-#: gui.py:636
+#: gui.py:652
 msgid "Category already exists."
 msgstr "La catégorie existe déjà."
 
-#: gui.py:293
+#: gui.py:314
 msgid "Category name cannot be empty."
 msgstr "Le nom de la catégorie ne peut pas être vide."
 
-#: gui.py:171
-#: gui.py:570
+#: gui.py:191
+#: gui.py:586
 msgid "Category:"
 msgstr "Catégorie :"
 
-#: gui.py:319
-#: gui.py:468
+#: gui.py:339
+#: gui.py:485
 msgid "Confirm Delete"
 msgstr "Confirmer la suppression"
 
-#: gui.py:650
+#: gui.py:666
 msgid "Display name cannot be empty."
-msgstr "Le nom d'affichage ne peut pas être vide."
+msgstr "Le nom affiché ne peut pas être vide."
 
-#: gui.py:578
+#: gui.py:594
 msgid "Display name:"
-msgstr "Nom d'affichage :"
+msgstr "Nom affiché :"
 
-#: gui.py:191
+#: gui.py:211
+#: gui.py:709
 msgid "E&xit"
 msgstr "&Quitter"
 
-#: gui.py:289
+#: gui.py:310
 msgid "Edit Category"
 msgstr "Modifier la catégorie"
 
-#: gui.py:543
+#: gui.py:559
 msgid "Edit Site"
 msgstr "Modifier le site"
 
-#: gui.py:477
-#: gui.py:628
+#: gui.py:493
+#: gui.py:644
 msgid "Enter new category name:"
 msgstr "Entrez le nouveau nom de la catégorie :"
 
-#: gui.py:289
+#: gui.py:310
 msgid "Enter new name for category '{}':"
 msgstr "Entrez le nouveau nom pour la catégorie '{}' :"
 
-#: gui.py:125
-#: gui.py:285
-#: gui.py:293
-#: gui.py:306
+#: gui.py:149
+#: gui.py:307
 #: gui.py:314
-#: gui.py:328
-#: gui.py:424
-#: gui.py:433
-#: gui.py:486
-#: gui.py:530
-#: gui.py:636
-#: gui.py:642
-#: gui.py:646
-#: gui.py:650
-#: gui.py:661
-#: gui.py:667
+#: gui.py:327
+#: gui.py:335
+#: gui.py:348
+#: gui.py:438
+#: gui.py:444
+#: gui.py:453
+#: gui.py:502
+#: gui.py:546
+#: gui.py:652
+#: gui.py:658
+#: gui.py:662
+#: gui.py:666
+#: gui.py:676
+#: gui.py:680
+#: gui.py:749
+#: gui.py:755
+#: gui.py:890
 msgid "Error"
 msgstr "Erreur"
 
-#: gui.py:328
+#: gui.py:348
 msgid "Failed to delete category."
 msgstr "Échec de la suppression de la catégorie."
 
-#: gui.py:530
+#: gui.py:546
 msgid "Failed to move site. It may already exist in the target category."
 msgstr "Échec du déplacement du site. Il existe peut-être déjà dans la catégorie cible."
 
-#: gui.py:125
+#: gui.py:149
 msgid "Failed to open URL with browser: {}"
 msgstr "Échec de l'ouverture de l'URL avec le navigateur : {}"
 
-#: gui.py:424
+#: gui.py:444
+#: gui.py:755
 msgid "Failed to open URL: {}"
 msgstr "Échec de l'ouverture de l'URL : {}"
 
-#: gui.py:352
+#: gui.py:694
+msgid "Most Visited"
+msgstr "Les plus visités"
+
+#: gui.py:370
+#: gui.py:770
 msgid "Move &Down"
-msgstr "&Descendre"
+msgstr "Déplacer vers le &bas"
 
-#: gui.py:351
+#: gui.py:369
+#: gui.py:769
 msgid "Move &Up"
-msgstr "&Monter"
+msgstr "Déplacer vers le &haut"
 
-#: gui.py:177
+#: gui.py:197
+#: gui.py:705
 msgid "Name"
 msgstr "Nom"
 
-#: gui.py:367
+#: gui.py:383
 msgid "No browsers found"
 msgstr "Aucun navigateur trouvé"
 
-#: gui.py:285
-#: gui.py:314
+#: gui.py:307
+#: gui.py:335
 msgid "No category selected."
 msgstr "Aucune catégorie sélectionnée."
 
-#: __init__.py:66
-msgid "Open Absolute Site manager (single tap) or Add new site (double tap)"
-msgstr "Ouvrir le gestionnaire Absolute Site (simple appui) ou Ajouter un site (double appui)"
+#: __init__.py:68
+msgid "Open Absolute Site manager (single tap), Add new site (double tap), or Most Visited (triple tap)"
+msgstr "Ouvrir le gestionnaire Absolute Site (un seul appui), ajouter un nouveau site (double appui) ou les plus visités (triple appui)"
 
-#: gui.py:433
+#: gui.py:890
+msgid "Please enter a search query."
+msgstr "Veuillez entrer une requête de recherche."
+
+#: gui.py:453
 msgid "Please select a category first."
 msgstr "Veuillez d'abord sélectionner une catégorie."
 
-#: gui.py:642
+#: gui.py:658
 msgid "Please select or add a category."
 msgstr "Veuillez sélectionner ou ajouter une catégorie."
 
-#: gui.py:181
+#: gui.py:837
+msgid "Search query:"
+msgstr "Requête de recherche :"
+
+#: __init__.py:105
+msgid "Search the web via Google"
+msgstr "Rechercher sur le Web via Google"
+
+#: gui.py:201
 msgid "Show paths"
 msgstr "Afficher les chemins"
 
-#: gui.py:584
+#: gui.py:600
 msgid "Site URL:"
 msgstr "URL du site :"
 
-#: gui.py:178
+#: gui.py:198
 msgid "URL"
 msgstr "URL"
 
-#: gui.py:646
+#: gui.py:662
 msgid "URL cannot be empty."
 msgstr "L'URL ne peut pas être vide."
+
+#: gui.py:144
+#: gui.py:438
+#: gui.py:749
+msgid "Unsafe URL scheme blocked."
+msgstr "Schéma d'URL non sécurisé bloqué."
+
+#: gui.py:826
+msgid "Web Search"
+msgstr "Recherche Web"
+
+#: gui.py:869
+msgid "default"
+msgstr "par défaut"
+
+#: gui.py:257
+msgid "{name}; URL: {url}"
+msgstr "{name} ; URL : {url}"
