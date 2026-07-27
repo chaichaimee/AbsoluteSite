@@ -1,4 +1,5 @@
 # siteManager.py
+
 import os
 import json
 import shutil
@@ -20,10 +21,10 @@ class SiteManager:
 
 		self._migrate_old_files()
 
-		self.data = {}          # category -> list of site dicts: {id, name, url}
+		self.data = {}
 		self.prefs = {}
-		self.order = {}          # category -> list of site IDs in custom order
-		self.pinned = {}         # category -> set of pinned site IDs
+		self.order = {}
+		self.pinned = {}
 
 		self.load()
 		self.load_prefs()
@@ -457,3 +458,8 @@ class SiteManager:
 
 		self._reorder_category(new_category)
 		return True
+
+	def terminate(self):
+		self.save()
+		self.save_prefs()
+		self.save_order()

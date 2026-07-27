@@ -8,7 +8,7 @@ import scriptHandler
 import api
 import ui
 import time
-import wx
+import core
 import re
 from .siteManager import SiteManager
 from .gui import MainDialog, AddSiteDialog
@@ -26,7 +26,6 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 		self.manager = SiteManager()
 		self._last_tap_time = 0
 		self._tap_count = 0
-		# Variable to check if this is the first time opening the dialog after NVDA starts
 		self._first_open = True
 
 	def get_current_url(self):
@@ -76,17 +75,13 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 
 		def execute_action():
 			if self._tap_count == 1:
-				# Single tap: open manager dialog
 				if self._first_open:
-					# First time after NVDA restart -> do not pass last category
 					nvdaGui.mainFrame.popupSettingsDialog(MainDialog, self.manager)
 				else:
-					# Subsequent opens -> pass last category (if any)
 					last_cat = self.manager.get_last_category()
 					nvdaGui.mainFrame.popupSettingsDialog(MainDialog, self.manager, last_cat)
 				self._first_open = False
 			elif self._tap_count >= 2:
-				# Double tap: open add site dialog
 				current_url = self.get_current_url()
 				if not current_url:
 					ui.message(_("Cannot capture URL. Make sure you are in a browser."))
@@ -94,4 +89,7 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 					nvdaGui.mainFrame.popupSettingsDialog(AddSiteDialog, self.manager, current_url)
 			self._tap_count = 0
 
-		wx.CallLater(int(DOUBLE_TAP_THRESHOLD * 1000), execute_action)
+		core.callLater(int(DOUBLE_TAP_THRESHOLD * 1000), execute_action)
+
+	def terminate(self):
+		self.manager.terminate()

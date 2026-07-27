@@ -8,11 +8,11 @@ import os
 import re
 import subprocess
 import winreg
+import urllib.parse
 from .siteManager import SiteManager
 
 addonHandler.initTranslation()
 
-# Fallback paths for browsers (used if registry lookup fails)
 FALLBACK_BROWSER_PATHS = {
 	"Chrome": [
 		os.path.expandvars(r"%ProgramFiles%\Google\Chrome\Application\chrome.exe"),
@@ -47,15 +47,9 @@ FALLBACK_BROWSER_PATHS = {
 }
 
 def get_installed_browsers():
-	"""
-	Detect installed browsers using Windows registry first,
-	then fallback to checking common file system paths.
-	Returns a list of (display_name, executable_path) sorted by popularity.
-	"""
 	browsers = []
 	found_paths = set()
 
-	# Registry keys for each browser (App Paths)
 	reg_keys = {
 		"Chrome": r"SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths\chrome.exe",
 		"Firefox": r"SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths\firefox.exe",
@@ -65,12 +59,10 @@ def get_installed_browsers():
 		"Vivaldi": r"SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths\vivaldi.exe",
 	}
 
-	# Alternative registry keys for browsers that use different executable names
 	alt_reg_keys = {
 		"Opera": r"SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths\launcher.exe"
 	}
 
-	# Helper to query registry from both HKLM and HKCU
 	def query_registry(key_path):
 		for hive in (winreg.HKEY_LOCAL_MACHINE, winreg.HKEY_CURRENT_USER):
 			try:
@@ -82,14 +74,12 @@ def get_installed_browsers():
 				continue
 		return None
 
-	# First pass: try main registry keys
 	for browser_name, key in reg_keys.items():
 		path = query_registry(key)
 		if path and path not in found_paths:
 			browsers.append((browser_name, path))
 			found_paths.add(path)
 
-	# Second pass: try alternative keys for browsers not found yet
 	for browser_name, key in alt_reg_keys.items():
 		if any(b[0] == browser_name for b in browsers):
 			continue
@@ -98,7 +88,6 @@ def get_installed_browsers():
 			browsers.append((browser_name, path))
 			found_paths.add(path)
 
-	# Final pass: fallback to file system paths for browsers still missing
 	for browser_name, paths in FALLBACK_BROWSER_PATHS.items():
 		if any(b[0] == browser_name for b in browsers):
 			continue
@@ -108,7 +97,6 @@ def get_installed_browsers():
 				found_paths.add(path)
 				break
 
-	# Sort browsers by desired order (popularity)
 	desired_order = ["Chrome", "Firefox", "Edge", "Brave", "Opera", "Vivaldi"]
 	browser_dict = dict(browsers)
 	ordered = []
@@ -118,7 +106,10 @@ def get_installed_browsers():
 	return ordered
 
 def open_with_browser(url, browser_exe):
-	"""Open URL with specified browser executable."""
+	parsed = urllib.parse.urlparse(url)
+	if parsed.scheme not in ('http', 'https', 'file'):
+		ui.message(_("Unsafe URL scheme blocked."))
+		return
 	try:
 		subprocess.Popen([browser_exe, url])
 	except Exception as e:
@@ -130,7 +121,6 @@ class MainDialog(wx.Dialog):
 		self.manager = manager
 		self.selected_category = selected_category
 
-		# Timer for auto-close after 15 seconds of inactivity
 		self.autoCloseTimer = wx.Timer(self)
 		self.Bind(wx.EVT_TIMER, self.onAutoCloseTimer, self.autoCloseTimer)
 		self.Bind(wx.EVT_ACTIVATE, self.onActivate)
@@ -147,21 +137,16 @@ class MainDialog(wx.Dialog):
 		wx.CallAfter(self.siteList.SetFocus)
 
 	def resetAutoCloseTimer(self):
-		"""Restart the auto-close timer."""
 		if self.autoCloseTimer:
 			self.autoCloseTimer.Stop()
 			self.autoCloseTimer.Start(15000, wx.TIMER_ONE_SHOT)
 
 	def onActivate(self, evt):
-		"""Handle dialog activation/deactivation."""
 		if evt.GetActive():
-			# Dialog gained focus: reset timer
 			self.resetAutoCloseTimer()
-		# else: dialog lost focus (e.g., switched to another app) – timer continues running
 		evt.Skip()
 
 	def onAutoCloseTimer(self, evt):
-		"""Close the dialog when timer expires."""
 		self.Close()
 
 	def _initUI(self):
@@ -284,7 +269,6 @@ class MainDialog(wx.Dialog):
 		if not current_cat:
 			wx.MessageBox(_("No category selected."), _("Error"), wx.OK | wx.ICON_ERROR)
 			return
-		# Stop timer while modal dialog is open
 		self.autoCloseTimer.Stop()
 		dlg = wx.TextEntryDialog(self, _("Enter new name for category '{}':").format(current_cat), _("Edit Category"))
 		if dlg.ShowModal() == wx.ID_OK:
@@ -313,7 +297,6 @@ class MainDialog(wx.Dialog):
 		if not current_cat:
 			wx.MessageBox(_("No category selected."), _("Error"), wx.OK | wx.ICON_ERROR)
 			return
-		# Stop timer while modal dialog is open
 		self.autoCloseTimer.Stop()
 		if wx.MessageBox(_("Are you sure you want to delete category '{}' and all its sites?").format(current_cat),
 						 _("Confirm Delete"), wx.YES_NO | wx.ICON_QUESTION) == wx.YES:
@@ -340,24 +323,20 @@ class MainDialog(wx.Dialog):
 
 		menu = wx.Menu()
 
-		# Pin/Unpin (first item)
 		if self.manager.is_pinned(category, url):
 			pinLabel = _("&Unpin")
 		else:
 			pinLabel = _("&Pin to top")
 		pinItem = menu.Append(wx.ID_ANY, pinLabel)
 
-		# Move Up / Down
 		upItem = menu.Append(wx.ID_ANY, _("Move &Up"))
 		downItem = menu.Append(wx.ID_ANY, _("Move &Down"))
 
-		# Edit and Delete
 		editItem = menu.Append(wx.ID_ANY, _("&Edit"))
 		deleteItem = menu.Append(wx.ID_ANY, _("&Delete"))
 
 		menu.AppendSeparator()
 
-		# Open with submenu
 		openWithMenu = wx.Menu()
 		browsers = get_installed_browsers()
 		for browser_name, exe_path in browsers:
@@ -368,7 +347,6 @@ class MainDialog(wx.Dialog):
 			noBrowserItem.Enable(False)
 		openWithItem = menu.AppendSubMenu(openWithMenu, _("&Open with"))
 
-		# Move to category submenu
 		moveMenu = wx.Menu()
 		categories = self.manager.get_all_categories()
 		for cat in categories:
@@ -377,7 +355,6 @@ class MainDialog(wx.Dialog):
 				self.Bind(wx.EVT_MENU, lambda evt, c=cat: self.onMoveToCategory(c), item)
 		moveItem = menu.AppendSubMenu(moveMenu, _("&Move to category"))
 
-		# Bind events
 		self.Bind(wx.EVT_MENU, lambda e: self.onTogglePin(category, url), pinItem)
 		self.Bind(wx.EVT_MENU, lambda e: self.onMoveUp(category, url), upItem)
 		self.Bind(wx.EVT_MENU, lambda e: self.onMoveDown(category, url), downItem)
@@ -418,8 +395,12 @@ class MainDialog(wx.Dialog):
 		site = self._get_selected_site()
 		if site:
 			_, url = site
+			parsed = urllib.parse.urlparse(url)
+			if parsed.scheme not in ('http', 'https', 'file'):
+				wx.MessageBox(_("Unsafe URL scheme blocked."), _("Error"), wx.OK | wx.ICON_ERROR)
+				return
 			try:
-				os.startfile(url)
+				subprocess.Popen(['start', url], shell=True)
 			except Exception as e:
 				wx.MessageBox(_("Failed to open URL: {}").format(str(e)), _("Error"), wx.OK | wx.ICON_ERROR)
 			current_category = self.categoryCombo.GetStringSelection()
@@ -432,7 +413,6 @@ class MainDialog(wx.Dialog):
 		if not category:
 			wx.MessageBox(_("Please select a category first."), _("Error"), wx.OK | wx.ICON_ERROR)
 			return
-		# Stop timer while modal dialog is open
 		self.autoCloseTimer.Stop()
 		dlg = AddSiteDialog(self, self.manager, category=category, url=None, display_name=None, edit_mode=False)
 		if dlg.ShowModal() == wx.ID_OK:
@@ -447,7 +427,6 @@ class MainDialog(wx.Dialog):
 			return
 		name, url = site
 		category = self.categoryCombo.GetStringSelection()
-		# Stop timer while modal dialog is open
 		self.autoCloseTimer.Stop()
 		dlg = AddSiteDialog(self, self.manager, category=category, display_name=name, url=url, edit_mode=True)
 		if dlg.ShowModal() == wx.ID_OK:
@@ -462,7 +441,6 @@ class MainDialog(wx.Dialog):
 			return
 		name, url = site
 		category = self.categoryCombo.GetStringSelection()
-		# Stop timer while modal dialog is open
 		self.autoCloseTimer.Stop()
 		if wx.MessageBox(_("Are you sure you want to delete '{}'?").format(name),
 						 _("Confirm Delete"), wx.YES_NO | wx.ICON_QUESTION) == wx.YES:
@@ -472,7 +450,6 @@ class MainDialog(wx.Dialog):
 
 	def onAddCategory(self, evt):
 		self.resetAutoCloseTimer()
-		# Stop timer while modal dialog is open
 		self.autoCloseTimer.Stop()
 		dlg = wx.TextEntryDialog(self, _("Enter new category name:"), _("Add Category"))
 		if dlg.ShowModal() == wx.ID_OK:
@@ -650,21 +627,21 @@ class AddSiteDialog(wx.Dialog):
 			wx.MessageBox(_("Display name cannot be empty."), _("Error"), wx.OK | wx.ICON_ERROR)
 			return
 
+		success = False
 		if self.edit_mode:
-			if self.manager.update_site(
+			success = self.manager.update_site(
 				self.old_category, self.old_display_name, self.old_url,
 				category, display_name, url
-			):
-				self.EndModal(wx.ID_OK)
-				nvdaGui.mainFrame.popupSettingsDialog(MainDialog, self.manager, category)
-			else:
+			)
+			if not success:
 				wx.MessageBox(_("A site with this URL already exists in the target category."), _("Error"), wx.OK | wx.ICON_ERROR)
 		else:
-			if self.manager.add_site(category, display_name, url):
-				self.EndModal(wx.ID_OK)
-				nvdaGui.mainFrame.popupSettingsDialog(MainDialog, self.manager, category)
-			else:
+			success = self.manager.add_site(category, display_name, url)
+			if not success:
 				wx.MessageBox(_("A site with this URL already exists in this category."), _("Error"), wx.OK | wx.ICON_ERROR)
+
+		if success:
+			self.EndModal(wx.ID_OK)
 
 	def onCharHook(self, evt):
 		if evt.GetKeyCode() == wx.WXK_ESCAPE:
