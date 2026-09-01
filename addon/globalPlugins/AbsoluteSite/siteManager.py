@@ -165,6 +165,17 @@ class SiteManager:
 			self.prefs["last_category"] = category
 			self.save_prefs()
 
+	def get_category_browser(self, category):
+		return self.prefs.get("category_browser", {}).get(category, "Default")
+
+	def set_category_browser(self, category, browser_name):
+		if not category:
+			return
+		categoryBrowsers = self.prefs.get("category_browser", {})
+		categoryBrowsers[category] = browser_name
+		self.prefs["category_browser"] = categoryBrowsers
+		self.save_prefs()
+
 	def get_all_categories(self):
 		return sorted(self.data.keys(), key=str.lower)
 
@@ -250,8 +261,15 @@ class SiteManager:
 		if category not in self.data:
 			return False
 		del self.data[category]
+		prefsChanged = False
 		if self.prefs.get("last_category") == category:
 			self.prefs.pop("last_category", None)
+			prefsChanged = True
+		categoryBrowsers = self.prefs.get("category_browser", {})
+		if category in categoryBrowsers:
+			categoryBrowsers.pop(category, None)
+			prefsChanged = True
+		if prefsChanged:
 			self.save_prefs()
 		self.order.pop(category, None)
 		self.pinned.pop(category, None)
@@ -269,8 +287,15 @@ class SiteManager:
 			self.order[new_name] = self.order.pop(old_name)
 		if old_name in self.pinned:
 			self.pinned[new_name] = self.pinned.pop(old_name)
+		prefsChanged = False
 		if self.prefs.get("last_category") == old_name:
 			self.prefs["last_category"] = new_name
+			prefsChanged = True
+		categoryBrowsers = self.prefs.get("category_browser", {})
+		if old_name in categoryBrowsers:
+			categoryBrowsers[new_name] = categoryBrowsers.pop(old_name)
+			prefsChanged = True
+		if prefsChanged:
 			self.save_prefs()
 		self.save()
 		self.save_order()

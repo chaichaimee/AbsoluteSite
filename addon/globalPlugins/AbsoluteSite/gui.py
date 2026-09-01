@@ -11,9 +11,16 @@ import re
 import subprocess
 import winreg
 import urllib.parse
+import threading
+import time
+import ctypes
 from .siteManager import SiteManager
 
 addonHandler.initTranslation()
+
+CATEGORY_BROWSER_CHOICES = ["Default", "Brave", "Chrome", "Edge", "Firefox"]
+
+MAXIMIZE_WATCH_EXE_NAMES = {"chrome.exe", "firefox.exe", "brave.exe", "msedge.exe"}
 
 FALLBACK_BROWSER_PATHS = {
 	"Chrome": [
@@ -147,6 +154,66 @@ def open_with_browser(url, browser_exe):
 		subprocess.Popen([browser_exe, url])
 	except Exception as e:
 		wx.MessageBox(_("Failed to open URL with browser: {}").format(str(e)), _("Error"), wx.OK | wx.ICON_ERROR)
+		return
+	expectedExeName = os.path.basename(browser_exe)
+	if expectedExeName.lower() in MAXIMIZE_WATCH_EXE_NAMES:
+		threading.Thread(target=_maximizeLaunchedBrowserWindow, args=(expectedExeName,), daemon=True).start()
+
+
+SW_MAXIMIZE = 3
+
+
+def _getProcessExeName(pid):
+	PROCESS_QUERY_LIMITED_INFORMATION = 0x1000
+	processHandle = ctypes.windll.kernel32.OpenProcess(PROCESS_QUERY_LIMITED_INFORMATION, False, pid)
+	if not processHandle:
+		return None
+	try:
+		nameBuffer = ctypes.create_unicode_buffer(260)
+		bufferSize = ctypes.c_ulong(260)
+		if ctypes.windll.kernel32.QueryFullProcessImageNameW(processHandle, 0, nameBuffer, ctypes.byref(bufferSize)):
+			return os.path.basename(nameBuffer.value)
+		return None
+	finally:
+		ctypes.windll.kernel32.CloseHandle(processHandle)
+
+
+def _maximizeLaunchedBrowserWindow(expectedExeName):
+	targetHwnd = None
+	findDeadline = time.time() + 8
+	while time.time() < findDeadline:
+		foregroundHwnd = ctypes.windll.user32.GetForegroundWindow()
+		if foregroundHwnd:
+			try:
+				foregroundPid = ctypes.c_ulong()
+				ctypes.windll.user32.GetWindowThreadProcessId(foregroundHwnd, ctypes.byref(foregroundPid))
+				foregroundExeName = _getProcessExeName(foregroundPid.value)
+			except Exception:
+				foregroundExeName = None
+			if foregroundExeName and foregroundExeName.lower() == expectedExeName.lower():
+				targetHwnd = foregroundHwnd
+				break
+		time.sleep(0.2)
+
+	if not targetHwnd:
+		return
+
+	ctypes.windll.user32.ShowWindow(targetHwnd, SW_MAXIMIZE)
+
+	verifyDeadline = time.time() + 3
+	while time.time() < verifyDeadline:
+		if ctypes.windll.user32.IsZoomed(targetHwnd):
+			wx.CallAfter(ui.message, _("Maximized"))
+			return
+		time.sleep(0.15)
+
+
+def open_with_default_browser(url):
+	os.startfile(url)
+	defaultName, defaultPath = get_default_browser()
+	expectedExeName = os.path.basename(defaultPath)
+	if expectedExeName.lower() in MAXIMIZE_WATCH_EXE_NAMES:
+		threading.Thread(target=_maximizeLaunchedBrowserWindow, args=(expectedExeName,), daemon=True).start()
 
 
 class MainDialog(wx.Dialog):
@@ -167,6 +234,7 @@ class MainDialog(wx.Dialog):
 			self.categoryCombo.SetStringSelection(self.selected_category)
 		elif self.categoryCombo.GetCount() > 0:
 			self.categoryCombo.SetSelection(0)
+		self._updateOpenWithCombo()
 		self._updateSiteList()
 		wx.CallAfter(self.resetAutoCloseTimer)
 		wx.CallAfter(self.siteList.SetFocus)
@@ -188,6 +256,9 @@ class MainDialog(wx.Dialog):
 		mainSizer = wx.BoxSizer(wx.VERTICAL)
 
 		catSizer = wx.BoxSizer(wx.HORIZONTAL)
+		catSizer.Add(wx.StaticText(self, label=_("Category Browser:")), 0, wx.ALIGN_CENTER_VERTICAL | wx.RIGHT, 5)
+		self.openWithCombo = wx.ComboBox(self, choices=CATEGORY_BROWSER_CHOICES, style=wx.CB_READONLY)
+		catSizer.Add(self.openWithCombo, 0, wx.RIGHT, 15)
 		catSizer.Add(wx.StaticText(self, label=_("Category:")), 0, wx.ALIGN_CENTER_VERTICAL | wx.RIGHT, 5)
 		self.categoryCombo = wx.ComboBox(self, choices=[], style=wx.CB_READONLY)
 		catSizer.Add(self.categoryCombo, 1, wx.EXPAND)
@@ -227,6 +298,7 @@ class MainDialog(wx.Dialog):
 		self.categoryCombo.Bind(wx.EVT_COMBOBOX, self.onCategoryChange)
 		self.categoryCombo.Bind(wx.EVT_CONTEXT_MENU, self.onCategoryContextMenu)
 		self.categoryCombo.Bind(wx.EVT_KEY_DOWN, self.onCategoryKeyDown)
+		self.openWithCombo.Bind(wx.EVT_COMBOBOX, self.onOpenWithComboChange)
 		self.siteList.Bind(wx.EVT_LIST_ITEM_ACTIVATED, self.onOpenUrl)
 		self.siteList.Bind(wx.EVT_CONTEXT_MENU, self.onContextMenu)
 		self.siteList.Bind(wx.EVT_KEY_DOWN, self.onKeyDown)
@@ -276,8 +348,38 @@ class MainDialog(wx.Dialog):
 		self.resetAutoCloseTimer()
 		self._updateSiteList()
 
+	def _updateOpenWithCombo(self):
+		category = self.categoryCombo.GetStringSelection()
+		if not category:
+			self.openWithCombo.SetSelection(0)
+			return
+		preferredBrowser = self.manager.get_category_browser(category)
+		if preferredBrowser not in CATEGORY_BROWSER_CHOICES:
+			preferredBrowser = "Default"
+		self.openWithCombo.SetStringSelection(preferredBrowser)
+
+	def onOpenWithComboChange(self, evt):
+		self.resetAutoCloseTimer()
+		category = self.categoryCombo.GetStringSelection()
+		if not category:
+			return
+		self.manager.set_category_browser(category, self.openWithCombo.GetStringSelection())
+
+	def _resolve_category_browser(self, category):
+		preferredBrowser = self.manager.get_category_browser(category)
+		if not preferredBrowser or preferredBrowser == "Default":
+			return None
+		installedBrowsers = dict(get_installed_browsers())
+		if preferredBrowser in installedBrowsers:
+			return installedBrowsers[preferredBrowser]
+		ui.message(_("{browser} not found. Opening with default browser instead.").format(browser=preferredBrowser))
+		return None
+
 	def onCategoryChange(self, evt):
 		self.resetAutoCloseTimer()
+		current_category = self.categoryCombo.GetStringSelection()
+		self.manager.set_last_category(current_category)
+		self._updateOpenWithCombo()
 		self._updateSiteList()
 		self._updateButtons()
 
@@ -322,6 +424,7 @@ class MainDialog(wx.Dialog):
 			if self.manager.rename_category(current_cat, new_cat):
 				self._populateCategories()
 				self.categoryCombo.SetStringSelection(new_cat)
+				self._updateOpenWithCombo()
 				self._updateSiteList()
 			else:
 				wx.MessageBox(_("Category '{}' already exists or invalid.").format(new_cat), _("Error"), wx.OK | wx.ICON_ERROR)
@@ -343,6 +446,7 @@ class MainDialog(wx.Dialog):
 					self.categoryCombo.SetSelection(0)
 				else:
 					self.categoryCombo.Clear()
+				self._updateOpenWithCombo()
 				self._updateSiteList()
 			else:
 				wx.MessageBox(_("Failed to delete category."), _("Error"), wx.OK | wx.ICON_ERROR)
@@ -437,12 +541,16 @@ class MainDialog(wx.Dialog):
 			if parsed.scheme not in ('http', 'https', 'file'):
 				wx.MessageBox(_("Unsafe URL scheme blocked."), _("Error"), wx.OK | wx.ICON_ERROR)
 				return
+			current_category = self.categoryCombo.GetStringSelection()
 			try:
 				self.mostVisitedManager.add_visit(url)
-				subprocess.Popen(['start', url], shell=True)
+				browserExe = self._resolve_category_browser(current_category)
+				if browserExe:
+					open_with_browser(url, browserExe)
+				else:
+					open_with_default_browser(url)
 			except Exception as e:
 				wx.MessageBox(_("Failed to open URL: {}").format(str(e)), _("Error"), wx.OK | wx.ICON_ERROR)
-			current_category = self.categoryCombo.GetStringSelection()
 			self.manager.set_last_category(current_category)
 			self.Close()
 
@@ -497,6 +605,7 @@ class MainDialog(wx.Dialog):
 				if self.manager.add_category(new_cat):
 					self._populateCategories()
 					self.categoryCombo.SetStringSelection(new_cat)
+					self._updateOpenWithCombo()
 					self._updateSiteList()
 				else:
 					wx.MessageBox(_("Category already exists or invalid."), _("Error"), wx.OK | wx.ICON_ERROR)
@@ -540,6 +649,7 @@ class MainDialog(wx.Dialog):
 		if self.manager.move_site_to_category(old_category, url, new_category):
 			self._updateSiteList()
 			self.categoryCombo.SetStringSelection(new_category)
+			self._updateOpenWithCombo()
 			self._updateSiteList()
 			self._select_site_by_url(url)
 		else:
@@ -635,7 +745,7 @@ class AddSiteDialog(wx.Dialog):
 			if parts:
 				return parts[0].capitalize()
 			return domain.capitalize()
-		except:
+		except Exception:
 			if len(url) > 30:
 				return url[:27] + "..."
 			return url
@@ -750,7 +860,7 @@ class MostVisitedDialog(wx.Dialog):
 			return
 		self.mostVisitedManager.add_visit(url)
 		try:
-			subprocess.Popen(['start', url], shell=True)
+			open_with_default_browser(url)
 		except Exception as e:
 			wx.MessageBox(_("Failed to open URL: {}").format(str(e)), _("Error"), wx.OK | wx.ICON_ERROR)
 		self.Close()
@@ -903,3 +1013,6 @@ class SearchDialog(wx.Dialog):
 			self.EndModal(wx.ID_CANCEL)
 		else:
 			evt.Skip()
+
+
+

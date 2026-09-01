@@ -28,38 +28,68 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 		self.mostVisitedManager = MostVisitedManager()
 		self._last_tap_time = 0
 		self._tap_count = 0
-		self._first_open = True
 		self._multiTapTimer = None
+
+	def _get_document_url_from_object(self, obj):
+		"""Traverse up the parent chain to find a document object and return its URL."""
+		current = obj
+		while current is not None:
+			try:
+				# Check if current object is a browse mode document itself
+				if hasattr(current, 'documentConstantIdentifier'):
+					url = current.documentConstantIdentifier
+					if url:
+						return url
+
+				# Check if current object has a treeInterceptor (browse mode)
+				if hasattr(current, 'treeInterceptor') and current.treeInterceptor is not None:
+					url = current.treeInterceptor.documentConstantIdentifier
+					if url:
+						return url
+			except Exception:
+				pass
+
+			try:
+				current = current.parent
+			except Exception:
+				break
+		return None
 
 	def get_current_url(self):
 		try:
 			focus = api.getFocusObject()
-			if hasattr(focus, 'treeInterceptor') and focus.treeInterceptor is not None:
-				ti = focus.treeInterceptor
-				if hasattr(ti, 'documentConstantIdentifier'):
-					url = ti.documentConstantIdentifier
-					if url and (url.startswith('http') or url.startswith('https') or url.startswith('file')):
-						return url
+
+			# First, try to get URL from the document via treeInterceptor or parent chain
+			url = self._get_document_url_from_object(focus)
+			if url and (url.startswith('http') or url.startswith('https') or url.startswith('file')):
+				return url
+
+			# Fallback to IAccessible accValue (some browsers store URL there)
 			if hasattr(focus, 'IAccessibleObject'):
 				try:
 					url = focus.IAccessibleObject.accValue(0)
 					if url and (url.startswith('http') or url.startswith('https') or url.startswith('file')):
 						return url
-				except:
+				except Exception:
 					pass
+
+			# Fallback to UIAElement (for UIA-based browsers)
 			if hasattr(focus, 'UIAElement'):
 				try:
 					url = focus.UIAElement.CurrentValue
 					if url and (url.startswith('http') or url.startswith('https') or url.startswith('file')):
 						return url
-				except:
+				except Exception:
 					pass
+
+			# Fallback to window text regex
 			if hasattr(focus, 'windowText'):
 				window_text = focus.windowText
 				url_pattern = r'https?://[^\s]+|file:///[^\s]+'
 				match = re.search(url_pattern, window_text)
 				if match:
 					return match.group(0)
+
 			return None
 		except Exception:
 			return None
@@ -82,12 +112,8 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 		def execute_action():
 			try:
 				if self._tap_count == 1:
-					if self._first_open:
-						nvdaGui.mainFrame.popupSettingsDialog(MainDialog, self.manager, self.mostVisitedManager)
-					else:
-						last_cat = self.manager.get_last_category()
-						nvdaGui.mainFrame.popupSettingsDialog(MainDialog, self.manager, self.mostVisitedManager, last_cat)
-					self._first_open = False
+					last_cat = self.manager.get_last_category()
+					nvdaGui.mainFrame.popupSettingsDialog(MainDialog, self.manager, self.mostVisitedManager, last_cat)
 				elif self._tap_count == 2:
 					current_url = self.get_current_url()
 					if not current_url:
@@ -112,3 +138,4 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 	def terminate(self):
 		self.manager.terminate()
 		self.mostVisitedManager.terminate()
+

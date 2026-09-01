@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: AbsoluteSite 2026.8.0\n"
+"Project-Id-Version: AbsoluteSite 2026.9.0\n"
 "Report-Msgid-Bugs-To: chaicm75@gmail.com\n"
-"POT-Creation-Date: 2026-07-27 13:33+0700\n"
-"PO-Revision-Date: \n"
+"POT-Creation-Date: 2026-08-31 10:10+0700\n"
+"PO-Revision-Date: 2026-08-31 10:10+0700\n"
 "Last-Translator: chaiBot and Malee Yamazaki\n"
 "Language-Team: Arabic\n"
 "Language: ar\n"
@@ -12,302 +12,314 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: DevOn Addon\n"
 
-#: gui.py:209
-#: gui.py:287
-#: gui.py:589
+#: gui.py:280
+#: gui.py:389
+#: gui.py:699
 msgid "&Add Category"
-msgstr "&إضافة تصنيف"
+msgstr "إ&ضافة فئة"
 
-#: gui.py:206
+#: gui.py:277
 msgid "&Add Site"
-msgstr "&إضافة موقع"
+msgstr "إ&ضافة موقع"
 
-#: gui.py:607
-#: gui.py:852
+#: gui.py:717
+#: gui.py:962
 msgid "&Cancel"
-msgstr "&إلغاء"
+msgstr "إ&لغاء"
 
-#: gui.py:373
+#: gui.py:477
 msgid "&Delete"
 msgstr "&حذف"
 
-#: gui.py:289
+#: gui.py:391
 msgid "&Delete Category"
-msgstr "&حذف التصنيف"
+msgstr "ح&ذف الفئة"
 
-#: gui.py:208
+#: gui.py:279
 msgid "&Delete Site"
-msgstr "&حذف الموقع"
+msgstr "حذف ال&موقع"
 
-#: gui.py:372
+#: gui.py:476
 msgid "&Edit"
-msgstr "&تحرير"
+msgstr "ت&عديل"
 
-#: gui.py:210
-#: gui.py:288
+#: gui.py:281
+#: gui.py:390
 msgid "&Edit Category"
-msgstr "&تحرير التصنيف"
+msgstr "تعدي&ل الفئة"
 
-#: gui.py:207
+#: gui.py:278
 msgid "&Edit Site"
-msgstr "&تحرير الموقع"
+msgstr "تعدي&ل الموقع"
 
-#: gui.py:393
+#: gui.py:497
 msgid "&Move to category"
-msgstr "&نقل إلى تصنيف"
+msgstr "ن&قل إلى فئة"
 
-#: gui.py:385
+#: gui.py:489
 msgid "&Open with"
-msgstr "&فتح باستخدام"
+msgstr "ف&تح باستخدام"
 
-#: gui.py:366
-#: gui.py:767
+#: gui.py:470
+#: gui.py:877
 msgid "&Pin to top"
-msgstr "&تثبيت في الأعلى"
+msgstr "تثبي&ت في الأعلى"
 
-#: gui.py:772
+#: gui.py:882
 msgid "&Remove from history"
-msgstr "&إزالة من السجل"
+msgstr "إ&زالة من السجل"
 
-#: gui.py:606
+#: gui.py:716
 msgid "&Save"
-msgstr "&حفظ"
+msgstr "ح&فظ"
 
-#: gui.py:851
+#: gui.py:961
 msgid "&Search"
-msgstr "&بحث"
+msgstr "ب&حث"
 
-#: gui.py:364
-#: gui.py:765
+#: gui.py:468
+#: gui.py:875
 msgid "&Unpin"
-msgstr "&إلغاء التثبيت"
+msgstr "إ&لغاء التثبيت"
 
-#: gui.py:676
+#: gui.py:786
 msgid "A site with this URL already exists in the target category."
-msgstr "يوجد موقع بهذا الرابط مسبقاً في التصنيف المستهدف."
+msgstr "يوجد موقع بهذا العنوان بالفعل في الفئة المستهدفة."
 
-#: gui.py:680
+#: gui.py:790
 msgid "A site with this URL already exists in this category."
-msgstr "يوجد موقع بهذا الرابط مسبقاً في هذا التصنيف."
+msgstr "يوجد موقع بهذا العنوان بالفعل في هذه الفئة."
 
 #: __init__.py:23
-#: __init__.py:70
-#: __init__.py:107
-#: gui.py:154
+#: __init__.py:101
+#: __init__.py:138
+#: gui.py:221
 msgid "Absolute Site"
-msgstr "أبسوليوت سايت"
+msgstr "Absolute Site"
 
-#: gui.py:493
-#: gui.py:644
+#: gui.py:601
+#: gui.py:754
 msgid "Add Category"
-msgstr "إضافة تصنيف"
+msgstr "إضافة فئة"
 
-#: gui.py:559
+#: gui.py:669
 msgid "Add New Site"
 msgstr "إضافة موقع جديد"
 
-#: gui.py:484
+#: gui.py:592
 msgid "Are you sure you want to delete '{}'?"
-msgstr "هل أنت متأكد من رغبتك في حذف '{}'؟"
+msgstr "هل أنت تأكد من أنك تريد حذف '{}'؟"
 
-#: gui.py:338
+#: gui.py:441
 msgid "Are you sure you want to delete category '{}' and all its sites?"
-msgstr "هل أنت متأكد من رغبتك في حذف التصنيف '{}' وجميع مواقعه؟"
+msgstr "هل أنت تأكد من أنك تريد حذف الفئة '{}' وجميع مواقعها؟"
 
-#: gui.py:844
+#: gui.py:954
 msgid "Browser:"
 msgstr "المتصفح:"
 
-#: __init__.py:94
+#: __init__.py:125
 msgid "Cannot capture URL. Make sure you are in a browser."
-msgstr "تعذر التقاط الرابط. تأكد من أنك داخل متصفح."
+msgstr "تعذر التقاط عنوان URL. تأكد من أنك تعمل داخل متصفح."
 
-#: gui.py:529
+#: gui.py:638
 msgid "Cannot move down."
-msgstr "تعذر التحريك لأسفل."
+msgstr "لا يمكن التحريك لأسفل."
 
-#: gui.py:521
+#: gui.py:630
 msgid "Cannot move up."
-msgstr "تعذر التحريك لأعلى."
+msgstr "لا يمكن التحريك لأعلى."
 
-#: gui.py:327
+#: gui.py:430
 msgid "Category '{}' already exists or invalid."
-msgstr "التصنيف '{}' موجود مسبقاً أو غير صالح."
+msgstr "الفئة '{}' موجودة بالفعل أو غير صالحة."
 
-#: gui.py:502
+#: gui.py:259
+msgid "Category Browser:"
+msgstr "متصفح الفئات:"
+
+#: gui.py:611
 msgid "Category already exists or invalid."
-msgstr "التصنيف موجود مسبقاً أو غير صالح."
+msgstr "الفئة موجودة بالفعل أو غير صالحة."
 
-#: gui.py:652
+#: gui.py:762
 msgid "Category already exists."
-msgstr "التصنيف موجود مسبقاً."
+msgstr "الفئة موجودة بالفعل."
 
-#: gui.py:314
+#: gui.py:416
 msgid "Category name cannot be empty."
-msgstr "لا يمكن أن يكون اسم التصنيف فارغاً."
+msgstr "لا يمكن أن يكون اسم الفئة فارغاً."
 
-#: gui.py:191
-#: gui.py:586
+#: gui.py:262
+#: gui.py:696
 msgid "Category:"
-msgstr "التصنيف:"
+msgstr "الفئة:"
 
-#: gui.py:339
-#: gui.py:485
+#: gui.py:442
+#: gui.py:593
 msgid "Confirm Delete"
 msgstr "تأكيد الحذف"
 
-#: gui.py:666
+#: gui.py:776
 msgid "Display name cannot be empty."
-msgstr "لا يمكن أن يكون اسم العرض فارغاً."
+msgstr "لا يمكن أن يكون الاسم المعروض فارغاً."
 
-#: gui.py:594
+#: gui.py:704
 msgid "Display name:"
-msgstr "اسم العرض:"
+msgstr "الاسم المعروض:"
 
-#: gui.py:211
-#: gui.py:709
+#: gui.py:282
+#: gui.py:819
 msgid "E&xit"
-msgstr "خ&روج"
+msgstr "إ&غلاق"
 
-#: gui.py:310
+#: gui.py:412
 msgid "Edit Category"
-msgstr "تحرير التصنيف"
+msgstr "تعديل الفئة"
 
-#: gui.py:559
+#: gui.py:669
 msgid "Edit Site"
-msgstr "تحرير الموقع"
+msgstr "تعديل الموقع"
 
-#: gui.py:493
-#: gui.py:644
+#: gui.py:601
+#: gui.py:754
 msgid "Enter new category name:"
-msgstr "أدخل اسم التصنيف الجديد:"
+msgstr "أدخل اسم الفئة الجديد:"
 
-#: gui.py:310
+#: gui.py:412
 msgid "Enter new name for category '{}':"
-msgstr "أدخل الاسم الجديد للتصنيف '{}':"
+msgstr "أدخل اسماً جديداً للفئة '{}':"
 
-#: gui.py:149
-#: gui.py:307
-#: gui.py:314
-#: gui.py:327
-#: gui.py:335
-#: gui.py:348
+#: gui.py:156
+#: gui.py:409
+#: gui.py:416
+#: gui.py:430
 #: gui.py:438
-#: gui.py:444
-#: gui.py:453
-#: gui.py:502
-#: gui.py:546
-#: gui.py:652
-#: gui.py:658
-#: gui.py:662
-#: gui.py:666
-#: gui.py:676
-#: gui.py:680
-#: gui.py:749
-#: gui.py:755
-#: gui.py:890
+#: gui.py:452
+#: gui.py:542
+#: gui.py:553
+#: gui.py:561
+#: gui.py:611
+#: gui.py:656
+#: gui.py:762
+#: gui.py:768
+#: gui.py:772
+#: gui.py:776
+#: gui.py:786
+#: gui.py:790
+#: gui.py:859
+#: gui.py:865
+#: gui.py:1000
 msgid "Error"
 msgstr "خطأ"
 
-#: gui.py:348
+#: gui.py:452
 msgid "Failed to delete category."
-msgstr "فشل حذف التصنيف."
+msgstr "فشل حذف الفئة."
 
-#: gui.py:546
+#: gui.py:656
 msgid "Failed to move site. It may already exist in the target category."
-msgstr "فشل نقل الموقع. قد يكون موجوداً مسبقاً في التصنيف المستهدف."
+msgstr "فشل نقل الموقع. قد يكون موجوداً بالفعل في الفئة المستهدفة."
 
-#: gui.py:149
+#: gui.py:156
 msgid "Failed to open URL with browser: {}"
-msgstr "فشل فتح الرابط باستخدام المتصفح: {}"
+msgstr "فشل فتح عنوان URL باستخدام المتصفح: {}"
 
-#: gui.py:444
-#: gui.py:755
+#: gui.py:553
+#: gui.py:865
 msgid "Failed to open URL: {}"
-msgstr "فشل فتح الرابط: {}"
+msgstr "فشل فتح عنوان URL: {}"
 
-#: gui.py:694
+#: gui.py:206
+msgid "Maximized"
+msgstr "مكبر"
+
+#: gui.py:804
 msgid "Most Visited"
 msgstr "الأكثر زيارة"
 
-#: gui.py:370
-#: gui.py:770
+#: gui.py:474
+#: gui.py:880
 msgid "Move &Down"
 msgstr "تحريك لأس&فل"
 
-#: gui.py:369
-#: gui.py:769
+#: gui.py:473
+#: gui.py:879
 msgid "Move &Up"
-msgstr "تحريك لأع&لى"
+msgstr "تحريك لأ&على"
 
-#: gui.py:197
-#: gui.py:705
+#: gui.py:268
+#: gui.py:815
 msgid "Name"
 msgstr "الاسم"
 
-#: gui.py:383
+#: gui.py:487
 msgid "No browsers found"
 msgstr "لم يتم العثور على متصفحات"
 
-#: gui.py:307
-#: gui.py:335
+#: gui.py:409
+#: gui.py:438
 msgid "No category selected."
-msgstr "لم يتم تحديد أي تصنيف."
+msgstr "لم يتم تحديد أي فئة."
 
-#: __init__.py:68
+#: __init__.py:99
 msgid "Open Absolute Site manager (single tap), Add new site (double tap), or Most Visited (triple tap)"
-msgstr "فتح مدير المواقع المطلقة (نقرة واحدة)، إضافة موقع جديد (نقرتان)، أو الأكثر زيارة (ثلاث نقرات)"
+msgstr "فتح مدير Absolute Site (ضغط واحدة)، إضافة موقع جديد (ضغطتان)، أو الأكثر زيارة (สาม ضغطات)"
 
-#: gui.py:890
+#: gui.py:1000
 msgid "Please enter a search query."
-msgstr "الرجاء إدخال نص البحث."
+msgstr "يرجى إدخال عبارة البحث."
 
-#: gui.py:453
+#: gui.py:561
 msgid "Please select a category first."
-msgstr "الرجاء تحديد تصنيف أولاً."
+msgstr "يرجى تحديد فئة أولاً."
 
-#: gui.py:658
+#: gui.py:768
 msgid "Please select or add a category."
-msgstr "الرجاء تحديد أو إضافة تصنيف."
+msgstr "يرجى تحديد فئة أو إضافتها."
 
-#: gui.py:837
+#: gui.py:947
 msgid "Search query:"
-msgstr "استعلام البحث:"
+msgstr "عبارة البحث:"
 
-#: __init__.py:105
+#: __init__.py:136
 msgid "Search the web via Google"
-msgstr "البحث في الويب عبر جوجل"
+msgstr "البحث في الويب عبر Google"
 
-#: gui.py:201
+#: gui.py:272
 msgid "Show paths"
 msgstr "إظهار المسارات"
 
-#: gui.py:600
+#: gui.py:710
 msgid "Site URL:"
-msgstr "رابط الموقع:"
+msgstr "عنوان URL للموقع:"
 
-#: gui.py:198
+#: gui.py:269
 msgid "URL"
-msgstr "الرابط"
+msgstr "عنوان URL"
 
-#: gui.py:662
+#: gui.py:772
 msgid "URL cannot be empty."
-msgstr "لا يمكن أن يكون الرابط فارغاً."
+msgstr "لا يمكن أن يكون عنوان URL فارغاً."
 
-#: gui.py:144
-#: gui.py:438
-#: gui.py:749
+#: gui.py:151
+#: gui.py:542
+#: gui.py:859
 msgid "Unsafe URL scheme blocked."
-msgstr "تم حظر مخطط رابط غير آمن."
+msgstr "تم حظر مخطط URL غير الآمن."
 
-#: gui.py:826
+#: gui.py:936
 msgid "Web Search"
-msgstr "بحث الويب"
+msgstr "البحث في الويب"
 
-#: gui.py:869
+#: gui.py:979
 msgid "default"
-msgstr "افتراضي"
+msgstr "الافتراضي"
 
-#: gui.py:257
+#: gui.py:375
+msgid "{browser} not found. Opening with default browser instead."
+msgstr "لم يتم العثور على {browser}. سيتم الفتح باستخدام المتصفح الافتراضي بدلاً من ذلك."
+
+#: gui.py:329
 msgid "{name}; URL: {url}"
-msgstr "{name}; الرابط: {url}"
+msgstr "{name}؛ URL: {url}"
