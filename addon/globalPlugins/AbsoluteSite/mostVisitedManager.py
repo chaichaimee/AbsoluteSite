@@ -1,6 +1,4 @@
 # mostVisitedManager.py
-# Copyright (C) 2026 Chai Chaimee
-# Licensed under GNU General Public License. See COPYING.txt for details.
 
 import os
 import json
@@ -14,33 +12,34 @@ class MostVisitedManager:
 		os.makedirs(self.dataDir, exist_ok=True)
 		self.dataPath = os.path.join(self.dataDir, "MostVisited.json")
 		self.visits = []
-		self.pinned = set()
-		self.order = []
+		self.pinned = {}
 		self.load()
 
 	def load(self):
-		if os.path.isfile(self.dataPath):
-			try:
-				with open(self.dataPath, 'r', encoding='utf-8') as f:
-					data = json.load(f)
-				self.visits = data.get("visits", [])
-				self.pinned = set(data.get("pinned", []))
-				self.order = data.get("order", [])
-			except Exception as e:
-				log.error(f"Error loading MostVisited.json: {e}")
-				self.visits = []
-				self.pinned = set()
-				self.order = []
-		else:
+		self.visits = []
+		self.pinned = {}
+		if not os.path.isfile(self.dataPath):
+			return
+		try:
+			with open(self.dataPath, 'r', encoding='utf-8') as f:
+				data = json.load(f)
+			self.visits = data.get("visits", [])
+			pinnedData = data.get("pinned", {})
+			if isinstance(pinnedData, dict):
+				self.pinned = {str(u): int(p) for u, p in pinnedData.items()}
+			else:
+				legacyOrder = [u for u in data.get("order", []) if u in pinnedData]
+				legacyOrder.extend(u for u in pinnedData if u not in legacyOrder)
+				self.pinned = {u: i for i, u in enumerate(legacyOrder)}
+		except Exception as e:
+			log.error(f"Error loading MostVisited.json: {e}")
 			self.visits = []
-			self.pinned = set()
-			self.order = []
+			self.pinned = {}
 
 	def save(self):
 		data = {
 			"visits": self.visits,
-			"pinned": list(self.pinned),
-			"order": self.order
+			"pinned": self.pinned
 		}
 		try:
 			with open(self.dataPath, 'w', encoding='utf-8') as f:
@@ -55,113 +54,103 @@ class MostVisitedManager:
 			self.visits = self.visits[:50]
 		self.save()
 
-	def get_ordered_most_visited(self, siteManager):
-		site_info = {}
+	def _siteInfo(self, siteManager):
+		siteInfo = {}
 		for category, sites in siteManager.data.items():
 			for site in sites:
-				url = site["url"]
-				site_info[url] = (site["name"], category)
+				siteInfo[site["url"]] = (site["name"], category)
+		return siteInfo
 
-		result = []
-		pinned_urls = set(self.pinned)
-		ordered_pinned = []
-		for url in self.order:
-			if url in pinned_urls:
-				ordered_pinned.append(url)
-				pinned_urls.remove(url)
-		ordered_pinned.extend(pinned_urls)
-
-		for url in ordered_pinned:
-			if url in site_info:
-				name, cat = site_info[url]
-				result.append({"display_name": name, "url": url, "category": cat})
-
-		seen_urls = {item["url"] for item in result}
+	def _unpinnedUrls(self, siteInfo):
+		seenUrls = set()
+		unpinnedUrls = []
 		for visit in self.visits:
 			url = visit["url"]
-			if url in seen_urls:
+			if url in seenUrls or url in self.pinned or url not in siteInfo:
 				continue
-			if url in site_info:
-				name, cat = site_info[url]
-				result.append({"display_name": name, "url": url, "category": cat})
-				seen_urls.add(url)
-		return result
+			seenUrls.add(url)
+			unpinnedUrls.append(url)
+		return unpinnedUrls
 
-	def pin(self, url):
-		self.pinned.add(url)
-		if url in self.order:
-			self.order.remove(url)
-		insert_index = 0
-		for i, u in enumerate(self.order):
-			if u in self.pinned:
-				insert_index = i
-				break
-		self.order.insert(insert_index, url)
+	def get_ordered_most_visited(self, siteManager):
+		siteInfo = self._siteInfo(siteManager)
+		ordered = self._unpinnedUrls(siteInfo)
+		pinnedSlots = sorted(
+			((pos, url) for url, pos in self.pinned.items() if url in siteInfo),
+			key=lambda slot: slot[0]
+		)
+		for pos, url in pinnedSlots:
+			ordered.insert(min(max(pos, 0), len(ordered)), url)
+		return [
+			{"display_name": siteInfo[url][0], "url": url, "category": siteInfo[url][1]}
+			for url in ordered
+		]
+
+	def _normalizePinned(self, siteManager):
+		ordered = self.get_ordered_most_visited(siteManager)
+		for index, site in enumerate(ordered):
+			if site["url"] in self.pinned:
+				self.pinned[site["url"]] = index
+
+	def pin(self, url, position, siteManager):
+		self.pinned[url] = max(int(position), 0)
+		self._normalizePinned(siteManager)
 		self.save()
 
 	def unpin(self, url):
-		self.pinned.discard(url)
+		if self.pinned.pop(url, None) is not None:
+			self.save()
+
+	def is_pinned(self, url):
+		return url in self.pinned
+
+	def _movePinned(self, url, siteManager, step):
+		self._normalizePinned(siteManager)
+		pinnedUrls = sorted(self.pinned, key=lambda u: self.pinned[u])
+		if url not in pinnedUrls:
+			return False
+		targetIndex = pinnedUrls.index(url) + step
+		if targetIndex < 0 or targetIndex >= len(pinnedUrls):
+			return False
+		otherUrl = pinnedUrls[targetIndex]
+		self.pinned[url], self.pinned[otherUrl] = self.pinned[otherUrl], self.pinned[url]
 		self.save()
+		return True
 
-	def move_up(self, url):
-		if url not in self.order:
-			self._add_to_order(url)
-		idx = self.order.index(url)
-		if idx == 0:
+	def _moveUnpinned(self, url, siteManager, step):
+		unpinnedUrls = self._unpinnedUrls(self._siteInfo(siteManager))
+		if url not in unpinnedUrls:
 			return False
-		is_pinned = url in self.pinned
-		if is_pinned:
-			if self.order[idx-1] in self.pinned:
-				self.order[idx], self.order[idx-1] = self.order[idx-1], self.order[idx]
-				self.save()
-				return True
+		targetIndex = unpinnedUrls.index(url) + step
+		if targetIndex < 0 or targetIndex >= len(unpinnedUrls):
 			return False
-		else:
-			if self.order[idx-1] not in self.pinned:
-				self.order[idx], self.order[idx-1] = self.order[idx-1], self.order[idx]
-				self.save()
-				return True
-			return False
+		visitUrls = [v["url"] for v in self.visits]
+		firstIdx = visitUrls.index(url)
+		secondIdx = visitUrls.index(unpinnedUrls[targetIndex])
+		self.visits[firstIdx], self.visits[secondIdx] = self.visits[secondIdx], self.visits[firstIdx]
+		self.save()
+		return True
 
-	def move_down(self, url):
-		if url not in self.order:
-			self._add_to_order(url)
-		idx = self.order.index(url)
-		if idx == len(self.order) - 1:
-			return False
-		is_pinned = url in self.pinned
-		if is_pinned:
-			if self.order[idx+1] in self.pinned:
-				self.order[idx], self.order[idx+1] = self.order[idx+1], self.order[idx]
-				self.save()
-				return True
-			return False
-		else:
-			if self.order[idx+1] not in self.pinned:
-				self.order[idx], self.order[idx+1] = self.order[idx+1], self.order[idx]
-				self.save()
-				return True
-			return False
-
-	def _add_to_order(self, url):
+	def _move(self, url, siteManager, step):
 		if url in self.pinned:
-			last_pinned_idx = -1
-			for i, u in enumerate(self.order):
-				if u in self.pinned:
-					last_pinned_idx = i
-			if last_pinned_idx == -1:
-				self.order.insert(0, url)
-			else:
-				self.order.insert(last_pinned_idx + 1, url)
-		else:
-			self.order.append(url)
+			return self._movePinned(url, siteManager, step)
+		return self._moveUnpinned(url, siteManager, step)
+
+	def move_up(self, url, siteManager):
+		return self._move(url, siteManager, -1)
+
+	def move_down(self, url, siteManager):
+		return self._move(url, siteManager, 1)
+
+	def clear_unpinned(self):
+		removedCount = len([v for v in self.visits if v["url"] not in self.pinned])
+		self.visits = [v for v in self.visits if v["url"] in self.pinned]
 		self.save()
+		return removedCount
 
 	def remove_url(self, url):
 		self.visits = [v for v in self.visits if v["url"] != url]
-		self.pinned.discard(url)
-		if url in self.order:
-			self.order.remove(url)
+		self.pinned.pop(url, None)
 		self.save()
 
 	def terminate(self):

@@ -1,6 +1,4 @@
 # gui.py
-# Copyright (C) 2026 Chai Chaimee
-# Licensed under GNU General Public License. See COPYING.txt for details.
 
 import wx
 import addonHandler
@@ -870,40 +868,44 @@ class MostVisitedDialog(wx.Dialog):
 		if not site:
 			return
 		url = site['url']
+		isPinned = self.mostVisitedManager.is_pinned(url)
 		menu = wx.Menu()
-		if url in self.mostVisitedManager.pinned:
-			pinLabel = _("&Unpin")
-		else:
-			pinLabel = _("&Pin to top")
-		pinItem = menu.Append(wx.ID_ANY, pinLabel)
+		pinItem = menu.Append(wx.ID_ANY, _("&Unpin") if isPinned else _("&Pin"))
+		self.Bind(wx.EVT_MENU, lambda e: self.onTogglePin(url), pinItem)
 		upItem = menu.Append(wx.ID_ANY, _("Move &Up"))
 		downItem = menu.Append(wx.ID_ANY, _("Move &Down"))
-		menu.AppendSeparator()
-		removeItem = menu.Append(wx.ID_ANY, _("&Remove from history"))
-		self.Bind(wx.EVT_MENU, lambda e: self.onTogglePin(url), pinItem)
 		self.Bind(wx.EVT_MENU, lambda e: self.onMoveUp(url), upItem)
 		self.Bind(wx.EVT_MENU, lambda e: self.onMoveDown(url), downItem)
+		menu.AppendSeparator()
+		removeItem = menu.Append(wx.ID_ANY, _("&Remove from history"))
+		clearItem = menu.Append(wx.ID_ANY, _("&Clear"))
 		self.Bind(wx.EVT_MENU, lambda e: self.onRemove(url), removeItem)
+		self.Bind(wx.EVT_MENU, lambda e: self.onClear(), clearItem)
 		self.siteList.PopupMenu(menu)
 		menu.Destroy()
 
 	def onTogglePin(self, url):
-		if url in self.mostVisitedManager.pinned:
+		if self.mostVisitedManager.is_pinned(url):
 			self.mostVisitedManager.unpin(url)
 		else:
-			self.mostVisitedManager.pin(url)
+			selectedIndex = self.siteList.GetFirstSelected()
+			self.mostVisitedManager.pin(url, max(selectedIndex, 0), self.siteManager)
 		self._populateList()
 		self._select_by_url(url)
 
 	def onMoveUp(self, url):
-		if self.mostVisitedManager.move_up(url):
+		if self.mostVisitedManager.move_up(url, self.siteManager):
 			self._populateList()
 			self._select_by_url(url)
 
 	def onMoveDown(self, url):
-		if self.mostVisitedManager.move_down(url):
+		if self.mostVisitedManager.move_down(url, self.siteManager):
 			self._populateList()
 			self._select_by_url(url)
+
+	def onClear(self):
+		self.mostVisitedManager.clear_unpinned()
+		self._populateList()
 
 	def onRemove(self, url):
 		self.mostVisitedManager.remove_url(url)
@@ -1016,3 +1018,6 @@ class SearchDialog(wx.Dialog):
 
 
 
+
+
+# mostVisitedManager.py
